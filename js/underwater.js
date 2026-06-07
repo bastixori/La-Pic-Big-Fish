@@ -23,7 +23,7 @@ class SunRays {
         
         // Dibujar múltiples rayos
         const rayCount = 8;
-        this.ctx.fillStyle = 'rgba(0, 201, 177, 0.03)'; // Tono turquesa muy suave
+        this.ctx.fillStyle = 'rgba(255, 0, 180, 0.06)'; // Tono magenta suave solarizado
         
         for (let i = 0; i < rayCount; i++) {
             const angle = (i * (Math.PI * 2 / rayCount)) / 4 + Math.sin(this.angleOffset + i) * 0.05 + 0.5;
@@ -44,8 +44,8 @@ class SunRays {
             
             // Rellenar con un gradiente lineal para que se desvanezca hacia abajo
             const rayGrad = this.ctx.createLinearGradient(startX, startY, (endX1 + endX2) / 2, (endY1 + endY2) / 2);
-            rayGrad.addColorStop(0, 'rgba(0, 201, 177, 0.12)');
-            rayGrad.addColorStop(0.3, 'rgba(0, 201, 177, 0.05)');
+            rayGrad.addColorStop(0, 'rgba(255, 0, 180, 0.28)'); // Magenta más claro y brillante
+            rayGrad.addColorStop(0.3, 'rgba(255, 0, 180, 0.12)');
             rayGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
             
             this.ctx.fillStyle = rayGrad;
@@ -116,8 +116,8 @@ class FishSchool {
             const angle = Math.atan2(Math.cos(this.time * 1.5) * 50 * 0.03, this.speed);
             this.ctx.rotate(angle);
             
-            // Color turquesa con sutil opacidad
-            this.ctx.fillStyle = 'rgba(0, 201, 177, 0.22)';
+            // Color magenta solarizado brillante
+            this.ctx.fillStyle = 'rgba(255, 0, 180, 0.28)';
             
             // Cuerpo del pez (Elipse)
             this.ctx.beginPath();
@@ -190,7 +190,7 @@ class Jellyfish {
         this.ctx.translate(this.x, this.y);
         
         // Dibujar tentáculos ondulantes
-        this.ctx.strokeStyle = 'rgba(0, 201, 177, 0.08)';
+        this.ctx.strokeStyle = 'rgba(255, 0, 180, 0.15)';
         this.ctx.lineWidth = 1.5;
         
         for (let i = -2; i <= 2; i++) {
@@ -213,9 +213,9 @@ class Jellyfish {
         
         // Cuerpo de la medusa (Semicírculo / Campana translúcida)
         const grad = this.ctx.createRadialGradient(0, -height/4, 2, 0, 0, width);
-        grad.addColorStop(0, 'rgba(255, 255, 255, 0.15)');
-        grad.addColorStop(0.5, 'rgba(0, 201, 177, 0.1)');
-        grad.addColorStop(1, 'rgba(0, 201, 177, 0.02)');
+        grad.addColorStop(0, 'rgba(255, 255, 255, 0.26)');
+        grad.addColorStop(0.5, 'rgba(255, 0, 180, 0.18)');
+        grad.addColorStop(1, 'rgba(255, 0, 180, 0.04)');
         
         this.ctx.fillStyle = grad;
         this.ctx.beginPath();
@@ -290,9 +290,9 @@ class OctopusBg {
         
         const size = this.size;
         
-        // Color ámbar/dorado muy sutil (combina con --secondary del sitio)
-        const mainColor = 'rgba(232, 160, 32, 0.09)';
-        const darkColor = 'rgba(232, 160, 32, 0.03)';
+        // Color ámbar/dorado (combina con --secondary del sitio)
+        const mainColor = 'rgba(232, 160, 32, 0.16)';
+        const darkColor = 'rgba(232, 160, 32, 0.05)';
         
         // 8 Tentáculos que ondean
         this.ctx.strokeStyle = mainColor;
@@ -326,7 +326,7 @@ class OctopusBg {
         
         // Cabeza del pulpo (Gran elipse bulbosa)
         const grad = this.ctx.createRadialGradient(size/4, -size/10, 2, 0, 0, size);
-        grad.addColorStop(0, 'rgba(232, 160, 32, 0.16)');
+        grad.addColorStop(0, 'rgba(232, 160, 32, 0.22)');
         grad.addColorStop(0.6, mainColor);
         grad.addColorStop(1, darkColor);
         

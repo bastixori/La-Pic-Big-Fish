@@ -4,7 +4,7 @@
 :root {
     /* Color Palette */
     --bg-dark: #0a0f1d;        /* Deep ocean background */
-    --bg-card: #121826;        /* Glassmorphism/card background */
+    --bg-card: rgba(18, 24, 38, 0.85); /* Glassmorphism/card background */
     --primary: #00c9b1;        /* Turquoise accent (from "Fish" in logo) */
     --primary-glow: rgba(0, 201, 177, 0.35);
     --secondary: #e8a020;      /* Amber details (e.g. cooked food tones) */
@@ -444,7 +444,9 @@ img {
 
 .team-card {
     background: var(--bg-card);
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     padding: 40px 30px;
     text-align: center;
@@ -602,8 +604,10 @@ img {
 }
 
 .menu-item-card {
-    background: var(--bg-dark);
-    border: 1px solid rgba(255, 255, 255, 0.02);
+    background: var(--bg-card);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     padding: 30px;
     position: relative;
@@ -754,7 +758,9 @@ img {
 
 .info-card {
     background: var(--bg-card);
-    border: 1px solid rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     padding: 30px;
     display: flex;

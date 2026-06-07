@@ -23,7 +23,7 @@ class SunRays {
         
         // Dibujar múltiples rayos
         const rayCount = 8;
-        this.ctx.fillStyle = 'rgba(232, 160, 32, 0.08)'; // Tono dorado suave solarizado
+        this.ctx.fillStyle = 'rgba(232, 160, 32, 0.02)'; // Tono dorado sumamente tenue y lejano
         
         for (let i = 0; i < rayCount; i++) {
             const angle = (i * (Math.PI * 2 / rayCount)) / 4 + Math.sin(this.angleOffset + i) * 0.05 + 0.5;
@@ -44,8 +44,8 @@ class SunRays {
             
             // Rellenar con un gradiente lineal para que se desvanezca hacia abajo
             const rayGrad = this.ctx.createLinearGradient(startX, startY, (endX1 + endX2) / 2, (endY1 + endY2) / 2);
-            rayGrad.addColorStop(0, 'rgba(255, 210, 80, 0.38)'); // Sol dorado más brillante
-            rayGrad.addColorStop(0.3, 'rgba(232, 160, 32, 0.18)'); // Tono dorado de transición
+            rayGrad.addColorStop(0, 'rgba(255, 220, 100, 0.12)'); // Sol dorado muy difuso y tenue
+            rayGrad.addColorStop(0.3, 'rgba(232, 160, 32, 0.04)'); // Tono dorado de transición casi invisible
             rayGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
             
             this.ctx.fillStyle = rayGrad;

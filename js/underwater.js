@@ -23,7 +23,7 @@ class SunRays {
         
         // Dibujar múltiples rayos
         const rayCount = 8;
-        this.ctx.fillStyle = 'rgba(255, 0, 180, 0.06)'; // Tono magenta suave solarizado
+        this.ctx.fillStyle = 'rgba(232, 160, 32, 0.08)'; // Tono dorado suave solarizado
         
         for (let i = 0; i < rayCount; i++) {
             const angle = (i * (Math.PI * 2 / rayCount)) / 4 + Math.sin(this.angleOffset + i) * 0.05 + 0.5;
@@ -44,8 +44,8 @@ class SunRays {
             
             // Rellenar con un gradiente lineal para que se desvanezca hacia abajo
             const rayGrad = this.ctx.createLinearGradient(startX, startY, (endX1 + endX2) / 2, (endY1 + endY2) / 2);
-            rayGrad.addColorStop(0, 'rgba(255, 0, 180, 0.28)'); // Magenta más claro y brillante
-            rayGrad.addColorStop(0.3, 'rgba(255, 0, 180, 0.12)');
+            rayGrad.addColorStop(0, 'rgba(255, 210, 80, 0.38)'); // Sol dorado más brillante
+            rayGrad.addColorStop(0.3, 'rgba(232, 160, 32, 0.18)'); // Tono dorado de transición
             rayGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
             
             this.ctx.fillStyle = rayGrad;
@@ -64,7 +64,7 @@ class FishSchool {
         this.schoolX = -100;
         this.schoolY = 200;
         this.targetY = 200;
-        this.speed = 1.2;
+        this.speed = 2.4; // Más rápido como se solicitó
         this.time = 0;
         
         this.init();
@@ -97,7 +97,7 @@ class FishSchool {
             this.schoolX = -150;
             // Nueva altura y dirección aleatoria
             this.targetY = Math.random() * (height * 0.6) + height * 0.15;
-            this.speed = Math.random() * 0.8 + 1.0;
+            this.speed = Math.random() * 1.2 + 2.0; // Velocidad aleatoria más rápida
         }
     }
 
@@ -116,8 +116,8 @@ class FishSchool {
             const angle = Math.atan2(Math.cos(this.time * 1.5) * 50 * 0.03, this.speed);
             this.ctx.rotate(angle);
             
-            // Color magenta solarizado brillante
-            this.ctx.fillStyle = 'rgba(255, 0, 180, 0.28)';
+            // Color turquesa brillante (de la imagen del usuario, con excelente opacidad)
+            this.ctx.fillStyle = 'rgba(0, 201, 177, 0.45)';
             
             // Cuerpo del pez (Elipse)
             this.ctx.beginPath();
@@ -211,11 +211,12 @@ class Jellyfish {
             this.ctx.stroke();
         }
         
-        // Cuerpo de la medusa (Semicírculo / Campana translúcida)
+        // Cuerpo de la medusa (Semicírculo / Campana translúcida multicolor)
         const grad = this.ctx.createRadialGradient(0, -height/4, 2, 0, 0, width);
-        grad.addColorStop(0, 'rgba(255, 255, 255, 0.26)');
-        grad.addColorStop(0.5, 'rgba(255, 0, 180, 0.18)');
-        grad.addColorStop(1, 'rgba(255, 0, 180, 0.04)');
+        grad.addColorStop(0, 'rgba(255, 255, 255, 0.35)');
+        grad.addColorStop(0.5, 'rgba(255, 0, 180, 0.25)'); // Magenta
+        grad.addColorStop(0.8, 'rgba(0, 201, 177, 0.20)'); // Turquesa
+        grad.addColorStop(1, 'rgba(0, 201, 177, 0.02)');
         
         this.ctx.fillStyle = grad;
         this.ctx.beginPath();
@@ -234,6 +235,11 @@ class OctopusBg {
         this.ctx = ctx;
         this.active = false;
         this.reset();
+        
+        // Aparece por primera vez a los 10 segundos para verificación rápida
+        setTimeout(() => {
+            this.startAppearance();
+        }, 10000);
     }
 
     reset() {
@@ -241,15 +247,14 @@ class OctopusBg {
         this.x = -200;
         this.y = window.innerHeight * 0.7;
         this.targetX = window.innerWidth + 200;
-        this.size = 65;
+        this.size = 75; // Un poco más grande para mejor visualización
         this.time = 0;
-        this.speedX = 1.0;
+        this.speedX = 1.4; // Más dinámico
         
-        // Temporizador para aparecer cada 45 a 70 segundos
-        const delay = Math.random() * 25000 + 45000;
+        // Programar siguiente aparición en exactamente 1 minuto (60000 ms)
         setTimeout(() => {
             this.startAppearance();
-        }, delay);
+        }, 60000);
     }
 
     startAppearance() {
@@ -281,6 +286,11 @@ class OctopusBg {
         if (!this.active) return;
         
         this.ctx.save();
+        
+        // Configurar sombra brillante dorada fosforescente para el borde
+        this.ctx.shadowColor = 'rgba(232, 160, 32, 0.95)';
+        this.ctx.shadowBlur = 15;
+        
         this.ctx.translate(this.x, this.y);
         
         // Rotar levemente según el impulso
@@ -290,13 +300,13 @@ class OctopusBg {
         
         const size = this.size;
         
-        // Color ámbar/dorado (combina con --secondary del sitio)
-        const mainColor = 'rgba(232, 160, 32, 0.16)';
-        const darkColor = 'rgba(232, 160, 32, 0.05)';
+        // Colores: Cuerpo morado translúcido, Borde dorado fosforescente
+        const bodyColor = 'rgba(150, 0, 220, 0.35)';
+        const borderColor = 'rgba(232, 160, 32, 0.95)';
         
         // 8 Tentáculos que ondean
-        this.ctx.strokeStyle = mainColor;
-        this.ctx.lineWidth = 4;
+        this.ctx.strokeStyle = borderColor;
+        this.ctx.lineWidth = 5;
         this.ctx.lineCap = 'round';
         
         for (let i = 0; i < 8; i++) {
@@ -321,19 +331,40 @@ class OctopusBg {
                 prevX = segX;
                 prevY = segY;
             }
+            
+            // Dibujar relleno morado del tentáculo primero
+            this.ctx.save();
+            this.ctx.shadowBlur = 0; // Desactivar sombra para relleno para evitar artefactos oscuros
+            this.ctx.strokeStyle = bodyColor;
+            this.ctx.lineWidth = 8;
+            this.ctx.stroke();
+            this.ctx.restore();
+            
+            // Dibujar el borde dorado con sombra
             this.ctx.stroke();
         }
         
         // Cabeza del pulpo (Gran elipse bulbosa)
         const grad = this.ctx.createRadialGradient(size/4, -size/10, 2, 0, 0, size);
-        grad.addColorStop(0, 'rgba(232, 160, 32, 0.22)');
-        grad.addColorStop(0.6, mainColor);
-        grad.addColorStop(1, darkColor);
+        grad.addColorStop(0, 'rgba(220, 100, 255, 0.6)'); // Centro morado brillante
+        grad.addColorStop(0.7, 'rgba(150, 0, 220, 0.4)'); // Cuerpo morado
+        grad.addColorStop(1, 'rgba(100, 0, 150, 0.1)');
         
+        // Rellenar cabeza
+        this.ctx.save();
+        this.ctx.shadowBlur = 0; // Sin sombra en relleno
         this.ctx.fillStyle = grad;
         this.ctx.beginPath();
         this.ctx.ellipse(0, 0, size, size / 1.6, 0, 0, Math.PI * 2);
         this.ctx.fill();
+        this.ctx.restore();
+        
+        // Delinear la cabeza con borde dorado brillante
+        this.ctx.strokeStyle = borderColor;
+        this.ctx.lineWidth = 4;
+        this.ctx.beginPath();
+        this.ctx.ellipse(0, 0, size, size / 1.6, 0, 0, Math.PI * 2);
+        this.ctx.stroke();
         
         this.ctx.restore();
     }

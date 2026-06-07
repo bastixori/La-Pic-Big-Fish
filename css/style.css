@@ -187,6 +187,16 @@ img {
     }
 }
 
+#underwater-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
 /* ==========================================================================
    NAVBAR (Sticky glassmorphism)
    ========================================================================== */
@@ -295,7 +305,7 @@ img {
     display: flex;
     align-items: center;
     padding-top: 100px;
-    background-image: radial-gradient(circle at 80% 30%, #17243c 0%, var(--bg-dark) 60%);
+    background-image: radial-gradient(circle at 80% 30%, rgba(23, 36, 60, 0.45) 0%, rgba(10, 15, 29, 0.65) 60%);
     z-index: 1;
 }
 
@@ -305,7 +315,7 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(0deg, var(--bg-dark) 5%, transparent 100%);
+    background: linear-gradient(0deg, rgba(10, 15, 29, 0.75) 5%, transparent 100%);
     pointer-events: none;
     z-index: -1;
 }
@@ -405,7 +415,8 @@ img {
    ========================================================================== */
 .nosotros-section {
     position: relative;
-    background-color: var(--bg-dark);
+    background-color: rgba(10, 15, 29, 0.7);
+    backdrop-filter: blur(4px);
 }
 
 .nosotros-content {
@@ -513,7 +524,8 @@ img {
    3. MENU SECTION (Tabs)
    ========================================================================== */
 .menu-section {
-    background-color: #0d1425;
+    background-color: rgba(13, 20, 37, 0.70);
+    backdrop-filter: blur(4px);
     position: relative;
 }
 
@@ -638,7 +650,7 @@ img {
    ========================================================================== */
 .especialidad-section {
     position: relative;
-    background-image: radial-gradient(circle at 10% 50%, #17243c 0%, var(--bg-dark) 70%);
+    background-image: radial-gradient(circle at 10% 50%, rgba(23, 36, 60, 0.45) 0%, rgba(10, 15, 29, 0.65) 70%);
     z-index: 1;
 }
 
@@ -720,7 +732,8 @@ img {
    5. CONTACTO & MAP
    ========================================================================== */
 .contacto-section {
-    background-color: var(--bg-dark);
+    background-color: rgba(10, 15, 29, 0.7);
+    backdrop-filter: blur(4px);
 }
 
 .contacto-grid {

@@ -1098,6 +1098,20 @@ img {
         grid-template-columns: 1fr;
         gap: 40px;
     }
+    
+    .nav-logo-img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .navbar.scrolled .nav-logo-img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .logo-text {
+        font-size: 1.4rem;
+    }
 }
 
 /* ==========================================================================
@@ -1172,4 +1186,17 @@ img {
 
 .empanadas-image-container:hover .empanadas-real-photo {
     transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+    .empanadas-photo-section {
+        padding: 30px 15px;
+        margin-top: 40px;
+    }
+    .empanadas-photo-header h4 {
+        font-size: 1.4rem;
+    }
+    .empanadas-photo-header i {
+        font-size: 1.8rem;
+    }
 }

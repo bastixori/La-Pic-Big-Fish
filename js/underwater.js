@@ -146,84 +146,129 @@ class FishSchool {
     }
 }
 
-class Jellyfish {
+class BottomOctopus {
     constructor(ctx) {
         this.ctx = ctx;
-        this.reset();
-        // Empezar en un lugar aleatorio
-        this.y = Math.random() * 500 + 200;
-    }
-
-    reset() {
-        this.x = Math.random() * window.innerWidth;
-        this.y = window.innerHeight + 100;
-        this.size = Math.random() * 20 + 25; // Ancho del cuerpo
-        this.speedY = -(Math.random() * 0.3 + 0.3); // Sube despacio
+        this.x = window.innerWidth * 0.5;
+        this.y = window.innerHeight * 0.85;
+        this.size = 110;
         this.time = Math.random() * 100;
-        this.pulseSpeed = Math.random() * 0.02 + 0.015;
+        this.pulseSpeed = 0.012;
     }
 
     update(width, height) {
         this.time += this.pulseSpeed;
         
-        // Movimiento vertical de pulso (propulsión de medusa)
-        const pulse = Math.sin(this.time * 5);
-        const currentSpeed = this.speedY * (1.5 + pulse); // Acelera en la contracción
-        this.y += currentSpeed;
+        // El pulpo se mueve de izquierda a derecha de forma suave usando seno
+        this.x = width * 0.5 + Math.sin(this.time * 0.4) * (width * 0.3);
         
-        // Deriva lateral suave
-        this.x += Math.sin(this.time) * 0.2;
-        
-        // Si sale de la pantalla por arriba
-        if (this.y < -100) {
-            this.reset();
-        }
+        // Movimiento vertical de nado (pulsa flotando suavemente)
+        const verticalPulse = Math.sin(this.time * 2.5);
+        this.y = height * 0.82 + verticalPulse * 45;
     }
 
     draw() {
         this.ctx.save();
         
-        const pulseScale = 1 + Math.sin(this.time * 5) * 0.15;
+        const pulse = Math.sin(this.time * 2.5);
+        // El tamaño de la cabeza pulsa con el movimiento
+        const pulseScale = 1 + pulse * 0.08;
         const width = this.size * pulseScale;
-        const height = this.size * 0.75;
+        const height = this.size * 0.75 * pulseScale;
         
         this.ctx.translate(this.x, this.y);
         
-        // Dibujar tentáculos ondulantes
-        this.ctx.strokeStyle = 'rgba(255, 0, 180, 0.15)';
-        this.ctx.lineWidth = 1.5;
+        // Rotar ligeramente en base al balanceo lateral
+        const tilt = Math.cos(this.time * 0.4) * 0.12;
+        this.ctx.rotate(tilt);
         
-        for (let i = -2; i <= 2; i++) {
-            const startX = (width / 4) * i;
+        // Colores: Morado oscuro y translúcido
+        const mainColor = 'rgba(75, 0, 110, 0.48)';
+        
+        // 8 Tentáculos que ondean hacia abajo
+        this.ctx.strokeStyle = 'rgba(75, 0, 110, 0.55)';
+        this.ctx.lineWidth = 6;
+        this.ctx.lineCap = 'round';
+        
+        for (let i = 0; i < 8; i++) {
+            const startAngle = (Math.PI / 8) * (i - 3.5);
             this.ctx.beginPath();
-            this.ctx.moveTo(startX, height / 2);
             
-            // Dibujar tentáculo con curvas de Bézier
-            let prevX = startX;
-            let prevY = height / 2;
-            for (let j = 1; j <= 4; j++) {
-                const segY = prevY + 15;
-                const segX = startX + Math.sin(this.time * 3 + j + i) * 6;
+            // Punto de origen en la parte trasera del pulpo (abajo de la cabeza)
+            const originX = Math.cos(startAngle + Math.PI/2) * (width * 0.35);
+            const originY = height * 0.2 + Math.sin(startAngle + Math.PI/2) * (height * 0.1);
+            
+            this.ctx.moveTo(originX, originY);
+            
+            // Dibujar tentáculo con curvas de física
+            let prevX = originX;
+            let prevY = originY;
+            const length = this.size * 1.8;
+            const segmentCount = 6;
+            const segmentLength = length / segmentCount;
+            
+            for (let j = 1; j <= segmentCount; j++) {
+                // El tentáculo se contrae hacia el centro cuando el pulpo pulsa hacia arriba (pulse > 0)
+                const contraction = pulse > 0 ? (1 - pulse * 0.3) : 1;
+                
+                // Las ondas viajan a lo largo del tentáculo
+                const wave = Math.sin(this.time * 6 + j * 0.7 + i) * (14 + (1 - pulse) * 8);
+                const angle = startAngle + Math.PI/2 + (wave * Math.PI / 180) * contraction;
+                
+                const segX = prevX + Math.cos(angle) * segmentLength;
+                const segY = prevY + Math.sin(angle) * segmentLength;
+                
                 this.ctx.lineTo(segX, segY);
                 prevX = segX;
                 prevY = segY;
             }
+            
+            // Relleno morado para que tengan cuerpo
+            this.ctx.save();
+            this.ctx.strokeStyle = mainColor;
+            this.ctx.lineWidth = 10;
+            this.ctx.stroke();
+            this.ctx.restore();
+            
+            // Delineado más oscuro
+            this.ctx.strokeStyle = 'rgba(40, 0, 60, 0.3)';
+            this.ctx.lineWidth = 6;
             this.ctx.stroke();
         }
         
-        // Cuerpo de la medusa (Semicírculo / Campana translúcida multicolor)
-        const grad = this.ctx.createRadialGradient(0, -height/4, 2, 0, 0, width);
-        grad.addColorStop(0, 'rgba(255, 255, 255, 0.35)');
-        grad.addColorStop(0.5, 'rgba(255, 0, 180, 0.25)'); // Magenta
-        grad.addColorStop(0.8, 'rgba(0, 201, 177, 0.20)'); // Turquesa
-        grad.addColorStop(1, 'rgba(0, 201, 177, 0.02)');
+        // Cabeza del pulpo (Mantle bulboso)
+        const grad = this.ctx.createRadialGradient(0, -height*0.2, 5, 0, 0, width);
+        grad.addColorStop(0, 'rgba(120, 0, 180, 0.65)');  // Centro violeta
+        grad.addColorStop(0.6, 'rgba(75, 0, 110, 0.55)');   // Morado oscuro
+        grad.addColorStop(1, 'rgba(40, 0, 60, 0.25)');
         
         this.ctx.fillStyle = grad;
         this.ctx.beginPath();
-        this.ctx.arc(0, 0, width / 2, Math.PI, 0, false);
-        this.ctx.quadraticCurveTo(width / 2, height / 2, 0, height / 3);
-        this.ctx.quadraticCurveTo(-width / 2, height / 2, -width / 2, 0);
+        this.ctx.arc(0, -height*0.1, width / 2, Math.PI, 0, false);
+        this.ctx.quadraticCurveTo(width / 2, height * 0.3, 0, height * 0.4);
+        this.ctx.quadraticCurveTo(-width / 2, height * 0.3, -width / 2, -height*0.1);
         this.ctx.closePath();
+        this.ctx.fill();
+        
+        // Ojos morados brillantes en la parte baja de la cabeza
+        this.ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+        // Ojo Izquierdo
+        this.ctx.beginPath();
+        this.ctx.arc(-width * 0.22, height * 0.1, 4.5, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // Ojo Derecho
+        this.ctx.beginPath();
+        this.ctx.arc(width * 0.22, height * 0.1, 4.5, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // Pupilas negras
+        this.ctx.fillStyle = '#0a0f1d';
+        this.ctx.beginPath();
+        this.ctx.arc(-width * 0.22, height * 0.1, 2, 0, Math.PI * 2);
+        this.ctx.fill();
+        this.ctx.beginPath();
+        this.ctx.arc(width * 0.22, height * 0.1, 2, 0, Math.PI * 2);
         this.ctx.fill();
         
         this.ctx.restore();
@@ -382,11 +427,7 @@ class UnderwaterBackground {
         // Inicializar elementos
         this.sunRays = new SunRays(this.ctx);
         this.school = new FishSchool(this.ctx, 90); // El triple de peces (90)
-        this.jellyfishList = [
-            new Jellyfish(this.ctx),
-            new Jellyfish(this.ctx),
-            new Jellyfish(this.ctx)
-        ];
+        this.bottomOctopus = new BottomOctopus(this.ctx);
         this.octopus = new OctopusBg(this.ctx);
         
         this.init();
@@ -434,10 +475,8 @@ class UnderwaterBackground {
         this.sunRays.update();
         this.sunRays.draw(this.width, this.height);
         
-        this.jellyfishList.forEach(jelly => {
-            jelly.update(this.width, this.height);
-            jelly.draw();
-        });
+        this.bottomOctopus.update(this.width, this.height);
+        this.bottomOctopus.draw();
         
         this.octopus.update(this.width, this.height);
         this.octopus.draw();

@@ -368,6 +368,9 @@ img {
     overflow: hidden;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Mezcla la imagen con el fondo marino difuminando los bordes */
+    mask-image: radial-gradient(circle at center, black 35%, rgba(0, 0, 0, 0.6) 65%, transparent 95%);
+    -webkit-mask-image: radial-gradient(circle at center, black 35%, rgba(0, 0, 0, 0.6) 65%, transparent 95%);
 }
 
 .hero-image-frame::after {

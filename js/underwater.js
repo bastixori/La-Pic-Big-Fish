@@ -73,9 +73,9 @@ class FishSchool {
     init() {
         for (let i = 0; i < this.count; i++) {
             this.fishes.push({
-                offsetX: Math.random() * 120 - 60, // Dispersión en X respecto al centro del cardumen
-                offsetY: Math.random() * 80 - 40,   // Dispersión en Y
-                size: Math.random() * 12 + 8,      // Tamaño del pez
+                offsetX: Math.random() * 260 - 130, // Mayor dispersión horizontal para el cardumen de 90 peces
+                offsetY: Math.random() * 160 - 80,  // Mayor dispersión vertical
+                size: Math.random() * 13 + 6,       // Mayor variedad de tamaños
                 speedOffset: Math.random() * 0.2 + 0.9,
                 wiggleSpeed: Math.random() * 0.15 + 0.1,
                 phase: Math.random() * Math.PI * 2
@@ -381,7 +381,7 @@ class UnderwaterBackground {
         
         // Inicializar elementos
         this.sunRays = new SunRays(this.ctx);
-        this.school = new FishSchool(this.ctx, 30);
+        this.school = new FishSchool(this.ctx, 90); // El triple de peces (90)
         this.jellyfishList = [
             new Jellyfish(this.ctx),
             new Jellyfish(this.ctx),

@@ -149,154 +149,170 @@ class FishSchool {
 class BottomOctopus {
     constructor(ctx) {
         this.ctx = ctx;
-        this.size = 120; // Tamaño adecuado
-        this.time = Math.random() * 100;
-        this.pulseSpeed = 0.005; // Movimiento sumamente lento (relajado, respirando)
+        this.size = 140; // Tamaño realista
+        this.time = 0;
+        
+        // Posición inicial
+        this.x = window.innerWidth * 0.5;
+        this.y = window.innerHeight * 0.7;
+        
+        // Dirección de nado (vector unitario)
+        this.angle = -Math.PI / 2; // Nadando hacia arriba por defecto
+        this.speed = 0;
     }
 
     update(width, height) {
-        this.time += this.pulseSpeed;
+        this.time += 0.006; // Nado lento y realista
         
-        // Mantenerse centrado horizontalmente al fondo con un leve vaivén casi imperceptible
-        this.x = width * 0.5 + Math.sin(this.time * 0.5) * 15;
+        // Ciclo de propulsión de 0 a 2PI
+        const cycle = (this.time * 2.8) % (Math.PI * 2);
         
-        // Simular respiración lenta (sube y baja levemente en el fondo)
-        const breath = Math.sin(this.time * 2.0) * 8;
-        this.y = height - this.size * 0.35 + breath;
+        // Fases: propulsión (cuando cycle está entre 0 y PI) y planeo (entre PI y 2PI)
+        let isPropelling = cycle < Math.PI;
+        let intensity = isPropelling ? Math.sin(cycle) : 0;
+        
+        // Velocidad: aumenta durante la propulsión, decae lentamente en el planeo
+        if (isPropelling) {
+            this.speed = 0.25 + intensity * 0.65;
+        } else {
+            this.speed *= 0.985; // Resistencia del agua (decelera)
+        }
+        
+        // Deriva en X e Y simulando nado libre diagonal muy lento
+        // Cambiamos levemente la dirección del nado a lo largo del tiempo
+        const driftAngle = Math.sin(this.time * 0.2) * 0.5 - Math.PI / 2; // Vaivén vertical/diagonal
+        this.angle = driftAngle;
+        
+        this.x += Math.cos(this.angle) * this.speed;
+        this.y += Math.sin(this.angle) * this.speed;
+        
+        // Reposicionar si sale de los límites (reaparece desde abajo)
+        if (this.y < -this.size * 2) {
+            this.y = height + this.size;
+            this.x = Math.random() * (width * 0.6) + width * 0.2;
+        }
+        if (this.x < -this.size * 2) {
+            this.x = width + this.size;
+        } else if (this.x > width + this.size * 2) {
+            this.x = -this.size;
+        }
     }
 
     draw() {
         this.ctx.save();
-        
-        const size = this.size;
-        const breathScale = 1 + Math.sin(this.time * 2.0) * 0.03;
-        const width = size * breathScale;
-        const height = size * 0.72 * breathScale;
-        
         this.ctx.translate(this.x, this.y);
         
-        // Rotación de balanceo muy lenta
-        const tilt = Math.cos(this.time * 0.5) * 0.04;
-        this.ctx.rotate(tilt);
+        // Orientar el cuerpo en la dirección del nado (con rotación)
+        this.ctx.rotate(this.angle + Math.PI / 2);
         
-        // Colores: Morado sumamente oscuro y realista
-        const mainColor = 'rgba(25, 4, 38, 0.72)';
+        const cycle = (this.time * 2.8) % (Math.PI * 2);
+        const isPropelling = cycle < Math.PI;
+        const intensity = isPropelling ? Math.sin(cycle) : 0;
         
-        // Dibujar 8 tentáculos detallados y extendidos que caen/descansan hacia abajo
+        // Contracción del cuerpo: el manto se vuelve más angosto durante la propulsión
+        const scaleX = 1 - intensity * 0.22;
+        const scaleY = 1 + intensity * 0.15;
+        
+        const width = this.size * 0.65 * scaleX;
+        const height = this.size * 0.8 * scaleY;
+        
+        // Silueta morada sumamente oscura y profunda del abismo
+        const silhouetteColor = 'rgba(12, 3, 20, 0.82)';
+        this.ctx.fillStyle = silhouetteColor;
+        this.ctx.strokeStyle = 'rgba(8, 2, 14, 0.4)';
+        this.ctx.lineWidth = 1;
+        
+        // 1. Dibujar tentáculos primero (se arrastran detrás de la cabeza)
         for (let i = 0; i < 8; i++) {
-            // Distribuir ángulos hacia abajo
-            const startAngle = (Math.PI / 10) * (i - 3.5);
+            // Distribución de ángulos iniciales de los tentáculos
+            const startAngle = (Math.PI / 9) * (i - 3.5);
             
-            // Origen del tentáculo bajo la cabeza
-            const originX = Math.cos(startAngle + Math.PI/2) * (width * 0.3);
-            const originY = height * 0.25;
+            // Punto de origen del tentáculo en la base de la cabeza
+            const originX = Math.cos(startAngle + Math.PI/2) * (width * 0.35);
+            const originY = height * 0.1;
             
-            // Generar la curva del tentáculo usando cinemática directa simplificada
             let points = [];
             let prevX = originX;
             let prevY = originY;
             points.push({x: prevX, y: prevY});
             
-            const length = size * 2.0;
-            const segmentCount = 10; // Más segmentos para mayor realismo y detalle
+            const length = this.size * 2.4;
+            const segmentCount = 14; // Alta definición de curvatura
             const segmentLength = length / segmentCount;
             
+            // Factor de contracción: los tentáculos se cierran en un cono durante la propulsión,
+            // y se expanden ampliamente en forma de paracaídas durante el planeo.
+            const spread = isPropelling ? (0.2 + (1 - intensity) * 0.8) : (1.0 + Math.sin(cycle) * 0.4);
+            
             for (let j = 1; j <= segmentCount; j++) {
-                // Ondulación lenta en reposo
-                const wave = Math.sin(this.time * 2.5 + j * 0.45 + i * 0.8) * (8 + j * 1.5);
-                const angle = startAngle + Math.PI/2 + (wave * Math.PI / 180);
+                // Ondulación en base a propagación física (frente de onda que viaja del cuerpo a la punta)
+                const wave = Math.sin(this.time * 4.5 - j * 0.38 + i * 0.7) * (6 + j * 1.6 * (2 - spread));
+                const angle = startAngle * spread + Math.PI/2 + (wave * Math.PI / 180);
                 
-                const segX = prevX + Math.cos(angle) * segmentLength;
-                const segY = prevY + Math.sin(angle) * segmentLength;
+                // Si está propulsándose, las puntas se curvan levemente hacia adentro
+                const forceAngle = angle + (isPropelling ? (Math.sin(this.time * 5 + j * 0.2) * 0.05) : 0);
+                
+                const segX = prevX + Math.cos(forceAngle) * segmentLength;
+                const segY = prevY + Math.sin(forceAngle) * segmentLength;
                 
                 points.push({x: segX, y: segY});
                 prevX = segX;
                 prevY = segY;
             }
             
-            // Dibujar el cuerpo cónico del tentáculo (grueso a delgado)
+            // Dibujar el tentáculo cónico (silueta morada oscura de grueso a delgado)
             for (let j = 0; j < points.length - 1; j++) {
                 const p1 = points[j];
                 const p2 = points[j+1];
                 const t = j / (points.length - 1);
-                const thickness = 15 * (1 - t * 0.82) + 2; // De 15px a 2.7px
+                
+                // Conicidad: empieza en 16px y termina en 1.5px
+                const thickness = 15.5 * (1 - t * 0.86) + 1.5;
                 
                 this.ctx.beginPath();
                 this.ctx.moveTo(p1.x, p1.y);
                 this.ctx.lineTo(p2.x, p2.y);
-                this.ctx.strokeStyle = mainColor;
+                this.ctx.strokeStyle = silhouetteColor;
                 this.ctx.lineWidth = thickness;
                 this.ctx.lineCap = 'round';
                 this.ctx.stroke();
                 
-                // Dibujar ventosas realistas (suction cups) en el costado exterior
+                // Ventosas (suction cups) dibujadas sutilmente a lo largo de un lado como parte de la silueta
                 if (j > 0 && j % 1 === 0) {
                     const dx = p2.x - p1.x;
                     const dy = p2.y - p1.y;
                     const len = Math.sqrt(dx*dx + dy*dy);
                     if (len > 0) {
-                        // Vector normal
                         const nx = -dy / len;
                         const ny = dx / len;
-                        
-                        // Alternar ventosas a un lado del tentáculo
                         const side = i < 4 ? 1 : -1;
-                        const cupOffset = thickness * 0.52;
+                        
+                        // Posicionar ventosa en el costado del tentáculo
+                        const cupOffset = thickness * 0.48;
                         const cupX = p1.x + nx * cupOffset * side;
                         const cupY = p1.y + ny * cupOffset * side;
-                        const cupSize = (thickness * 0.36) + 1.2;
+                        const cupSize = (thickness * 0.28) + 0.6;
                         
-                        // Ventosa exterior (cuerpo claro)
                         this.ctx.beginPath();
                         this.ctx.arc(cupX, cupY, cupSize, 0, Math.PI * 2);
-                        this.ctx.fillStyle = 'rgba(110, 75, 140, 0.45)'; // Tono ventosa realista
+                        this.ctx.fillStyle = 'rgba(20, 6, 34, 0.82)'; // Silueta de ventosa
                         this.ctx.fill();
-                        
-                        // Borde de la ventosa
-                        this.ctx.strokeStyle = 'rgba(25, 4, 38, 0.35)';
-                        this.ctx.lineWidth = 1;
-                        this.ctx.stroke();
                     }
                 }
             }
         }
         
-        // Cabeza del pulpo (Mantle bulboso realista con sombreado degradado)
-        const grad = this.ctx.createRadialGradient(-width*0.05, -height*0.2, 5, 0, 0, width * 0.65);
-        grad.addColorStop(0, 'rgba(80, 25, 120, 0.75)'); // Destello de luz morado oscuro
-        grad.addColorStop(0.5, mainColor);                 // Morado muy oscuro
-        grad.addColorStop(1, 'rgba(15, 0, 25, 0.3)');     // Sombra periférica
-        
-        this.ctx.fillStyle = grad;
+        // 2. Dibujar el Manto/Cabeza (Silueta limpia morada sumamente oscura)
+        this.ctx.fillStyle = silhouetteColor;
         this.ctx.beginPath();
-        this.ctx.arc(0, -height*0.08, width / 2, Math.PI, 0, false);
-        this.ctx.quadraticCurveTo(width / 2, height * 0.3, 0, height * 0.42);
-        this.ctx.quadraticCurveTo(-width / 2, height * 0.3, -width / 2, -height*0.08);
+        // El domo del pulpo (cabeza bulbosa real de cefalópodo)
+        this.ctx.arc(0, -height * 0.1, width / 2, Math.PI, 0, false);
+        // Semicuerpo que conecta con los tentáculos
+        this.ctx.quadraticCurveTo(width / 2, height * 0.35, 0, height * 0.48);
+        this.ctx.quadraticCurveTo(-width / 2, height * 0.35, -width / 2, -height * 0.1);
         this.ctx.closePath();
         this.ctx.fill();
-        
-        // Delineado sutil del manto para definir volumen
-        this.ctx.strokeStyle = 'rgba(10, 0, 18, 0.35)';
-        this.ctx.lineWidth = 2.5;
         this.ctx.stroke();
-        
-        // Ojos realistas (pequeños, oscuros, semiocultos y con reflejo)
-        this.ctx.fillStyle = 'rgba(10, 0, 18, 0.85)';
-        this.ctx.beginPath();
-        this.ctx.arc(-width * 0.22, height * 0.15, 4, 0, Math.PI * 2);
-        this.ctx.fill();
-        this.ctx.beginPath();
-        this.ctx.arc(width * 0.22, height * 0.15, 4, 0, Math.PI * 2);
-        this.ctx.fill();
-        
-        // Brillo blanco en la pupila (reflejo de luz marina)
-        this.ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-        this.ctx.beginPath();
-        this.ctx.arc(-width * 0.20, height * 0.13, 1.2, 0, Math.PI * 2);
-        this.ctx.fill();
-        this.ctx.beginPath();
-        this.ctx.arc(width * 0.24, height * 0.13, 1.2, 0, Math.PI * 2);
-        this.ctx.fill();
         
         this.ctx.restore();
     }

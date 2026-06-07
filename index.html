@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Picá Big Fish | Sabores del Mar en Barrio República</title>
+    <meta name="description" content="Lo mejor de la comida del mar en el Barrio República, Santiago. Ceviches premium, empanadas caseras, paellas marinas y pescados fritos hechos con el corazón.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Bubbles Background Overlay -->
+    <div class="bubbles-container" id="bubbles"></div>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo-link">
+                <img src="assets/instagram_profile.jpg" alt="Logo Big Fish" class="nav-logo-img">
+                <span class="logo-text">BIG FISH</span>
+            </a>
+            <button class="mobile-nav-toggle" aria-label="Abrir menú de navegación">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#hero" class="nav-item active">Inicio</a></li>
+                    <li><a href="#nosotros" class="nav-item">Nosotros</a></li>
+                    <li><a href="#menu" class="nav-item">Menú</a></li>
+                    <li><a href="#especialidad" class="nav-item">Especialidad</a></li>
+                    <li><a href="#contacto" class="nav-item">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- 1. Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content-wrapper">
+                <div class="hero-text-content reveal">
+                    <span class="hero-tagline">Desde el mar a tu mesa, con amor</span>
+                    <h1 class="hero-title">La Picá<br><span class="highlight">Big Fish</span></h1>
+                    <p class="hero-description">
+                        Llevamos 5 años conquistando paladares en el Barrio República. Auténticos ceviches, empanadas doradas, paellas rebosantes y el clásico pescado frito chileno con el sazón único que nos caracteriza.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#menu" class="btn btn-primary">Ver Nuestro Menú <i class="fa-solid fa-fish"></i></a>
+                        <a href="#contacto" class="btn btn-secondary">Reservar / Pedir <i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="hero-image-content reveal delay-1">
+                    <div class="hero-image-frame">
+                        <img src="assets/hero_ceviche.png" alt="Ceviche Premium de La Picá Big Fish" class="hero-img">
+                    </div>
+                </div>
+            </div>
+            <!-- Wave Divider -->
+            <div class="wave-divider">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C26.9,8.75,57.05,18.3,88.45,27.35,163.56,49,247.09,61.76,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- 2. Nosotros Section -->
+        <section id="nosotros" class="nosotros-section">
+            <div class="section-container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Nuestra Historia</h2>
+                    <p class="section-subtitle">El corazón detrás del sabor de Barrio República</p>
+                </div>
+                <div class="nosotros-content reveal">
+                    <p class="about-p">
+                        Comenzamos hace casi 5 años con un sueño pequeño y un inmenso amor por la cocina marina. Paso a paso, nos hemos ganado el cariño de nuestros vecinos en el Barrio República, convirtiéndonos en el punto de encuentro predilecto para los amantes de los ceviches frescos, las empanadas crujientes y las paellas abundantes. Para nosotros, cada plato es una oportunidad de entregarte un pedacito de mar preparado con alma y tradición familiar.
+                    </p>
+                </div>
+
+                <div class="team-grid">
+                    <!-- Director -->
+                    <div class="team-card reveal delay-1">
+                        <div class="team-icon">
+                            <i class="fa-solid fa-crown"></i>
+                        </div>
+                        <h3 class="team-role">Director General</h3>
+                        <h4 class="team-name">Director</h4>
+                        <p class="team-desc">La mente estratégica y corazón del proyecto. Fundador y visionario detrás de la receta de éxito de Big Fish.</p>
+                    </div>
+
+                    <!-- Cata -->
+                    <div class="team-card reveal delay-2">
+                        <div class="team-icon">
+                            <i class="fa-solid fa-anchor"></i>
+                        </div>
+                        <h3 class="team-role">Operaciones</h3>
+                        <h4 class="team-name">Cata</h4>
+                        <p class="team-desc">El timón del día a día. Se asegura de que la experiencia, el servicio y cada detalle en mesa sean impecables.</p>
+                    </div>
+
+                    <!-- Cocinero 1 -->
+                    <div class="team-card reveal delay-3">
+                        <div class="team-icon">
+                            <i class="fa-solid fa-fire-burner"></i>
+                        </div>
+                        <h3 class="team-role">Maestro de Cocina</h3>
+                        <h4 class="team-name">Primer Chef</h4>
+                        <p class="team-desc">El alquimista que sazona los ceviches y maneja los caldos con la precisión y frescura que nos distingue.</p>
+                    </div>
+
+                    <!-- Cocinero 2 -->
+                    <div class="team-card reveal delay-4">
+                        <div class="team-icon">
+                            <i class="fa-solid fa-kitchen-set"></i>
+                        </div>
+                        <h3 class="team-role">Artesano del Fuego</h3>
+                        <h4 class="team-name">Segundo Chef</h4>
+                        <p class="team-desc">Experto en frituras crujientes, el dorado perfecto de nuestras empanadas y la cocción sublime de mariscos.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Wave Divider Inverse -->
+            <div class="wave-divider-inv">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86C247.09,61.76,163.56,49,88.45,27.35,57.05,18.3,26.9,8.75,0,0V120H1200V30.25C1132.19,53.38,1055.71,45.77,985.66,92.83Z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- 3. Menu Section -->
+        <section id="menu" class="menu-section">
+            <div class="section-container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Nuestra Carta</h2>
+                    <p class="section-subtitle">Las delicias más frescas directo del mar chileno</p>
+                </div>
+
+                <!-- Tabs Navigation -->
+                <div class="menu-tabs-wrapper reveal">
+                    <div class="menu-tabs">
+                        <button class="tab-btn active" data-tab="ceviches">
+                            <i class="fa-solid fa-lemon"></i> Ceviches
+                        </button>
+                        <button class="tab-btn" data-tab="empanadas">
+                            <i class="fa-solid fa-cookie"></i> Empanadas
+                        </button>
+                        <button class="tab-btn" data-tab="paellas">
+                            <i class="fa-solid fa-hot-tub-person"></i> Paellas y Platos
+                        </button>
+                        <button class="tab-btn" data-tab="moluscos">
+                            <i class="fa-solid fa-shrimp"></i> Mariscos
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tabs Content -->
+                <div class="menu-content reveal">
+                    <!-- Tab: Ceviches -->
+                    <div class="tab-pane active" id="ceviches">
+                        <div class="menu-grid">
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Ceviche Big Fish 🌟</h3>
+                                    <span class="menu-item-tag">Estrella</span>
+                                </div>
+                                <p class="menu-item-desc">Reineta fresca marinada con limón sutil de Pica, cebolla morada, pimentones selectos, cilantro fresco y el secreto del chef.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Ceviche de Salmón</h3>
+                                </div>
+                                <p class="menu-item-desc">Cortes premium de salmón fresco, macerados con un toque de jengibre, cebolla morada, palta y leche de tigre cremosa.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Ceviche Mixto Imperial</h3>
+                                </div>
+                                <p class="menu-item-desc">Combinación perfecta de reineta, camarones, pulpo y calamares frescos con notas cítricas intensas y cilantro.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Empanadas -->
+                    <div class="tab-pane" id="empanadas">
+                        <div class="menu-grid">
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Empanada de Queso Camarón 🌟</h3>
+                                    <span class="menu-item-price">$3.000</span>
+                                </div>
+                                <p class="menu-item-desc">Masa casera crujiente rellena con abundante queso mantecoso derretido y camarones seleccionados.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Empanada de Queso Jaiba</h3>
+                                    <span class="menu-item-price">$3.800</span>
+                                </div>
+                                <p class="menu-item-desc">Carne suave de jaiba desmenuzada combinada con queso fundido en una fritura perfectamente dorada.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Empanada de Queso Ostión</h3>
+                                    <span class="menu-item-price">$3.800</span>
+                                </div>
+                                <p class="menu-item-desc">Exquisitos ostiones del Pacífico acompañados de queso mantecoso fundido.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Empanada de Queso Macha</h3>
+                                    <span class="menu-item-price">$3.800</span>
+                                </div>
+                                <p class="menu-item-desc">Laminas de machas seleccionadas preparadas al dente con queso derretido.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Empanada Pino de Mariscos</h3>
+                                    <span class="menu-item-price">$3.000</span>
+                                </div>
+                                <p class="menu-item-desc">Pino tradicional de mariscos surtidos guisados con cebolla caramelizada y condimentos chilenos.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Empanada de Pino Jibia</h3>
+                                    <span class="menu-item-price">$3.500</span>
+                                </div>
+                                <p class="menu-item-desc">Guiso casero de jibia seleccionada, sazonada al estilo de La Picá.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Empanada de Pino Jurel</h3>
+                                    <span class="menu-item-price">$3.000</span>
+                                </div>
+                                <p class="menu-item-desc">Sabrosa preparación casera de jurel con cebolla picada y especias.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Empanada de Pino Loco 👑</h3>
+                                    <span class="menu-item-tag">Premium</span>
+                                    <span class="menu-item-price">$18.000</span>
+                                </div>
+                                <p class="menu-item-desc">La joya de la casa. Carne de loco tierna y seleccionada, guisada artesanalmente en pino tradicional.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Empanada de Queso Champiñón</h3>
+                                    <span class="menu-item-price">$3.000</span>
+                                </div>
+                                <p class="menu-item-desc">Una deliciosa opción vegetariana con champiñones salteados y queso derretido.</p>
+                            </div>
+                        </div>
+
+                        <!-- Real menu chalkboard photo display -->
+                        <div class="empanadas-photo-section">
+                            <div class="empanadas-photo-header">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                                <h4>Nuestro Pizarrón de Empanadas del Local</h4>
+                                <p>Foto real de nuestro menú diario escrito a tiza</p>
+                            </div>
+                            <div class="empanadas-image-container">
+                                <img src="assets/empanadas.jpg" alt="Pizarrón de empanadas real La Picá Big Fish" class="empanadas-real-photo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Paellas y Platos -->
+                    <div class="tab-pane" id="paellas">
+                        <div class="menu-grid">
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Paella Marina Big Fish 🥘</h3>
+                                    <span class="menu-item-tag">Familiar</span>
+                                </div>
+                                <p class="menu-item-desc">Arroz aromatizado con azafrán, colmado de choritos, almejas, camarones, pulpo, calamares y presas de pescado. Una fiesta de color.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Pescado Frito Republicano 🐟</h3>
+                                </div>
+                                <p class="menu-item-desc">Filete de merluza austral rebozado en nuestro batido tradicional crujiente. Acompañado de papas fritas o ensalada chilena.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Reineta a la Plancha</h3>
+                                </div>
+                                <p class="menu-item-desc">Fino filete de reineta cocinado al punto óptimo en plancha caliente, servido con salsa de mariscos cremosa al vino blanco.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Mariscos -->
+                    <div class="tab-pane" id="moluscos">
+                        <div class="menu-grid">
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Pulpo al Olivo Crujiente 🐙</h3>
+                                </div>
+                                <p class="menu-item-desc">Tentáculos de pulpo asados, acompañados de una suave emulsión de aceitunas de Azapa, papas doradas y toques de chimichurri.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Jardín de Mariscos Fríos</h3>
+                                </div>
+                                <p class="menu-item-desc">Choritos en su concha con salsa criolla, almejas frescas al limón, camarones marinados y pinzas de jaiba para compartir.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Machas a la Parmesana</h3>
+                                </div>
+                                <p class="menu-item-desc">Lenguas de macha fresca horneadas en su concha con mantequilla, vino blanco, pimienta y generoso queso parmesano gratinado.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Wave Divider -->
+            <div class="wave-divider">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C26.9,8.75,57.05,18.3,88.45,27.35,163.56,49,247.09,61.76,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- 4. Especialidad (Mollusks / Octopus) Section -->
+        <section id="especialidad" class="especialidad-section">
+            <div class="hero-overlay"></div>
+            <div class="section-container">
+                <div class="especialidad-grid">
+                    <div class="especialidad-image reveal">
+                        <div class="especialidad-img-frame">
+                            <img src="assets/octopus_art.png" alt="Ilustración artística de pulpo Big Fish" class="octopus-img">
+                        </div>
+                    </div>
+                    <div class="especialidad-text reveal delay-1">
+                        <span class="special-label">Especialidad de la Casa</span>
+                        <h2 class="special-title">El Arte del Pulpo y los Moluscos</h2>
+                        <p class="special-desc">
+                            En <strong>La Picá Big Fish</strong>, los pulpos y moluscos representan nuestra mayor pasión culinaria. Seleccionamos cuidadosamente cada pieza para asegurar una textura tierna por dentro, un dorado crujiente en el exterior y un sabor profundo que rinde homenaje a las costas de Chile.
+                        </p>
+                        <ul class="special-list">
+                            <li><i class="fa-solid fa-circle-check"></i> Cocción exacta en su punto de máxima ternura</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Sazonados con hierbas silvestres y aceites premium</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Presentaciones que deleitan la vista y el paladar</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Wave Divider Inverse -->
+            <div class="wave-divider-inv">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86C247.09,61.76,163.56,49,88.45,27.35,57.05,18.3,26.9,8.75,0,0V120H1200V30.25C1132.19,53.38,1055.71,45.77,985.66,92.83Z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- 5. Contacto & Ubicación Section -->
+        <section id="contacto" class="contacto-section">
+            <div class="section-container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Visítanos o Haz tu Pedido</h2>
+                    <p class="section-subtitle">Estamos esperándote con la mesa lista</p>
+                </div>
+                
+                <div class="contacto-grid">
+                    <!-- Contact Info Cards -->
+                    <div class="contacto-info reveal">
+                        <div class="info-card">
+                            <i class="fa-solid fa-location-dot info-icon"></i>
+                            <div class="info-text">
+                                <h3>Ubicación</h3>
+                                <p>Barrio República, Santiago, Chile</p>
+                                <span class="info-note">*Ubicación preferente del barrio</span>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <i class="fa-solid fa-clock info-icon"></i>
+                            <div class="info-text">
+                                <h3>Horario de Atención</h3>
+                                <p>Martes a Domingo: 12:30 PM - 7:00 PM</p>
+                                <p>Lunes: Cerrado</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <i class="fa-brands fa-whatsapp info-icon text-whatsapp"></i>
+                            <div class="info-text">
+                                <h3>Pedidos y Reservas</h3>
+                                <p>Escríbenos directamente para despachos o asegurar tu mesa.</p>
+                                <a href="https://wa.me/56912345678" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-card">
+                                    Enviar WhatsApp <i class="fa-brands fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Form / Fake Map -->
+                    <div class="contacto-form-wrapper reveal delay-1">
+                        <div class="map-placeholder">
+                            <div class="map-glass">
+                                <i class="fa-solid fa-map-location-dot map-bg-icon"></i>
+                                <h3>Barrio República</h3>
+                                <p>Nuestra comunidad y local se encuentran rodeados de la hermosa arquitectura y ambiente estudiantil e histórico del barrio.</p>
+                                <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                                    Abrir en Google Maps <i class="fa-solid fa-up-right-from-square"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="assets/instagram_profile.jpg" alt="Logo Big Fish" class="footer-logo-img">
+                    <h2>BIG FISH</h2>
+                </div>
+                <p class="footer-desc">El sabor indiscutible del océano en la calidez de tu barrio favorito.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/bigfishchile" target="_blank" rel="noopener noreferrer" aria-label="Siguenos en Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/56912345678" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos al WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Accesos Rápidos</h3>
+                <ul>
+                    <li><a href="#hero">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#menu">Nuestro Menú</a></li>
+                    <li><a href="#especialidad">Especialidades</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 La Picá Big Fish. Todos los derechos reservados. Creado con ❤️ para el Barrio República.</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/56912345678" class="whatsapp-float-btn" target="_blank" rel="noopener noreferrer" aria-label="Chatear por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">¡Pide tu Ceviche aquí!</span>
+    </a>
+
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>

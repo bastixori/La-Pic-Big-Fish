@@ -149,271 +149,160 @@ class FishSchool {
 class BottomOctopus {
     constructor(ctx) {
         this.ctx = ctx;
-        this.x = window.innerWidth * 0.5;
-        this.y = window.innerHeight * 0.85;
-        this.size = 110;
+        this.size = 120; // Tamaño adecuado
         this.time = Math.random() * 100;
-        this.pulseSpeed = 0.012;
+        this.pulseSpeed = 0.005; // Movimiento sumamente lento (relajado, respirando)
     }
 
     update(width, height) {
         this.time += this.pulseSpeed;
         
-        // El pulpo se mueve de izquierda a derecha de forma suave usando seno
-        this.x = width * 0.5 + Math.sin(this.time * 0.4) * (width * 0.3);
+        // Mantenerse centrado horizontalmente al fondo con un leve vaivén casi imperceptible
+        this.x = width * 0.5 + Math.sin(this.time * 0.5) * 15;
         
-        // Movimiento vertical de nado (pulsa flotando suavemente)
-        const verticalPulse = Math.sin(this.time * 2.5);
-        this.y = height * 0.82 + verticalPulse * 45;
+        // Simular respiración lenta (sube y baja levemente en el fondo)
+        const breath = Math.sin(this.time * 2.0) * 8;
+        this.y = height - this.size * 0.35 + breath;
     }
 
     draw() {
         this.ctx.save();
         
-        const pulse = Math.sin(this.time * 2.5);
-        // El tamaño de la cabeza pulsa con el movimiento
-        const pulseScale = 1 + pulse * 0.08;
-        const width = this.size * pulseScale;
-        const height = this.size * 0.75 * pulseScale;
+        const size = this.size;
+        const breathScale = 1 + Math.sin(this.time * 2.0) * 0.03;
+        const width = size * breathScale;
+        const height = size * 0.72 * breathScale;
         
         this.ctx.translate(this.x, this.y);
         
-        // Rotar ligeramente en base al balanceo lateral
-        const tilt = Math.cos(this.time * 0.4) * 0.12;
+        // Rotación de balanceo muy lenta
+        const tilt = Math.cos(this.time * 0.5) * 0.04;
         this.ctx.rotate(tilt);
         
-        // Colores: Morado oscuro y translúcido
-        const mainColor = 'rgba(75, 0, 110, 0.48)';
+        // Colores: Morado sumamente oscuro y realista
+        const mainColor = 'rgba(25, 4, 38, 0.72)';
         
-        // 8 Tentáculos que ondean hacia abajo
-        this.ctx.strokeStyle = 'rgba(75, 0, 110, 0.55)';
-        this.ctx.lineWidth = 6;
-        this.ctx.lineCap = 'round';
-        
+        // Dibujar 8 tentáculos detallados y extendidos que caen/descansan hacia abajo
         for (let i = 0; i < 8; i++) {
-            const startAngle = (Math.PI / 8) * (i - 3.5);
-            this.ctx.beginPath();
+            // Distribuir ángulos hacia abajo
+            const startAngle = (Math.PI / 10) * (i - 3.5);
             
-            // Punto de origen en la parte trasera del pulpo (abajo de la cabeza)
-            const originX = Math.cos(startAngle + Math.PI/2) * (width * 0.35);
-            const originY = height * 0.2 + Math.sin(startAngle + Math.PI/2) * (height * 0.1);
+            // Origen del tentáculo bajo la cabeza
+            const originX = Math.cos(startAngle + Math.PI/2) * (width * 0.3);
+            const originY = height * 0.25;
             
-            this.ctx.moveTo(originX, originY);
-            
-            // Dibujar tentáculo con curvas de física
+            // Generar la curva del tentáculo usando cinemática directa simplificada
+            let points = [];
             let prevX = originX;
             let prevY = originY;
-            const length = this.size * 1.8;
-            const segmentCount = 6;
+            points.push({x: prevX, y: prevY});
+            
+            const length = size * 2.0;
+            const segmentCount = 10; // Más segmentos para mayor realismo y detalle
             const segmentLength = length / segmentCount;
             
             for (let j = 1; j <= segmentCount; j++) {
-                // El tentáculo se contrae hacia el centro cuando el pulpo pulsa hacia arriba (pulse > 0)
-                const contraction = pulse > 0 ? (1 - pulse * 0.3) : 1;
-                
-                // Las ondas viajan a lo largo del tentáculo
-                const wave = Math.sin(this.time * 6 + j * 0.7 + i) * (14 + (1 - pulse) * 8);
-                const angle = startAngle + Math.PI/2 + (wave * Math.PI / 180) * contraction;
+                // Ondulación lenta en reposo
+                const wave = Math.sin(this.time * 2.5 + j * 0.45 + i * 0.8) * (8 + j * 1.5);
+                const angle = startAngle + Math.PI/2 + (wave * Math.PI / 180);
                 
                 const segX = prevX + Math.cos(angle) * segmentLength;
                 const segY = prevY + Math.sin(angle) * segmentLength;
                 
-                this.ctx.lineTo(segX, segY);
+                points.push({x: segX, y: segY});
                 prevX = segX;
                 prevY = segY;
             }
             
-            // Relleno morado para que tengan cuerpo
-            this.ctx.save();
-            this.ctx.strokeStyle = mainColor;
-            this.ctx.lineWidth = 10;
-            this.ctx.stroke();
-            this.ctx.restore();
-            
-            // Delineado más oscuro
-            this.ctx.strokeStyle = 'rgba(40, 0, 60, 0.3)';
-            this.ctx.lineWidth = 6;
-            this.ctx.stroke();
+            // Dibujar el cuerpo cónico del tentáculo (grueso a delgado)
+            for (let j = 0; j < points.length - 1; j++) {
+                const p1 = points[j];
+                const p2 = points[j+1];
+                const t = j / (points.length - 1);
+                const thickness = 15 * (1 - t * 0.82) + 2; // De 15px a 2.7px
+                
+                this.ctx.beginPath();
+                this.ctx.moveTo(p1.x, p1.y);
+                this.ctx.lineTo(p2.x, p2.y);
+                this.ctx.strokeStyle = mainColor;
+                this.ctx.lineWidth = thickness;
+                this.ctx.lineCap = 'round';
+                this.ctx.stroke();
+                
+                // Dibujar ventosas realistas (suction cups) en el costado exterior
+                if (j > 0 && j % 1 === 0) {
+                    const dx = p2.x - p1.x;
+                    const dy = p2.y - p1.y;
+                    const len = Math.sqrt(dx*dx + dy*dy);
+                    if (len > 0) {
+                        // Vector normal
+                        const nx = -dy / len;
+                        const ny = dx / len;
+                        
+                        // Alternar ventosas a un lado del tentáculo
+                        const side = i < 4 ? 1 : -1;
+                        const cupOffset = thickness * 0.52;
+                        const cupX = p1.x + nx * cupOffset * side;
+                        const cupY = p1.y + ny * cupOffset * side;
+                        const cupSize = (thickness * 0.36) + 1.2;
+                        
+                        // Ventosa exterior (cuerpo claro)
+                        this.ctx.beginPath();
+                        this.ctx.arc(cupX, cupY, cupSize, 0, Math.PI * 2);
+                        this.ctx.fillStyle = 'rgba(110, 75, 140, 0.45)'; // Tono ventosa realista
+                        this.ctx.fill();
+                        
+                        // Borde de la ventosa
+                        this.ctx.strokeStyle = 'rgba(25, 4, 38, 0.35)';
+                        this.ctx.lineWidth = 1;
+                        this.ctx.stroke();
+                    }
+                }
+            }
         }
         
-        // Cabeza del pulpo (Mantle bulboso)
-        const grad = this.ctx.createRadialGradient(0, -height*0.2, 5, 0, 0, width);
-        grad.addColorStop(0, 'rgba(120, 0, 180, 0.65)');  // Centro violeta
-        grad.addColorStop(0.6, 'rgba(75, 0, 110, 0.55)');   // Morado oscuro
-        grad.addColorStop(1, 'rgba(40, 0, 60, 0.25)');
+        // Cabeza del pulpo (Mantle bulboso realista con sombreado degradado)
+        const grad = this.ctx.createRadialGradient(-width*0.05, -height*0.2, 5, 0, 0, width * 0.65);
+        grad.addColorStop(0, 'rgba(80, 25, 120, 0.75)'); // Destello de luz morado oscuro
+        grad.addColorStop(0.5, mainColor);                 // Morado muy oscuro
+        grad.addColorStop(1, 'rgba(15, 0, 25, 0.3)');     // Sombra periférica
         
         this.ctx.fillStyle = grad;
         this.ctx.beginPath();
-        this.ctx.arc(0, -height*0.1, width / 2, Math.PI, 0, false);
-        this.ctx.quadraticCurveTo(width / 2, height * 0.3, 0, height * 0.4);
-        this.ctx.quadraticCurveTo(-width / 2, height * 0.3, -width / 2, -height*0.1);
+        this.ctx.arc(0, -height*0.08, width / 2, Math.PI, 0, false);
+        this.ctx.quadraticCurveTo(width / 2, height * 0.3, 0, height * 0.42);
+        this.ctx.quadraticCurveTo(-width / 2, height * 0.3, -width / 2, -height*0.08);
         this.ctx.closePath();
         this.ctx.fill();
         
-        // Ojos morados brillantes en la parte baja de la cabeza
-        this.ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
-        // Ojo Izquierdo
-        this.ctx.beginPath();
-        this.ctx.arc(-width * 0.22, height * 0.1, 4.5, 0, Math.PI * 2);
-        this.ctx.fill();
-        
-        // Ojo Derecho
-        this.ctx.beginPath();
-        this.ctx.arc(width * 0.22, height * 0.1, 4.5, 0, Math.PI * 2);
-        this.ctx.fill();
-        
-        // Pupilas negras
-        this.ctx.fillStyle = '#0a0f1d';
-        this.ctx.beginPath();
-        this.ctx.arc(-width * 0.22, height * 0.1, 2, 0, Math.PI * 2);
-        this.ctx.fill();
-        this.ctx.beginPath();
-        this.ctx.arc(width * 0.22, height * 0.1, 2, 0, Math.PI * 2);
-        this.ctx.fill();
-        
-        this.ctx.restore();
-    }
-}
-
-class OctopusBg {
-    constructor(ctx) {
-        this.ctx = ctx;
-        this.active = false;
-        this.reset();
-        
-        // Aparece por primera vez a los 10 segundos para verificación rápida
-        setTimeout(() => {
-            this.startAppearance();
-        }, 10000);
-    }
-
-    reset() {
-        this.active = false;
-        this.x = -200;
-        this.y = window.innerHeight * 0.7;
-        this.targetX = window.innerWidth + 200;
-        this.size = 75; // Un poco más grande para mejor visualización
-        this.time = 0;
-        this.speedX = 1.4; // Más dinámico
-        
-        // Programar siguiente aparición en exactamente 1 minuto (60000 ms)
-        setTimeout(() => {
-            this.startAppearance();
-        }, 60000);
-    }
-
-    startAppearance() {
-        this.active = true;
-        this.x = -150;
-        this.y = window.innerHeight * (Math.random() * 0.4 + 0.4); // Zona central/baja
-        this.speedX = Math.random() * 0.5 + 0.8;
-    }
-
-    update(width, height) {
-        if (!this.active) return;
-        
-        this.time += 0.02;
-        
-        // Avance en X pulsado (se impulsa y frena)
-        const pulse = Math.max(0, Math.sin(this.time * 4.5));
-        this.x += this.speedX * (0.3 + pulse * 1.8);
-        
-        // Movimiento vertical sutil
-        this.y += Math.sin(this.time * 2) * 0.6;
-        
-        // Si sale de la pantalla, se resetea y espera al siguiente intervalo
-        if (this.x > width + 200) {
-            this.reset();
-        }
-    }
-
-    draw() {
-        if (!this.active) return;
-        
-        this.ctx.save();
-        
-        // Configurar sombra brillante dorada fosforescente para el borde
-        this.ctx.shadowColor = 'rgba(232, 160, 32, 0.95)';
-        this.ctx.shadowBlur = 15;
-        
-        this.ctx.translate(this.x, this.y);
-        
-        // Rotar levemente según el impulso
-        const pulse = Math.sin(this.time * 4.5);
-        const angle = Math.PI / 10 + pulse * 0.05;
-        this.ctx.rotate(angle);
-        
-        const size = this.size;
-        
-        // Colores: Cuerpo morado translúcido, Borde dorado fosforescente
-        const bodyColor = 'rgba(150, 0, 220, 0.35)';
-        const borderColor = 'rgba(232, 160, 32, 0.95)';
-        
-        // 8 Tentáculos que ondean
-        this.ctx.strokeStyle = borderColor;
-        this.ctx.lineWidth = 5;
-        this.ctx.lineCap = 'round';
-        
-        for (let i = 0; i < 8; i++) {
-            const startAngle = (Math.PI / 6) * (i - 3.5);
-            this.ctx.beginPath();
-            
-            // Punto de origen en la parte trasera de la cabeza
-            const originX = -size * 0.3;
-            const originY = Math.sin(startAngle) * (size * 0.2);
-            
-            this.ctx.moveTo(originX, originY);
-            
-            // Trayectoria del tentáculo
-            let prevX = originX;
-            let prevY = originY;
-            const length = size * 1.5;
-            
-            for (let j = 1; j <= 5; j++) {
-                const segX = originX - (length / 5) * j;
-                const segY = originY + Math.sin(this.time * 5 + j + i) * (8 + pulse * 6);
-                this.ctx.lineTo(segX, segY);
-                prevX = segX;
-                prevY = segY;
-            }
-            
-            // Dibujar relleno morado del tentáculo primero
-            this.ctx.save();
-            this.ctx.shadowBlur = 0; // Desactivar sombra para relleno para evitar artefactos oscuros
-            this.ctx.strokeStyle = bodyColor;
-            this.ctx.lineWidth = 8;
-            this.ctx.stroke();
-            this.ctx.restore();
-            
-            // Dibujar el borde dorado con sombra
-            this.ctx.stroke();
-        }
-        
-        // Cabeza del pulpo (Gran elipse bulbosa)
-        const grad = this.ctx.createRadialGradient(size/4, -size/10, 2, 0, 0, size);
-        grad.addColorStop(0, 'rgba(220, 100, 255, 0.6)'); // Centro morado brillante
-        grad.addColorStop(0.7, 'rgba(150, 0, 220, 0.4)'); // Cuerpo morado
-        grad.addColorStop(1, 'rgba(100, 0, 150, 0.1)');
-        
-        // Rellenar cabeza
-        this.ctx.save();
-        this.ctx.shadowBlur = 0; // Sin sombra en relleno
-        this.ctx.fillStyle = grad;
-        this.ctx.beginPath();
-        this.ctx.ellipse(0, 0, size, size / 1.6, 0, 0, Math.PI * 2);
-        this.ctx.fill();
-        this.ctx.restore();
-        
-        // Delinear la cabeza con borde dorado brillante
-        this.ctx.strokeStyle = borderColor;
-        this.ctx.lineWidth = 4;
-        this.ctx.beginPath();
-        this.ctx.ellipse(0, 0, size, size / 1.6, 0, 0, Math.PI * 2);
+        // Delineado sutil del manto para definir volumen
+        this.ctx.strokeStyle = 'rgba(10, 0, 18, 0.35)';
+        this.ctx.lineWidth = 2.5;
         this.ctx.stroke();
         
+        // Ojos realistas (pequeños, oscuros, semiocultos y con reflejo)
+        this.ctx.fillStyle = 'rgba(10, 0, 18, 0.85)';
+        this.ctx.beginPath();
+        this.ctx.arc(-width * 0.22, height * 0.15, 4, 0, Math.PI * 2);
+        this.ctx.fill();
+        this.ctx.beginPath();
+        this.ctx.arc(width * 0.22, height * 0.15, 4, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // Brillo blanco en la pupila (reflejo de luz marina)
+        this.ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+        this.ctx.beginPath();
+        this.ctx.arc(-width * 0.20, height * 0.13, 1.2, 0, Math.PI * 2);
+        this.ctx.fill();
+        this.ctx.beginPath();
+        this.ctx.arc(width * 0.24, height * 0.13, 1.2, 0, Math.PI * 2);
+        this.ctx.fill();
+        
         this.ctx.restore();
     }
 }
+
+// Se eliminó la clase OctopusBg ya que el usuario solicitó borrar el pulpo dorado/fosforescente.
 
 class UnderwaterBackground {
     constructor() {
@@ -428,7 +317,6 @@ class UnderwaterBackground {
         this.sunRays = new SunRays(this.ctx);
         this.school = new FishSchool(this.ctx, 90); // El triple de peces (90)
         this.bottomOctopus = new BottomOctopus(this.ctx);
-        this.octopus = new OctopusBg(this.ctx);
         
         this.init();
     }
@@ -477,9 +365,6 @@ class UnderwaterBackground {
         
         this.bottomOctopus.update(this.width, this.height);
         this.bottomOctopus.draw();
-        
-        this.octopus.update(this.width, this.height);
-        this.octopus.draw();
         
         this.school.update(this.width, this.height);
         this.school.draw();

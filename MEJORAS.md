@@ -1,116 +1,66 @@
 # Plan de Mejoras — La Picá Big Fish 🐙🐟
 
-Estado actual: **Landing page publicada y funcionando** en [https://bastixori.github.io/La-Pic-Big-Fish/](https://bastixori.github.io/La-Pic-Big-Fish/)
-
+Estado actual: **Sitio optimizado, listo para producción y despliegue**
+Página Principal: [https://bastixori.github.io/La-Pic-Big-Fish/](https://bastixori.github.io/La-Pic-Big-Fish/)
 Repositorio: [https://github.com/bastixori/La-Pic-Big-Fish](https://github.com/bastixori/La-Pic-Big-Fish)
 
 ---
 
-## Fase 1 — Fotos Reales de Platos (Prioridad Alta)
+## 📈 Resumen de Progreso
 
-Reemplazar las imágenes generadas por IA con fotos reales de los platos del restaurant para mayor autenticidad y confianza del cliente.
-
-#### [MODIFY] [index.html](file:///c:/Users/xorid/OneDrive/Desktop/La%20Picá%20Big%20Fish/index.html)
-- Actualizar las rutas de imágenes del hero (ceviche), especialidad (pulpo) y paellas con las fotos reales que el usuario proporcione.
-- Agregar galerías de fotos reales en cada pestaña del menú (ceviches, paellas, mariscos), similar a como se hizo con las empanadas.
-
-> [!TIP]
-> Para esta fase necesitamos que el dueño **saque fotos de sus platos estrella** (ceviche, paella, pescado frito, pulpo). Le indicaremos cómo tomarlas para que se vean profesionales.
-
----
-
-## Fase 2 — Carrito de Pedidos vía WhatsApp (Prioridad Alta)
-
-Crear un sistema interactivo donde el cliente seleccione los platos que quiere, establezca cantidades, y al hacer clic en "Pedir por WhatsApp" se le genere automáticamente un mensaje formateado con su pedido completo listo para enviar.
-
-#### [NEW] js/cart.js
-- Sistema de carrito en memoria (localStorage para persistencia)
-- Botones "Agregar al pedido" en cada tarjeta del menú
-- Panel lateral (drawer) con resumen del pedido, cantidades editables y total
-- Generación automática de mensaje de WhatsApp con formato legible
-- Enlace `https://wa.me/NUMERO?text=...` con el pedido codificado
-
-#### [MODIFY] [index.html](file:///c:/Users/xorid/OneDrive/Desktop/La%20Picá%20Big%20Fish/index.html)
-- Agregar botones de "Agregar" en cada `.menu-item-card`
-- Agregar el drawer/panel lateral del carrito
-- Incluir `js/cart.js`
-
-#### [MODIFY] [css/style.css](file:///c:/Users/xorid/OneDrive/Desktop/La%20Picá%20Big%20Fish/css/style.css)
-- Estilos para botones de agregar al carrito
-- Estilos del drawer lateral con glassmorphism
-- Animación de entrada/salida del drawer
-- Badge contador en el ícono del carrito flotante
+| Fase | Tarea / Característica | Estado | Archivos Modificados |
+| :--- | :--- | :--- | :--- |
+| **Fase 1** | **Fotos Reales de Platos** | ✅ Completado | `index.html`, `menu.html` |
+| **Fase 2** | **Carrito de Pedidos WhatsApp** | ✅ Completado (Respaldado) | `menu_con_carrito.html` |
+| **Fase 3** | **Galería de Instagram Embebida** | ⏳ Pendiente | - |
+| **Fase 4** | **SEO y Rendimiento (Despliegue)** | ✅ Completado | `index.html`, `menu.html`, `menu_con_carrito.html` |
+| **Fase 5** | **Formulario de Reservas** | ⏳ Pendiente | - |
 
 ---
 
-## Fase 3 — Galería de Instagram Embebida (Prioridad Media)
+## 🐟 Detalles de Implementación
 
-Agregar una sección que muestre las últimas publicaciones del Instagram @bigfishchile directamente en la página, para mantenerla actualizada con contenido fresco sin necesidad de editar el código.
+### Fase 1 — Fotos Reales de Platos
+Reemplazo exitoso de recursos visuales antiguos por fotografías auténticas del restaurante para inspirar mayor confianza:
+* **Ceviche en Hero**: Vinculado a `assets/hero_ceviche.png`.
+* **Empanadas Fritas**: Vinculado a `assets/empanadas.jpg` en secciones y carta digital.
+* **Paella / Platos**: Vinculado a `assets/paella_dish.png` en el mapa/contacto y fondo de platos.
+* **Pulpo (Especialidad)**: Vinculado a `assets/octopus_art.png`.
+* **Fotos de Equipo**: Validadas y cargando exitosamente (`marcelo.jpg`, `cata.jpg`, `rafa.jpg`).
 
-#### [MODIFY] [index.html](file:///c:/Users/xorid/OneDrive/Desktop/La%20Picá%20Big%20Fish/index.html)
-- Nueva sección `#instagram` entre Especialidad y Contacto
-- Grid visual tipo mosaico con las fotos más recientes
+### Fase 2 — Carrito de Pedidos vía WhatsApp
+Desarrollo de la experiencia interactiva de compra integrada al restaurante. Para mayor flexibilidad, se mantuvieron dos alternativas en el repositorio:
+1. **Versión Estática (`menu.html`)**: Versión actual en producción. Muestra todos los platos, descripciones y precios limpios con banners de fotos reales, ideal para consulta directa rápida.
+2. **Versión con Carrito (`menu_con_carrito.html`)**: Versión interactiva completa. Permite agregar platos, seleccionar interactivamente 2 acompañamientos por pescado, completar datos del cliente (nombre, dirección para despacho en Barrio República o retiro) y enviar un pedido formateado por WhatsApp a los números reales.
 
-#### [MODIFY] [css/style.css](file:///c:/Users/xorid/OneDrive/Desktop/La%20Picá%20Big%20Fish/css/style.css)
-- Estilos para la galería con efecto hover (overlay con ícono de Instagram)
-- Diseño responsive del grid (3 columnas desktop → 2 tablet → 1 móvil)
-
----
-
-## Fase 4 — SEO y Rendimiento (Prioridad Media)
-
-Optimizar la página para posicionamiento en buscadores (Google) y mejorar la velocidad de carga.
-
-#### [MODIFY] [index.html](file:///c:/Users/xorid/OneDrive/Desktop/La%20Picá%20Big%20Fish/index.html)
-- Agregar metadatos Open Graph (`og:title`, `og:description`, `og:image`) para que al compartir el link en WhatsApp/Instagram se vea una tarjeta bonita con la imagen del restaurant
-- Agregar `<link rel="icon">` con el favicon del logo
-- Agregar datos estructurados (JSON-LD) tipo `Restaurant` para Google Maps y búsquedas locales
-
-#### [MODIFY] assets/
-- Comprimir las imágenes con herramientas de optimización (reducir tamaño sin perder calidad)
-- Convertir imágenes a formato WebP para carga más rápida
+### Fase 4 — SEO, Rendimiento y Despliegue
+Optimización del sitio para buscadores y redes sociales antes de subir a GitHub Pages:
+* **Open Graph Meta Tags**: Configuración de etiquetas (`og:title`, `og:description`, `og:image`, `og:url`) en todos los archivos HTML. Al compartir la web por WhatsApp o Instagram, aparecerá una tarjeta visual con el logo y la descripción del local.
+* **Favicon Oficial**: Enlace al icono de perfil en la barra del navegador (`link rel="shortcut icon"`).
+* **Rutas Relativas**: Limpieza y verificación de referencias de recursos para que el sitio funcione perfectamente bajo la carpeta del proyecto en GitHub Pages (`/La-Pic-Big-Fish/`) sin romper enlaces CSS, JS o imágenes.
+* **Nombres de Platos**: Corrección en Chupe Especial (se quitó el listado del nombre a petición del usuario para simplificar el diseño).
 
 ---
 
-## Fase 5 — Formulario de Reservas Interactivo (Prioridad Baja)
+## 🚀 Instrucciones para Despliegue en GitHub Pages
 
-Crear un formulario visual donde los clientes puedan solicitar una reserva seleccionando fecha, hora y número de personas, que también envíe los datos por WhatsApp.
+Para publicar las actualizaciones y el nuevo menú interactivo en tu sitio actual:
 
-#### [MODIFY] [index.html](file:///c:/Users/xorid/OneDrive/Desktop/La%20Picá%20Big%20Fish/index.html)
-- Reemplazar el placeholder del mapa por un formulario interactivo con selector de fecha, hora, y cantidad de personas
-- Integración con Google Maps embebido real (iframe)
+1. **Asegurar cambios locales**:
+   Abre la consola en la carpeta del proyecto y ejecuta:
+   ```bash
+   git add .
+   git commit -m "Mejoras: menu.html sin carrito, menu_con_carrito.html respaldado, ajuste Chupe Especial y tags OG para despliegue"
+   ```
 
-#### [MODIFY] [css/style.css](file:///c:/Users/xorid/OneDrive/Desktop/La%20Picá%20Big%20Fish/css/style.css)
-- Estilos premium para inputs, selectores y botones del formulario
-- Animaciones de validación
+2. **Subir al repositorio**:
+   Sube los cambios a la rama principal (usualmente `main` o `master`):
+   ```bash
+   git push origin main
+   ```
 
----
-
-## User Review Required
-
-> [!IMPORTANT]
-> **Número de WhatsApp real**: Para que el carrito de pedidos y el formulario de reservas funcionen correctamente, necesitamos el número de WhatsApp real del restaurant (actualmente tiene un placeholder genérico `56912345678`).
-
-> [!IMPORTANT]
-> **Fotos reales de platos**: Si tienes fotos de tus platos estrella (ceviche, paella, pulpo, pescado frito), tráelas mañana para reemplazar las imágenes de IA y darle un look 100% auténtico al sitio.
-
-> [!IMPORTANT]
-> **Dirección exacta del local**: Para el mapa de Google Maps embebido y los datos estructurados de SEO, necesitamos la dirección exacta del restaurant en Barrio República.
-
-## Open Questions
-
-- ¿Qué fases te gustaría priorizar para mañana?
-- ¿Tienes fotos reales de otros platos para agregar?
-- ¿Me puedes compartir el número de WhatsApp real del restaurant?
-- ¿Quieres que agreguemos precios a las demás categorías del menú (ceviches, paellas, mariscos) como hicimos con las empanadas?
-
----
-
-## Verificación
-
-### Pruebas por Fase
-- **Fase 1**: Verificar que las fotos reales se ven correctas en desktop y móvil
-- **Fase 2**: Probar el carrito completo: agregar platos → editar cantidades → generar mensaje de WhatsApp → verificar que el mensaje llega correctamente formateado
-- **Fase 3**: Verificar que la galería carga las fotos y los links van al Instagram real
-- **Fase 4**: Pasar la página por Google Lighthouse para medir rendimiento y SEO
-- **Fase 5**: Probar el formulario de reservas en distintos dispositivos
+3. **Verificación**:
+   GitHub Pages compilará el sitio en 1 o 2 minutos. Entra a [https://bastixori.github.io/La-Pic-Big-Fish/](https://bastixori.github.io/La-Pic-Big-Fish/) y valida:
+   - Que el menú abra la nueva página `menu.html`.
+   - Que el icono de la pestaña cargue el logo del restaurante.
+   - Que el "Chupe Especial" aparezca correctamente simplificado.

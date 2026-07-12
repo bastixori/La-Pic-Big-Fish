@@ -140,4 +140,45 @@ document.addEventListener('DOMContentLoaded', () => {
         // Fallback for older browsers
         revealElements.forEach(el => el.classList.add('active'));
     }
+
+    /* ==========================================================================
+       6. LIGHTBOX MODAL FOR MENU PAGES
+       ========================================================================== */
+    const lightbox = document.getElementById('menu-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+
+    window.openLightbox = (src, altText) => {
+        if (!lightbox || !lightboxImg) return;
+        lightbox.style.display = 'block';
+        lightboxImg.src = src;
+        if (lightboxCaption) {
+            lightboxCaption.textContent = altText;
+        }
+        // Disable body scroll when open
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeLightbox = () => {
+        if (!lightbox) return;
+        lightbox.style.display = 'none';
+        // Restore body scroll
+        document.body.style.overflow = '';
+    };
+
+    // Close lightbox on click outside the image
+    if (lightbox) {
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                window.closeLightbox();
+            }
+        });
+    }
+
+    // Close lightbox on Escape key press
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox && lightbox.style.display === 'block') {
+            window.closeLightbox();
+        }
+    });
 });

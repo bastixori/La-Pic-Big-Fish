@@ -1,0 +1,2146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Interactivo | La Picá Big Fish</title>
+    <meta name="description" content="Nuestra carta completa digitalizada. Ceviches, empanadas, platos marinos y chupes. Arma tu pedido interactivo y envíalo por WhatsApp.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bastixori.github.io/La-Pic-Big-Fish/menu_con_carrito.html">
+    <meta property="og:title" content="Menú Interactivo | La Picá Big Fish">
+    <meta property="og:description" content="Nuestra carta completa digitalizada. Ceviches, empanadas, platos marinos y chupes. Arma tu pedido interactivo y envíalo por WhatsApp.">
+    <meta property="og:image" content="https://bastixori.github.io/La-Pic-Big-Fish/assets/instagram_profile.jpg">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/instagram_profile.jpg" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS Base -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* ==========================================================================
+           PREMIUM DYNAMIC MENU STYLES (WITH SHOPPING CART)
+           ========================================================================== */
+        body {
+            background-color: #060913;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 201, 177, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(23, 36, 60, 0.04) 0%, transparent 40%),
+                radial-gradient(circle at 50% 0%, rgba(23, 36, 60, 0.3) 0%, rgba(6, 9, 19, 0) 80%);
+            position: relative;
+        }
+
+        /* Ambient background movement */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0, 201, 177, 0.01) 0%, transparent 100%);
+            pointer-events: none;
+            z-index: -1;
+            animation: waterGlow 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes waterGlow {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Custom Scrollbar for premium look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #060913;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 201, 177, 0.2);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* Top Header */
+        .menu-page-header {
+            background: rgba(6, 9, 19, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 201, 177, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 12px 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+        }
+
+        .menu-header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .btn-back {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px 20px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: var(--transition-smooth);
+        }
+
+        .btn-back:hover {
+            background: rgba(0, 201, 177, 0.1);
+            border-color: var(--primary);
+            color: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 201, 177, 0.2);
+            transform: translateX(-4px);
+        }
+
+        .menu-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .menu-logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+            object-fit: cover;
+        }
+
+        .menu-logo-text {
+            font-family: var(--font-accent);
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: var(--white);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .btn-cart-toggle {
+            position: relative;
+            background: rgba(0, 201, 177, 0.1);
+            border: 1px solid rgba(0, 201, 177, 0.25);
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-cart-toggle:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px var(--primary-glow);
+            transform: scale(1.08);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background-color: var(--secondary);
+            color: var(--bg-dark);
+            font-size: 0.75rem;
+            font-weight: 800;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #060913;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        /* Banner Hero */
+        .menu-banner {
+            text-align: center;
+            padding: 80px 24px 50px 24px;
+            position: relative;
+        }
+
+        .menu-banner-title {
+            font-family: var(--font-heading);
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .menu-banner-title span {
+            color: var(--primary);
+            position: relative;
+        }
+
+        .menu-banner-title span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .menu-banner-subtitle {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Category Filter Navigation Bar */
+        .category-nav-bar {
+            background: rgba(18, 24, 38, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: sticky;
+            top: 75px;
+            z-index: 99;
+            padding: 10px 0;
+        }
+
+        .category-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 0 24px;
+            scrollbar-width: none;
+        }
+
+        .category-nav-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-nav-btn {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            padding: 10px 22px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition-smooth);
+        }
+
+        .category-nav-btn:hover {
+            color: var(--white);
+            border-color: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .category-nav-btn.active {
+            background: linear-gradient(135deg, var(--primary) 0%, #00a894 100%);
+            border-color: var(--primary);
+            color: var(--bg-dark);
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        /* Menu layout content */
+        .menu-section-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px 100px 24px;
+        }
+
+        .category-block {
+            margin-bottom: 80px;
+            scroll-margin-top: 160px;
+        }
+
+        .category-header-banner {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 250px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            display: flex;
+            align-items: flex-end;
+            padding: 40px;
+        }
+
+        .category-banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(6, 9, 19, 0.2) 0%, rgba(6, 9, 19, 0.9) 100%);
+            z-index: 1;
+        }
+
+        .category-banner-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 8s ease;
+        }
+
+        .category-header-banner:hover .category-banner-img {
+            transform: scale(1.06);
+        }
+
+        .category-banner-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .category-banner-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            background: rgba(6, 9, 19, 0.6);
+            backdrop-filter: blur(8px);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(0, 201, 177, 0.2);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .category-banner-text h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 5px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .category-banner-text p {
+            color: var(--text-light);
+            font-size: 1rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        .menu-grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 30px;
+        }
+
+        .item-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .item-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 201, 177, 0.08) 0%, rgba(232, 160, 32, 0.05) 100%);
+            opacity: 0;
+            transition: var(--transition-smooth);
+            z-index: -1;
+        }
+
+        .item-card:hover {
+            border-color: rgba(0, 201, 177, 0.25);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(0, 201, 177, 0.15);
+        }
+
+        .item-card:hover::before {
+            opacity: 1;
+        }
+
+        .item-info {
+            margin-bottom: 25px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+
+        .item-name-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .item-name {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .item-tag-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .item-tag {
+            font-size: 0.65rem;
+            font-weight: 750;
+            text-transform: uppercase;
+            background: rgba(0, 201, 177, 0.12);
+            color: var(--primary);
+            padding: 3px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.8px;
+            border: 1px solid rgba(0, 201, 177, 0.15);
+        }
+
+        .item-tag.premium {
+            background: rgba(232, 160, 32, 0.12);
+            color: var(--secondary);
+            border-color: rgba(232, 160, 32, 0.2);
+        }
+
+        .item-price {
+            font-size: 1.35rem;
+            font-weight: 750;
+            color: var(--secondary);
+            white-space: nowrap;
+            text-shadow: 0 0 10px rgba(232, 160, 32, 0.1);
+        }
+
+        .item-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .item-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-add-to-cart {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-light);
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-add-to-cart:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--bg-dark);
+            box-shadow: 0 0 15px var(--primary-glow);
+            transform: scale(1.04);
+        }
+
+        .subcategory-divider {
+            grid-column: 1 / -1;
+            font-family: var(--font-accent);
+            font-size: 1.6rem;
+            color: var(--secondary);
+            letter-spacing: 2px;
+            margin-top: 30px;
+            border-left: 4px solid var(--primary);
+            padding-left: 15px;
+            text-transform: uppercase;
+        }
+
+        .acomp-section {
+            background: rgba(18, 24, 38, 0.4);
+            border: 1px solid rgba(0, 201, 177, 0.08);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .acomp-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .acomp-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        .acomp-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .acomp-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 550;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition-smooth);
+        }
+
+        .acomp-item:hover {
+            background: rgba(0, 201, 177, 0.05);
+            border-color: var(--primary);
+            transform: scale(1.03);
+        }
+
+        .acomp-item i {
+            color: var(--primary);
+        }
+
+        /* Cart Drawer */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(6, 9, 19, 0.7);
+            backdrop-filter: blur(6px);
+            z-index: 199;
+            display: none;
+        }
+
+        .cart-overlay.open {
+            display: block;
+        }
+
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 480px;
+            height: 100vh;
+            background: rgba(6, 9, 19, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: -15px 0 40px rgba(0, 0, 0, 0.7);
+            z-index: 200;
+            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid rgba(0, 201, 177, 0.15);
+        }
+
+        .cart-drawer.open {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h3 {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cart-header h3 i {
+            color: var(--primary);
+            filter: drop-shadow(0 0 8px var(--primary-glow));
+        }
+
+        .btn-close-cart {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-close-cart:hover {
+            color: var(--white);
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        .cart-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .cart-empty-msg {
+            text-align: center;
+            color: var(--text-muted);
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cart-empty-msg i {
+            font-size: 4rem;
+            opacity: 0.2;
+            color: var(--primary);
+        }
+
+        .cart-item {
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .cart-item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .cart-item-price {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-weight: 650;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        .btn-qty {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            cursor: pointer;
+            width: 15px;
+            height: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-qty:hover {
+            color: var(--primary);
+        }
+
+        .qty-num {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--white);
+            min-width: 15px;
+            text-align: center;
+        }
+
+        .btn-remove-item {
+            background: none;
+            border: none;
+            color: #ff5252;
+            cursor: pointer;
+            font-size: 1rem;
+            opacity: 0.6;
+            transition: var(--transition-smooth);
+            padding: 5px;
+        }
+
+        .btn-remove-item:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .cart-item-acomp-selector {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px dashed rgba(0, 201, 177, 0.15);
+            border-radius: 10px;
+            padding: 10px 14px;
+            margin-top: 8px;
+        }
+
+        .acomp-selector-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .acomp-selector-title span.count-warn {
+            color: var(--secondary);
+            font-weight: 500;
+            text-transform: none;
+        }
+
+        .acomp-options-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+        }
+
+        .acomp-option-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .acomp-option-checkbox input {
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .acomp-option-checkbox input:checked + span {
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .cart-form {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 24px;
+            background: rgba(18, 24, 38, 0.4);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-light);
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            background: rgba(6, 9, 19, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 12px 16px;
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 12px rgba(0, 201, 177, 0.2);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .cart-totals {
+            padding: 0 24px 24px 24px;
+        }
+
+        .totals-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .totals-row.total {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 16px;
+            margin-top: 16px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .totals-row.total .price {
+            color: var(--secondary);
+            text-shadow: 0 0 10px rgba(232, 160, 32, 0.2);
+        }
+
+        .btn-checkout {
+            width: 100%;
+            background: linear-gradient(135deg, var(--whatsapp-green) 0%, #1da850 100%);
+            color: var(--white);
+            border: none;
+            padding: 16px;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            font-weight: 750;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+            transition: var(--transition-smooth);
+        }
+
+        .btn-checkout:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+        }
+
+        .floating-cart-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, var(--primary) 0%, #00ab98 100%);
+            color: var(--bg-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 8px 30px rgba(0, 201, 177, 0.4);
+            z-index: 99;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            animation: floatBtnGlow 2s infinite alternate;
+        }
+
+        @keyframes floatBtnGlow {
+            0% { box-shadow: 0 8px 25px rgba(0, 201, 177, 0.4); }
+            100% { box-shadow: 0 8px 35px rgba(0, 201, 177, 0.7); }
+        }
+
+        .floating-cart-btn:hover {
+            transform: scale(1.1) translateY(-4px);
+        }
+
+        .floating-cart-btn .cart-badge {
+            top: -4px;
+            right: -4px;
+            background-color: var(--secondary);
+            color: var(--bg-dark);
+            border: 2px solid var(--primary);
+        }
+
+        .toast-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 205;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast-card {
+            background: rgba(18, 24, 38, 0.95);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--primary);
+            border-left: 5px solid var(--primary);
+            color: var(--white);
+            padding: 15px 24px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .toast-card.removed {
+            border-color: #ff5252;
+            border-left-color: #ff5252;
+        }
+
+        @media (max-width: 768px) {
+            .menu-banner-title {
+                font-size: 3rem;
+            }
+            .category-header-banner {
+                height: 180px;
+                padding: 25px;
+            }
+            .category-banner-text h2 {
+                font-size: 1.8rem;
+            }
+            .category-banner-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 1.8rem;
+            }
+            .menu-grid-layout {
+                grid-template-columns: 1fr;
+            }
+            .cart-drawer {
+                max-width: 100%;
+            }
+            .toast-container {
+                left: 20px;
+                right: 20px;
+                bottom: 110px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header bar -->
+    <header class="menu-page-header">
+        <div class="menu-header-container">
+            <a href="index.html" class="btn-back">
+                <i class="fa-solid fa-arrow-left"></i> Volver al Inicio
+            </a>
+            <div class="menu-logo">
+                <img src="assets/instagram_profile.jpg" alt="Logo Big Fish" class="menu-logo-img">
+                <span class="menu-logo-text">BIG FISH</span>
+            </div>
+            <button class="btn-cart-toggle" onclick="toggleCart()" aria-label="Ver carrito">
+                <i class="fa-solid fa-shopping-basket"></i>
+                <span class="cart-badge" id="cart-badge-count">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <section class="menu-banner">
+        <h1 class="menu-banner-title">Nuestra <span>Carta</span></h1>
+        <p class="menu-banner-subtitle">Prepara tu pedido agregando platos al carrito, selecciona tus acompañamientos y ordénalo directo a nuestro WhatsApp.</p>
+    </section>
+
+    <!-- Sticky Navigation Filter Bar -->
+    <nav class="category-nav-bar">
+        <div class="category-nav-container">
+            <button class="category-nav-btn active" onclick="scrollToSection('ceviches-sec', this)"><i class="fa-solid fa-lemon"></i> Ceviches</button>
+            <button class="category-nav-btn" onclick="scrollToSection('empanadas-sec', this)"><i class="fa-solid fa-cookie"></i> Empanadas</button>
+            <button class="category-nav-btn" onclick="scrollToSection('platos-sec', this)"><i class="fa-solid fa-fish"></i> Platos de Fondo</button>
+            <button class="category-nav-btn" onclick="scrollToSection('chupes-sec', this)"><i class="fa-solid fa-hot-tub-person"></i> Chupes y Caldos</button>
+            <button class="category-nav-btn" onclick="scrollToSection('especialidades-sec', this)"><i class="fa-solid fa-star"></i> Especialidades</button>
+        </div>
+    </nav>
+
+    <!-- Menu Sections Wrapper -->
+    <main class="menu-section-wrapper">
+
+        <!-- 1. CEVICHES -->
+        <section class="category-block" id="ceviches-sec">
+            <div class="category-header-banner">
+                <div class="category-banner-overlay"></div>
+                <img src="assets/hero_ceviche.png" alt="Ceviches frescos" class="category-banner-img">
+                <div class="category-banner-content">
+                    <div class="category-banner-icon"><i class="fa-solid fa-lemon"></i></div>
+                    <div class="category-banner-text">
+                        <h2>Ceviches</h2>
+                        <p>Frescura marina en su máxima expresión, preparados al instante</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-grid-layout">
+                <!-- Reineta -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Ceviche de Reineta 🌟</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag">Fresco</span>
+                                    <span class="item-tag premium">Favorito</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$6.000</span>
+                        </div>
+                        <p class="item-desc">Reineta fresca marinada al instante con limón sutil de Pica, cebolla morada, pimentón y cilantro fresco.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Ceviche de Reineta', 6000)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Cochayuyo Palta -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Ceviche de Cochayuyo con Palta</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag">Saludable</span>
+                                    <span class="item-tag">Tradicional</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$4.000</span>
+                        </div>
+                        <p class="item-desc">Combinación nutritiva de cochayuyo seleccionado y palta fresca en cubos, aliñada con cebolla morada y cilantro.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Ceviche de Cochayuyo con Palta', 4000)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. EMPANADAS -->
+        <section class="category-block" id="empanadas-sec">
+            <div class="category-header-banner">
+                <div class="category-banner-overlay"></div>
+                <img src="assets/empanadas.jpg" alt="Pizarrón de empanadas" class="category-banner-img">
+                <div class="category-banner-content">
+                    <div class="category-banner-icon"><i class="fa-solid fa-cookie"></i></div>
+                    <div class="category-banner-text">
+                        <h2>Empanadas Fritas</h2>
+                        <p>Doradas y crujientes empanadas fritas con abundante relleno casero</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-grid-layout">
+                
+                <!-- Subcategory: QUESOS -->
+                <div class="subcategory-divider">Con Queso Derretido</div>
+
+                <!-- Queso Camarón -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Queso Camarón 🌟</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag">Quesos</span>
+                                    <span class="item-tag premium">Más Vendido</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$2.800</span>
+                        </div>
+                        <p class="item-desc">Masa casera frita, crujiente, rellena con abundante queso mantecoso fundido y camarones seleccionados.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Empanada Queso Camarón', 2800)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Queso Ostión -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Queso Ostión</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag">Quesos</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$3.500</span>
+                        </div>
+                        <p class="item-desc">Exquisitos ostiones del Pacífico acompañados de queso mantecoso fundido en masa crujiente.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Empanada Queso Ostión', 3500)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Queso Jaiba -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Queso Jaiba</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag">Quesos</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$3.500</span>
+                        </div>
+                        <p class="item-desc">Carne suave de jaiba desmenuzada combinada con queso fundido en una fritura perfectamente dorada.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Empanada Queso Jaiba', 3500)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Queso Macha -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Queso Macha</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag">Quesos</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$3.500</span>
+                        </div>
+                        <p class="item-desc">Láminas de machas seleccionadas preparadas con queso derretido en masa dorada.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Empanada Queso Macha', 3500)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Queso Loco -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Queso Loco 👑</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag premium">Premium</span>
+                                    <span class="item-tag">Exclusivo</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$7.000</span>
+                        </div>
+                        <p class="item-desc">Exclusivos trozos de loco tierno combinados con abundante queso mantecoso fundido.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Empanada Queso Loco', 7000)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Queso Champiñón -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Queso Champiñón</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag">Vegetariano</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$2.800</span>
+                        </div>
+                        <p class="item-desc">Una deliciosa opción vegetariana con champiñones salteados y queso mantecoso derretido.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Empanada Queso Champiñón', 2800)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Queso Choclo -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Queso Choclo</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag">Quesos</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$2.800</span>
+                        </div>
+                        <p class="item-desc">Empanada dorada rellena de granos de choclo dulce y sabroso queso derretido.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Empanada Queso Choclo', 2800)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Subcategory: PINOS -->
+                <div class="subcategory-divider">Pinos Tradicionales</div>
+
+                <!-- Pino Marisco -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Pino Marisco</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag">Pinos</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$2.500</span>
+                        </div>
+                        <p class="item-desc">Pino tradicional de mariscos surtidos guisados con cebolla caramelizada, pimentón y condimentos chilenos.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Empanada Pino Marisco', 2500)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Pino Jaiba -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Pino Jaiba</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag">Pinos</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$2.500</span>
+                        </div>
+                        <p class="item-desc">Sabrosa empanada frita rellena con pino casero de jaiba desmenuzada y especias.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Empanada Pino Jaiba', 2500)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Pino Locos -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Pino Locos 👑</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag premium">Premium</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$2.500</span>
+                        </div>
+                        <p class="item-desc">Carne de loco tierna y seleccionada, guisada artesanalmente en pino tradicional.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Empanada Pino Locos', 2500)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Pino Especial -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Pino Especial</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag premium">Especial</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$7.000</span>
+                        </div>
+                        <p class="item-desc">Nuestra receta especial con un pino selecto y cargado de mariscos premium de la casa.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Empanada Pino Especial', 7000)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. PLATOS DE FONDO -->
+        <section class="category-block" id="platos-sec">
+            <div class="category-header-banner">
+                <div class="category-banner-overlay"></div>
+                <img src="assets/paella_dish.png" alt="Platos con pescado" class="category-banner-img">
+                <div class="category-banner-content">
+                    <div class="category-banner-icon"><i class="fa-solid fa-fish"></i></div>
+                    <div class="category-banner-text">
+                        <h2>Platos de Fondo</h2>
+                        <p>Pescados del día con fritura perfecta o a la plancha, e incluye dos acompañamientos</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-grid-layout">
+                <!-- Merluza -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Merluza Frita o a la Plancha 🐟</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag">Clásico</span>
+                                    <span class="item-tag">+ Acompañamientos</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$6.000</span>
+                        </div>
+                        <p class="item-desc">Filete de merluza fresca del día rebozado en batido tradicional crujiente o cocinado suavemente a la plancha.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Merluza Frita/Plancha', 6000, true)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Jurel -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Jurel Frito o a la Plancha</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag">+ Acompañamientos</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$7.000</span>
+                        </div>
+                        <p class="item-desc">Filete de jurel sabroso preparado frito con batido crujiente o cocinado suavemente a la plancha.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Jurel Frito/Plancha', 7000, true)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Albacora -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Albacora Frita o a la Plancha</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag premium">Premium</span>
+                                    <span class="item-tag">+ Acompañamientos</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$11.900</span>
+                        </div>
+                        <p class="item-desc">Filete premium de albacora, cocinado frito o a la plancha según tu preferencia.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Albacora Frita/Plancha', 11900, true)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Reineta -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Reineta Frita o a la Plancha 🌟</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag premium">Más Pedido</span>
+                                    <span class="item-tag">+ Acompañamientos</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$10.900</span>
+                        </div>
+                        <p class="item-desc">Filete de reineta fresca preparado a tu elección: frito crujiente o a la plancha con finas hierbas.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Reineta Frita/Plancha', 10900, true)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Merluza Austral -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Merluza Austral Frita o a la Plancha 🐟</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag premium">Austral</span>
+                                    <span class="item-tag">+ Acompañamientos</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$10.900</span>
+                        </div>
+                        <p class="item-desc">Filete premium de merluza austral de textura suave, cocinada frita o a la plancha en su punto exacto.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Merluza Austral F/Pl', 10900, true)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Congrio -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Congrio Frito o a la Plancha</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag premium">Tradición</span>
+                                    <span class="item-tag">+ Acompañamientos</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$13.900</span>
+                        </div>
+                        <p class="item-desc">Filete de congrio fresco preparado frito al estilo tradicional chileno o a la plancha.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Congrio Frito/Plancha', 13900, true)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Salmon -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Salmón Frito o a la Plancha</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag premium">Salmón</span>
+                                    <span class="item-tag">+ Acompañamientos</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$13.900</span>
+                        </div>
+                        <p class="item-desc">Filete de salmón rosado chileno cocinado frito o a la plancha con notes cítricas e ideal punto de cocción.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Salmón Frito/Plancha', 13900, true)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="acomp-section">
+                <h3 class="acomp-title"><i class="fa-solid fa-plate-wheat"></i> Acompañamientos Incluidos</h3>
+                <p class="acomp-desc">Todos los pescados y platos de fondo anteriores incluyen <strong>dos acompañamientos</strong> a elección:</p>
+                <div class="acomp-tags">
+                    <div class="acomp-item"><i class="fa-solid fa-bowl-rice"></i> Arroz</div>
+                    <div class="acomp-item"><i class="fa-solid fa-mound"></i> Papas mayo</div>
+                    <div class="acomp-item"><i class="fa-solid fa-carrot"></i> Ensalada chilena</div>
+                    <div class="acomp-item"><i class="fa-solid fa-leaf"></i> Lechuga</div>
+                    <div class="acomp-item"><i class="fa-solid fa-seedling"></i> Betarraga</div>
+                    <div class="acomp-item"><i class="fa-solid fa-tree"></i> Brócoli</div>
+                    <div class="acomp-item"><i class="fa-solid fa-pepper-hot"></i> Pepino</div>
+                    <div class="acomp-item"><i class="fa-solid fa-carrot"></i> Zanahoria</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CHUPES -->
+        <section class="category-block" id="chupes-sec">
+            <div class="category-header-banner">
+                <div class="category-banner-overlay"></div>
+                <img src="assets/octopus_art.png" alt="Chupes calientes" class="category-banner-img" style="object-position: 50% 30%;">
+                <div class="category-banner-content">
+                    <div class="category-banner-icon"><i class="fa-solid fa-hot-tub-person"></i></div>
+                    <div class="category-banner-text">
+                        <h2>Chupes y Caldos</h2>
+                        <p>Guisos tradicionales de mariscos seleccionados, gratinados al momento</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-grid-layout">
+                <!-- Chupe Mariscos -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Chupe de Mariscos 🍲</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag">Caliente</span>
+                                    <span class="item-tag">Gratinado</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$8.900</span>
+                        </div>
+                        <p class="item-desc">Guiso tradicional cremoso de mariscos surtidos, horneado y gratinado al momento con queso parmesano y pan tostado.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Chupe de Mariscos', 8900)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Chupe Camarón -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Chupe de Camarón 🍲</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag">Camarones</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$12.000</span>
+                        </div>
+                        <p class="item-desc">Deliciosa preparación cremosa gratinada rellena con abundantes camarones seleccionados.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Chupe de Camarón', 12000)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Chupe Jaiba -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Chupe de Jaiba 🍲</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag">Jaibas</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$12.000</span>
+                        </div>
+                        <p class="item-desc">Guiso de carne de jaiba seleccionado y horneado en una cremosa mezcla con queso parmesano.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Chupe de Jaiba', 12000)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Chupe Loco -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Chupe de Loco 🍲</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag premium">Premium</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$12.000</span>
+                        </div>
+                        <p class="item-desc">Guiso premium con trozos de locos tiernos cocinados de manera artesanal y gratinados con queso.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Chupe de Loco', 12000)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Chupe Especial -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Chupe Especial 👑</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag premium">Imperial</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$15.000</span>
+                        </div>
+                        <p class="item-desc">La combinación suprema: guiso horneado con locos tiernos, carne de jaiba y camarones seleccionados.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Chupe Especial', 15000)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. ESPECIALIDADES -->
+        <section class="category-block" id="especialidades-sec">
+            <div class="category-header-banner">
+                <div class="category-banner-overlay"></div>
+                <img src="assets/paella_dish.png" alt="Especialidades" class="category-banner-img">
+                <div class="category-banner-content">
+                    <div class="category-banner-icon"><i class="fa-solid fa-star"></i></div>
+                    <div class="category-banner-text">
+                        <h2>Especialidades de la Casa</h2>
+                        <p>Los platos estrella y favoritos de la comunidad de Barrio República</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-grid-layout">
+                <!-- Consomé -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Consomé de Mariscos 🥣</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag">Reponedor</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$3.000</span>
+                        </div>
+                        <p class="item-desc">Caldo concentrado de mariscos preparado con vino blanco, cebolla, pimentón, ajo y un toque de merkén.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Consomé de Mariscos', 3000)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Churrasco -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Churrasco Marino 🐟</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag premium">Sánguche</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$5.000</span>
+                        </div>
+                        <p class="item-desc">Marraqueta crujiente con filete de merluza frita, cebolla caramelizada y mayonesa casera.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Churrasco Marino', 5000)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+                <!-- Paella -->
+                <div class="item-card">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <div class="item-name-group">
+                                <h3 class="item-name">Paella para Dos 🥘</h3>
+                                <div class="item-tag-row">
+                                    <span class="item-tag premium">Recomendado</span>
+                                    <span class="item-tag">Familiar</span>
+                                </div>
+                            </div>
+                            <span class="item-price">$9.900</span>
+                        </div>
+                        <p class="item-desc">Preparación tradicional con mariscos frescos, vino blanco, cebolla, pimentón, un toque de merkén y el sazón especial de la casa.</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-add-to-cart" onclick="addToCart('Paella para Dos', 9900)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Shopping Cart Drawer -->
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3><i class="fa-solid fa-shopping-basket"></i> Tu Pedido</h3>
+            <button class="btn-close-cart" onclick="toggleCart()" aria-label="Cerrar carrito">&times;</button>
+        </div>
+
+        <div class="cart-body" id="cart-items-container">
+            <div class="cart-empty-msg">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <p>Tu pedido está vacío.<br>Agrega platos para comenzar.</p>
+            </div>
+        </div>
+
+        <div id="cart-checkout-section" style="display: none;">
+            <!-- Customer Form -->
+            <div class="cart-form">
+                <div class="form-group">
+                    <label class="form-label" for="cust-name">Nombre Cliente</label>
+                    <input type="text" id="cust-name" class="form-input" placeholder="Ej: Juan Pérez" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="cust-service">Servicio</label>
+                        <select id="cust-service" class="form-select" onchange="toggleAddressField()">
+                            <option value="retiro">Retiro en local</option>
+                            <option value="despacho">Despacho a domicilio</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="cust-phone">WhatsApp Envíos</label>
+                        <select id="cust-phone" class="form-select">
+                            <option value="56922347212">WhatsApp +56 9 2234 7212</option>
+                            <option value="56961710247">WhatsApp +56 9 6171 0247</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" id="address-group" style="display: none;">
+                    <label class="form-label" for="cust-address">Dirección de Despacho</label>
+                    <input type="text" id="cust-address" class="form-input" placeholder="Calle, número, block/depto (Barrio República)">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="cust-notes">Notas del Pedido</label>
+                    <input type="text" id="cust-notes" class="form-input" placeholder="Ej: sin cebolla en el ceviche, cubiertos, etc.">
+                </div>
+            </div>
+
+            <!-- Cart Totals -->
+            <div class="cart-totals">
+                <div class="totals-row">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">$0</span>
+                </div>
+                <div class="totals-row total">
+                    <span>Total Pedido</span>
+                    <span id="cart-total">$0</span>
+                </div>
+                <button class="btn-checkout" onclick="sendOrder()">
+                    <i class="fa-brands fa-whatsapp"></i> Confirmar Pedido por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-cart-btn" onclick="toggleCart()" style="display: none;" id="floating-cart-btn">
+        <i class="fa-solid fa-shopping-basket"></i>
+        <span class="cart-badge" id="floating-badge-count">0</span>
+    </div>
+
+    <div class="toast-container" id="toast-container"></div>
+
+    <script>
+        let cart = [];
+        const acompOptions = ['Arroz', 'Papas mayo', 'Ensalada chilena', 'Lechuga', 'Betarraga', 'Brócoli', 'Pepino', 'Zanahoria'];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedCart = localStorage.getItem('bigfish_cart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCartUI();
+            }
+            window.addEventListener('scroll', handleScrollActiveCategory);
+            window.addEventListener('resize', checkFloatingCartBtn);
+            window.addEventListener('scroll', checkFloatingCartBtn);
+            checkFloatingCartBtn();
+        });
+
+        function scrollToSection(id, btn) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+                const btns = document.querySelectorAll('.category-nav-btn');
+                btns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            }
+        }
+
+        function handleScrollActiveCategory() {
+            const scrollPos = window.scrollY + 200;
+            const sections = document.querySelectorAll('.category-block');
+            const navBtns = document.querySelectorAll('.category-nav-btn');
+            
+            sections.forEach((sec, idx) => {
+                const top = sec.offsetTop;
+                const height = sec.clientHeight;
+                if (scrollPos >= top && scrollPos < (top + height)) {
+                    navBtns.forEach(btn => btn.classList.remove('active'));
+                    if (navBtns[idx]) {
+                        navBtns[idx].classList.add('active');
+                    }
+                }
+            });
+        }
+
+        function checkFloatingCartBtn() {
+            const btn = document.getElementById('floating-cart-btn');
+            if (!btn) return;
+            
+            if (window.innerWidth <= 768 && cart.length > 0) {
+                btn.style.display = 'flex';
+            } else {
+                btn.style.display = 'none';
+            }
+        }
+
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-overlay');
+            drawer.classList.toggle('open');
+            if (drawer.classList.contains('open')) {
+                overlay.classList.add('open');
+            } else {
+                overlay.classList.remove('open');
+            }
+        }
+
+        function showToast(msg, isRemoved = false) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast-card ${isRemoved ? 'removed' : ''}`;
+            toast.innerHTML = `
+                <i class="fa-solid ${isRemoved ? 'fa-trash-can' : 'fa-circle-check'}"></i>
+                <span>${msg}</span>
+            `;
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) reverse forwards';
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 2500);
+        }
+
+        function addToCart(name, price, hasAcomp = false) {
+            const id = hasAcomp ? `${name}-${Date.now()}` : name;
+            
+            if (hasAcomp) {
+                cart.push({ id, name, price, qty: 1, hasAcomp: true, acomps: [] });
+            } else {
+                const existingItem = cart.find(item => item.id === name);
+                if (existingItem) {
+                    existingItem.qty += 1;
+                } else {
+                    cart.push({ id: name, name, price, qty: 1, hasAcomp: false });
+                }
+            }
+
+            const cartToggle = document.querySelector('.btn-cart-toggle');
+            if (cartToggle) {
+                cartToggle.style.transform = 'scale(1.25)';
+                setTimeout(() => {
+                    cartToggle.style.transform = '';
+                }, 200);
+            }
+
+            showToast(`¡${name} agregado!`);
+            saveCart();
+            updateCartUI();
+            
+            if (cart.length === 1 && cart[0].qty === 1) {
+                toggleCart();
+            }
+        }
+
+        function updateQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) {
+                    removeFromCart(id);
+                } else {
+                    saveCart();
+                    updateCartUI();
+                }
+            }
+        }
+
+        function removeFromCart(id) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                cart = cart.filter(i => i.id !== id);
+                showToast(`¡${item.name} removido!`, true);
+                saveCart();
+                updateCartUI();
+            }
+        }
+
+        function handleAcompChange(id, checkbox, acompName) {
+            const item = cart.find(i => i.id === id);
+            if (!item) return;
+
+            if (checkbox.checked) {
+                if (item.acomps.length >= 2) {
+                    checkbox.checked = false;
+                    alert('Solo puedes seleccionar hasta 2 acompañamientos incluidos.');
+                    return;
+                }
+                item.acomps.push(acompName);
+            } else {
+                item.acomps = item.acomps.filter(a => a !== acompName);
+            }
+            
+            saveCart();
+            updateCartUIElementsOnly();
+        }
+
+        function saveCart() {
+            localStorage.setItem('bigfish_cart', JSON.stringify(cart));
+        }
+
+        function updateCartUIElementsOnly() {
+            const totalSum = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            document.getElementById('cart-subtotal').textContent = `$${totalSum.toLocaleString('de-DE')}`;
+            document.getElementById('cart-total').textContent = `$${totalSum.toLocaleString('de-DE')}`;
+            
+            cart.forEach(item => {
+                if (item.hasAcomp) {
+                    const warnEl = document.getElementById(`acomp-warn-${item.id}`);
+                    if (warnEl) {
+                        if (item.acomps.length < 2) {
+                            warnEl.textContent = `(Elige 2: llevas ${item.acomps.length})`;
+                            warnEl.style.color = 'var(--secondary)';
+                        } else {
+                            warnEl.textContent = '(¡Listo!)';
+                            warnEl.style.color = '#25d366';
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items-container');
+            const checkoutSection = document.getElementById('cart-checkout-section');
+            const badgeCount = document.getElementById('cart-badge-count');
+            const floatBadgeCount = document.getElementById('floating-badge-count');
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            badgeCount.textContent = totalItems;
+            if (floatBadgeCount) floatBadgeCount.textContent = totalItems;
+
+            checkFloatingCartBtn();
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="cart-empty-msg">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <p>Tu pedido está vacío.<br>Agrega platos para comenzar.</p>
+                    </div>
+                `;
+                checkoutSection.style.display = 'none';
+                return;
+            }
+
+            checkoutSection.style.display = 'block';
+            container.innerHTML = '';
+            
+            cart.forEach(item => {
+                const itemEl = document.createElement('div');
+                itemEl.classList.add('cart-item');
+                
+                let rowHtml = `
+                    <div class="cart-item-row">
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">$${(item.price * item.qty).toLocaleString('de-DE')}</div>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button class="btn-qty" onclick="updateQty('${item.id}', -1)"><i class="fa-solid fa-minus"></i></button>
+                            <span class="qty-num">${item.qty}</span>
+                            <button class="btn-qty" onclick="updateQty('${item.id}', 1)"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                        <button class="btn-remove-item" onclick="removeFromCart('${item.id}')" aria-label="Eliminar item">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                `;
+
+                let acompHtml = '';
+                if (item.hasAcomp) {
+                    const statusText = item.acomps.length < 2 
+                        ? `(Elige 2: llevas ${item.acomps.length})` 
+                        : '(¡Listo!)';
+                    const statusColor = item.acomps.length < 2 ? 'var(--secondary)' : '#25d366';
+
+                    acompHtml = `
+                        <div class="cart-item-acomp-selector">
+                            <div class="acomp-selector-title">
+                                Acompañamientos
+                                <span class="count-warn" id="acomp-warn-${item.id}" style="color: ${statusColor}">${statusText}</span>
+                            </div>
+                            <div class="acomp-options-list">
+                    `;
+                    
+                    acompOptions.forEach(opt => {
+                        const isChecked = item.acomps.includes(opt) ? 'checked' : '';
+                        acompHtml += `
+                            <label class="acomp-option-checkbox">
+                                <input type="checkbox" ${isChecked} onchange="handleAcompChange('${item.id}', this, '${opt}')">
+                                <span>${opt}</span>
+                            </label>
+                        `;
+                    });
+                    
+                    acompHtml += `
+                            </div>
+                        </div>
+                    `;
+                }
+
+                itemEl.innerHTML = rowHtml + acompHtml;
+                container.appendChild(itemEl);
+            });
+
+            updateCartUIElementsOnly();
+        }
+
+        function toggleAddressField() {
+            const serviceType = document.getElementById('cust-service').value;
+            const addressGroup = document.getElementById('address-group');
+            const addressInput = document.getElementById('cust-address');
+            
+            if (serviceType === 'despacho') {
+                addressGroup.style.display = 'block';
+                addressInput.setAttribute('required', 'true');
+            } else {
+                addressGroup.style.display = 'none';
+                addressInput.removeAttribute('required');
+            }
+        }
+
+        function sendOrder() {
+            const name = document.getElementById('cust-name').value.trim();
+            const service = document.getElementById('cust-service').value;
+            const address = document.getElementById('cust-address').value.trim();
+            const notes = document.getElementById('cust-notes').value.trim();
+            const waNumber = document.getElementById('cust-phone').value;
+
+            if (!name) {
+                alert('Por favor, ingresa tu nombre.');
+                document.getElementById('cust-name').focus();
+                return;
+            }
+
+            if (service === 'despacho' && !address) {
+                alert('Por favor, ingresa la dirección de despacho.');
+                document.getElementById('cust-address').focus();
+                return;
+            }
+
+            const missingAcomp = cart.find(item => item.hasAcomp && item.acomps.length < 2);
+            if (missingAcomp) {
+                alert(`Por favor, selecciona los 2 acompañamientos incluidos para tu plato: ${missingAcomp.name}`);
+                toggleCart();
+                return;
+            }
+
+            let message = `*NUEVO PEDIDO - LA PICÁ BIG FISH* 🐙🐟\n\n`;
+            message += `👤 *Cliente:* ${name}\n`;
+            message += `🚗 *Servicio:* ${service === 'despacho' ? 'Despacho a Domicilio' : 'Retiro en Local'}\n`;
+            if (service === 'despacho') {
+                message += `📍 *Dirección:* ${address}\n`;
+            }
+            if (notes) {
+                message += `📝 *Notas:* ${notes}\n`;
+            }
+            message += `\n---------------------------------\n🛒 *DETALLE DEL PEDIDO:*\n`;
+
+            cart.forEach(item => {
+                const subtotal = item.price * item.qty;
+                message += `• ${item.qty}x ${item.name}`;
+                if (item.hasAcomp && item.acomps.length > 0) {
+                    message += `\n   _Acompañamientos: ${item.acomps.join(', ')}_`;
+                }
+                message += `\n   Precio: $${subtotal.toLocaleString('de-DE')}\n`;
+            });
+
+            const totalSum = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            message += `---------------------------------\n💰 *TOTAL A PAGAR: $${totalSum.toLocaleString('de-DE')}*\n\n`;
+            message += `_Muchas gracias por tu pedido. Por favor, indícame los métodos de pago disponibles (Transferencia / Efectivo) para concretar._`;
+
+            const url = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+
+            cart = [];
+            saveCart();
+            updateCartUI();
+            toggleCart();
+            alert('¡Pedido enviado! Serás redirigido a WhatsApp para enviar los detalles del pedido.');
+        }
+    </script>
+</body>
+</html>

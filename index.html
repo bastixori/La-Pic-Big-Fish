@@ -6,6 +6,16 @@
     <title>La Picá Big Fish | Sabores del Mar en Barrio República</title>
     <meta name="description" content="Lo mejor de la comida del mar en el Barrio República, Santiago. Ceviches premium, empanadas caseras, paellas marinas y pescados fritos hechos con el corazón.">
     
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bastixori.github.io/La-Pic-Big-Fish/">
+    <meta property="og:title" content="La Picá Big Fish | Sabores del Mar en Barrio República">
+    <meta property="og:description" content="Lo mejor de la comida del mar en el Barrio República, Santiago. Ceviches premium, empanadas caseras, paellas marinas y pescados fritos hechos con el corazón.">
+    <meta property="og:image" content="https://bastixori.github.io/La-Pic-Big-Fish/assets/instagram_profile.jpg">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/instagram_profile.jpg" type="image/x-icon">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,7 +49,7 @@
                 <ul>
                     <li><a href="#hero" class="nav-item active">Inicio</a></li>
                     <li><a href="#nosotros" class="nav-item">Nosotros</a></li>
-                    <li><a href="#menu" class="nav-item">Menú</a></li>
+                    <li><a href="menu.html" class="nav-item">Menú</a></li>
                     <li><a href="#especialidad" class="nav-item">Especialidad</a></li>
                     <li><a href="#contacto" class="nav-item">Contacto</a></li>
                 </ul>
@@ -61,7 +71,7 @@
                         Llevamos 5 años conquistando paladares en el Barrio República. Auténticos ceviches, empanadas doradas, paellas rebosantes y el clásico pescado frito chileno con el sazón único que nos caracteriza.
                     </p>
                     <div class="hero-actions">
-                        <a href="#menu" class="btn btn-primary">Ver Nuestro Menú <i class="fa-solid fa-fish"></i></a>
+                        <a href="menu.html" class="btn-qr-hero">Ver Nuestro Menú <i class="fa-solid fa-fish"></i></a>
                         <a href="#contacto" class="btn btn-secondary">Reservar / Pedir <i class="fa-brands fa-whatsapp"></i></a>
                     </div>
                 </div>
@@ -93,44 +103,34 @@
                 </div>
 
                 <div class="team-grid">
-                    <!-- Director -->
+                    <!-- Marcelo -->
                     <div class="team-card reveal delay-1">
-                        <div class="team-icon">
-                            <i class="fa-solid fa-crown"></i>
+                        <div class="team-img-container">
+                            <img src="assets/fotos/marcelo.jpg" alt="Marcelo - CEO" class="team-img">
                         </div>
-                        <h3 class="team-role">Director General</h3>
-                        <h4 class="team-name">Director</h4>
-                        <p class="team-desc">La mente estratégica y corazón del proyecto. Fundador y visionario detrás de la receta de éxito de Big Fish.</p>
+                        <h3 class="team-role">CEO</h3>
+                        <h4 class="team-name">Marcelo</h4>
+                        <p class="team-desc">La mente estratégica y corazón de La Picá. Visionario detrás del éxito y sabor de Big Fish.</p>
                     </div>
 
                     <!-- Cata -->
                     <div class="team-card reveal delay-2">
-                        <div class="team-icon">
-                            <i class="fa-solid fa-anchor"></i>
+                        <div class="team-img-container">
+                            <img src="assets/fotos/cata.jpg" alt="Cata - Directora" class="team-img">
                         </div>
-                        <h3 class="team-role">Operaciones</h3>
+                        <h3 class="team-role">Directora</h3>
                         <h4 class="team-name">Cata</h4>
-                        <p class="team-desc">El timón del día a día. Se asegura de que la experiencia, el servicio y cada detalle en mesa sean impecables.</p>
+                        <p class="team-desc">El timón de la operación diaria. Se asegura de que la experiencia y el servicio sean impecables.</p>
                     </div>
 
-                    <!-- Cocinero 1 -->
+                    <!-- Rafa -->
                     <div class="team-card reveal delay-3">
-                        <div class="team-icon">
-                            <i class="fa-solid fa-fire-burner"></i>
+                        <div class="team-img-container">
+                            <img src="assets/fotos/rafa.jpg" alt="Rafa - Chef" class="team-img">
                         </div>
-                        <h3 class="team-role">Maestro de Cocina</h3>
-                        <h4 class="team-name">Primer Chef</h4>
-                        <p class="team-desc">El alquimista que sazona los ceviches y maneja los caldos con la precisión y frescura que nos distingue.</p>
-                    </div>
-
-                    <!-- Cocinero 2 -->
-                    <div class="team-card reveal delay-4">
-                        <div class="team-icon">
-                            <i class="fa-solid fa-kitchen-set"></i>
-                        </div>
-                        <h3 class="team-role">Artesano del Fuego</h3>
-                        <h4 class="team-name">Segundo Chef</h4>
-                        <p class="team-desc">Experto en frituras crujientes, el dorado perfecto de nuestras empanadas y la cocción sublime de mariscos.</p>
+                        <h3 class="team-role">Chef</h3>
+                        <h4 class="team-name">Rafa</h4>
+                        <p class="team-desc">El maestro de la cocina. Domina con maestría las paellas, los ceviches y el sabor costero de nuestros platos.</p>
                     </div>
                 </div>
             </div>
@@ -149,6 +149,23 @@
                 <div class="section-header reveal">
                     <h2 class="section-title">Nuestra Carta</h2>
                     <p class="section-subtitle">Las delicias más frescas directo del mar chileno</p>
+                </div>
+
+                <!-- Digital Menu Board (Images) -->
+                <div class="digital-menu-container reveal">
+                    <div class="digital-menu-header">
+                        <i class="fa-solid fa-book-open"></i>
+                        <h3>Carta Digital</h3>
+                        <p>Haz clic en la carta para verla en pantalla completa y hacer zoom</p>
+                    </div>
+                    <div class="menu-gallery-grid" style="display: flex; justify-content: center;">
+                        <div class="menu-card-img-wrapper" style="max-width: 450px; width: 100%;" onclick="openLightbox('assets/menu.png', 'Carta Digital Completa - La Picá Big Fish')">
+                            <img src="assets/menu.png" alt="Carta Digital Completa" class="menu-page-img" style="object-position: top;">
+                            <div class="menu-page-overlay">
+                                <span>Ver Carta Completa <i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Tabs Navigation -->
@@ -176,22 +193,17 @@
                         <div class="menu-grid">
                             <div class="menu-item-card">
                                 <div class="menu-item-header">
-                                    <h3 class="menu-item-name">Ceviche Big Fish 🌟</h3>
-                                    <span class="menu-item-tag">Estrella</span>
+                                    <h3 class="menu-item-name">Ceviche de Reineta 🌟</h3>
+                                    <span class="menu-item-price">$6.000</span>
                                 </div>
-                                <p class="menu-item-desc">Reineta fresca marinada con limón sutil de Pica, cebolla morada, pimentones selectos, cilantro fresco y el secreto del chef.</p>
+                                <p class="menu-item-desc">Reineta fresca marinada al instante con limón sutil de Pica, cebolla morada, pimentón y cilantro fresco.</p>
                             </div>
                             <div class="menu-item-card">
                                 <div class="menu-item-header">
-                                    <h3 class="menu-item-name">Ceviche de Salmón</h3>
+                                    <h3 class="menu-item-name">Ceviche de Cochayuyo con Palta</h3>
+                                    <span class="menu-item-price">$4.000</span>
                                 </div>
-                                <p class="menu-item-desc">Cortes premium de salmón fresco, macerados con un toque de jengibre, cebolla morada, palta y leche de tigre cremosa.</p>
-                            </div>
-                            <div class="menu-item-card">
-                                <div class="menu-item-header">
-                                    <h3 class="menu-item-name">Ceviche Mixto Imperial</h3>
-                                </div>
-                                <p class="menu-item-desc">Combinación perfecta de reineta, camarones, pulpo y calamares frescos con notas cítricas intensas y cilantro.</p>
+                                <p class="menu-item-desc">Combinación nutritiva de cochayuyo seleccionado y palta fresca en cubos, aliñada con cebolla morada y cilantro.</p>
                             </div>
                         </div>
                     </div>
@@ -199,69 +211,96 @@
                     <!-- Tab: Empanadas -->
                     <div class="tab-pane" id="empanadas">
                         <div class="menu-grid">
+                            <!-- QUESOS -->
                             <div class="menu-item-card">
                                 <div class="menu-item-header">
-                                    <h3 class="menu-item-name">Empanada de Queso Camarón 🌟</h3>
-                                    <span class="menu-item-price">$3.000</span>
+                                    <h3 class="menu-item-name">Queso Camarón 🌟</h3>
+                                    <span class="menu-item-tag">Quesos</span>
+                                    <span class="menu-item-price">$2.800</span>
                                 </div>
-                                <p class="menu-item-desc">Masa casera crujiente rellena con abundante queso mantecoso derretido y camarones seleccionados.</p>
+                                <p class="menu-item-desc">Masa casera frita, crujiente, rellena con abundante queso mantecoso fundido y camarones seleccionados.</p>
                             </div>
                             <div class="menu-item-card">
                                 <div class="menu-item-header">
-                                    <h3 class="menu-item-name">Empanada de Queso Jaiba</h3>
-                                    <span class="menu-item-price">$3.800</span>
+                                    <h3 class="menu-item-name">Queso Ostión</h3>
+                                    <span class="menu-item-tag">Quesos</span>
+                                    <span class="menu-item-price">$3.500</span>
+                                </div>
+                                <p class="menu-item-desc">Exquisitos ostiones del Pacífico acompañados de queso mantecoso fundido en masa crujiente.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Queso Jaiba</h3>
+                                    <span class="menu-item-tag">Quesos</span>
+                                    <span class="menu-item-price">$3.500</span>
                                 </div>
                                 <p class="menu-item-desc">Carne suave de jaiba desmenuzada combinada con queso fundido en una fritura perfectamente dorada.</p>
                             </div>
                             <div class="menu-item-card">
                                 <div class="menu-item-header">
-                                    <h3 class="menu-item-name">Empanada de Queso Ostión</h3>
-                                    <span class="menu-item-price">$3.800</span>
-                                </div>
-                                <p class="menu-item-desc">Exquisitos ostiones del Pacífico acompañados de queso mantecoso fundido.</p>
-                            </div>
-                            <div class="menu-item-card">
-                                <div class="menu-item-header">
-                                    <h3 class="menu-item-name">Empanada de Queso Macha</h3>
-                                    <span class="menu-item-price">$3.800</span>
-                                </div>
-                                <p class="menu-item-desc">Laminas de machas seleccionadas preparadas al dente con queso derretido.</p>
-                            </div>
-                            <div class="menu-item-card">
-                                <div class="menu-item-header">
-                                    <h3 class="menu-item-name">Empanada Pino de Mariscos</h3>
-                                    <span class="menu-item-price">$3.000</span>
-                                </div>
-                                <p class="menu-item-desc">Pino tradicional de mariscos surtidos guisados con cebolla caramelizada y condimentos chilenos.</p>
-                            </div>
-                            <div class="menu-item-card">
-                                <div class="menu-item-header">
-                                    <h3 class="menu-item-name">Empanada de Pino Jibia</h3>
+                                    <h3 class="menu-item-name">Queso Macha</h3>
+                                    <span class="menu-item-tag">Quesos</span>
                                     <span class="menu-item-price">$3.500</span>
                                 </div>
-                                <p class="menu-item-desc">Guiso casero de jibia seleccionada, sazonada al estilo de La Picá.</p>
+                                <p class="menu-item-desc">Láminas de machas seleccionadas preparadas con queso derretido en masa dorada.</p>
                             </div>
                             <div class="menu-item-card">
                                 <div class="menu-item-header">
-                                    <h3 class="menu-item-name">Empanada de Pino Jurel</h3>
-                                    <span class="menu-item-price">$3.000</span>
+                                    <h3 class="menu-item-name">Queso Loco 👑</h3>
+                                    <span class="menu-item-tag">Quesos Premium</span>
+                                    <span class="menu-item-price">$7.000</span>
                                 </div>
-                                <p class="menu-item-desc">Sabrosa preparación casera de jurel con cebolla picada y especias.</p>
+                                <p class="menu-item-desc">Exclusivos trozos de loco tierno combinados con abundante queso mantecoso fundido.</p>
                             </div>
                             <div class="menu-item-card">
                                 <div class="menu-item-header">
-                                    <h3 class="menu-item-name">Empanada de Pino Loco 👑</h3>
-                                    <span class="menu-item-tag">Premium</span>
-                                    <span class="menu-item-price">$18.000</span>
+                                    <h3 class="menu-item-name">Queso Champiñón</h3>
+                                    <span class="menu-item-tag">Quesos</span>
+                                    <span class="menu-item-price">$2.800</span>
                                 </div>
-                                <p class="menu-item-desc">La joya de la casa. Carne de loco tierna y seleccionada, guisada artesanalmente en pino tradicional.</p>
+                                <p class="menu-item-desc">Una deliciosa opción vegetariana con champiñones salteados y queso mantecoso derretido.</p>
                             </div>
                             <div class="menu-item-card">
                                 <div class="menu-item-header">
-                                    <h3 class="menu-item-name">Empanada de Queso Champiñón</h3>
-                                    <span class="menu-item-price">$3.000</span>
+                                    <h3 class="menu-item-name">Queso Choclo</h3>
+                                    <span class="menu-item-tag">Quesos</span>
+                                    <span class="menu-item-price">$2.800</span>
                                 </div>
-                                <p class="menu-item-desc">Una deliciosa opción vegetariana con champiñones salteados y queso derretido.</p>
+                                <p class="menu-item-desc">Empanada dorada rellena de granos de choclo dulce y sabroso queso derretido.</p>
+                            </div>
+                            
+                            <!-- PINOS -->
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Pino Marisco</h3>
+                                    <span class="menu-item-tag">Pinos</span>
+                                    <span class="menu-item-price">$2.500</span>
+                                </div>
+                                <p class="menu-item-desc">Pino tradicional de mariscos surtidos guisados con cebolla caramelizada, pimentón y condimentos chilenos.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Pino Jaiba</h3>
+                                    <span class="menu-item-tag">Pinos</span>
+                                    <span class="menu-item-price">$2.500</span>
+                                </div>
+                                <p class="menu-item-desc">Sabrosa empanada frita rellena con pino casero de jaiba desmenuzada y especias.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Pino Locos 👑</h3>
+                                    <span class="menu-item-tag">Pinos Premium</span>
+                                    <span class="menu-item-price">$2.500</span>
+                                </div>
+                                <p class="menu-item-desc">Carne de loco tierna y seleccionada, guisada artesanalmente en pino tradicional.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Pino Especial</h3>
+                                    <span class="menu-item-tag">Pinos Premium</span>
+                                    <span class="menu-item-price">$7.000</span>
+                                </div>
+                                <p class="menu-item-desc">Nuestra receta especial con un pino selecto y cargado de mariscos premium de la casa.</p>
                             </div>
                         </div>
 
@@ -283,22 +322,86 @@
                         <div class="menu-grid">
                             <div class="menu-item-card">
                                 <div class="menu-item-header">
-                                    <h3 class="menu-item-name">Paella Marina Big Fish 🥘</h3>
-                                    <span class="menu-item-tag">Familiar</span>
+                                    <h3 class="menu-item-name">Paella para Dos 🥘</h3>
+                                    <span class="menu-item-tag">Recomendado</span>
+                                    <span class="menu-item-price">$9.900</span>
                                 </div>
-                                <p class="menu-item-desc">Arroz aromatizado con azafrán, colmado de choritos, almejas, camarones, pulpo, calamares y presas de pescado. Una fiesta de color.</p>
+                                <p class="menu-item-desc">Preparación tradicional con mariscos frescos, vino blanco, cebolla, pimentón, un toque de merkén y el sazón especial de la casa.</p>
                             </div>
                             <div class="menu-item-card">
                                 <div class="menu-item-header">
-                                    <h3 class="menu-item-name">Pescado Frito Republicano 🐟</h3>
+                                    <h3 class="menu-item-name">Churrasco Marino 🐟</h3>
+                                    <span class="menu-item-price">$5.000</span>
                                 </div>
-                                <p class="menu-item-desc">Filete de merluza austral rebozado en nuestro batido tradicional crujiente. Acompañado de papas fritas o ensalada chilena.</p>
+                                <p class="menu-item-desc">Marraqueta crujiente con filete de merluza frita, cebolla caramelizada y mayonesa casera.</p>
                             </div>
                             <div class="menu-item-card">
                                 <div class="menu-item-header">
-                                    <h3 class="menu-item-name">Reineta a la Plancha</h3>
+                                    <h3 class="menu-item-name">Merluza Frita o a la Plancha 🐟</h3>
+                                    <span class="menu-item-price">$6.000</span>
                                 </div>
-                                <p class="menu-item-desc">Fino filete de reineta cocinado al punto óptimo en plancha caliente, servido con salsa de mariscos cremosa al vino blanco.</p>
+                                <p class="menu-item-desc">Filete de merluza fresca del día rebozado en batido tradicional crujiente o cocinado a la plancha.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Jurel Frito o a la Plancha</h3>
+                                    <span class="menu-item-price">$7.000</span>
+                                </div>
+                                <p class="menu-item-desc">Filete de jurel sabroso preparado frito con batido crujiente o cocinado suavemente a la plancha.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Reineta Frita o a la Plancha 🌟</h3>
+                                    <span class="menu-item-price">$10.900</span>
+                                </div>
+                                <p class="menu-item-desc">Filete de reineta fresca preparado a tu elección: frito crujiente o a la plancha con finas hierbas.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Merluza Austral Frita o a la Plancha 🐟</h3>
+                                    <span class="menu-item-price">$10.900</span>
+                                </div>
+                                <p class="menu-item-desc">Filete premium de merluza austral de textura suave, cocinada frita o a la plancha en su punto exacto.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Albacora Frita o a la Plancha</h3>
+                                    <span class="menu-item-price">$11.900</span>
+                                </div>
+                                <p class="menu-item-desc">Filete premium de albacora, cocinado frito o a la plancha según tu preferencia.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Congrio Frito o a la Plancha</h3>
+                                    <span class="menu-item-price">$13.900</span>
+                                </div>
+                                <p class="menu-item-desc">Filete de congrio fresco preparado frito al estilo tradicional chileno o a la plancha.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Salmón Frito o a la Plancha</h3>
+                                    <span class="menu-item-price">$13.900</span>
+                                </div>
+                                <p class="menu-item-desc">Filete de salmón rosado chileno cocinado frito o a la plancha con notas cítricas e ideal punto de cocción.</p>
+                            </div>
+                        </div>
+
+                        <!-- Acompañamientos Section -->
+                        <div class="acompaniamientos-section reveal" style="margin-top: 50px;">
+                            <div class="acompaniamientos-header">
+                                <i class="fa-solid fa-plate-wheat"></i>
+                                <h4>Acompañamientos Incluidos</h4>
+                                <p>Todos nuestros pescados y platos de fondo incluyen <strong>dos acompañamientos</strong> a elección:</p>
+                            </div>
+                            <div class="acompaniamientos-grid">
+                                <div class="acomp-tag"><i class="fa-solid fa-bowl-rice"></i> Arroz</div>
+                                <div class="acomp-tag"><i class="fa-solid fa-mound"></i> Papas mayo</div>
+                                <div class="acomp-tag"><i class="fa-solid fa-carrot"></i> Ensalada chilena</div>
+                                <div class="acomp-tag"><i class="fa-solid fa-leaf"></i> Lechuga</div>
+                                <div class="acomp-tag"><i class="fa-solid fa-seedling"></i> Betarraga</div>
+                                <div class="acomp-tag"><i class="fa-solid fa-tree"></i> Brócoli</div>
+                                <div class="acomp-tag"><i class="fa-solid fa-pepper-hot"></i> Pepino</div>
+                                <div class="acomp-tag"><i class="fa-solid fa-carrot"></i> Zanahoria</div>
                             </div>
                         </div>
                     </div>
@@ -308,21 +411,60 @@
                         <div class="menu-grid">
                             <div class="menu-item-card">
                                 <div class="menu-item-header">
-                                    <h3 class="menu-item-name">Pulpo al Olivo Crujiente 🐙</h3>
+                                    <h3 class="menu-item-name">Chupe de Mariscos 🍲</h3>
+                                    <span class="menu-item-price">$8.900</span>
                                 </div>
-                                <p class="menu-item-desc">Tentáculos de pulpo asados, acompañados de una suave emulsión de aceitunas de Azapa, papas doradas y toques de chimichurri.</p>
+                                <p class="menu-item-desc">Guiso tradicional cremoso de mariscos surtidos, horneado y gratinado al momento con queso parmesano y pan tostado.</p>
                             </div>
                             <div class="menu-item-card">
                                 <div class="menu-item-header">
-                                    <h3 class="menu-item-name">Jardín de Mariscos Fríos</h3>
+                                    <h3 class="menu-item-name">Chupe de Camarón 🍲</h3>
+                                    <span class="menu-item-price">$12.000</span>
                                 </div>
-                                <p class="menu-item-desc">Choritos en su concha con salsa criolla, almejas frescas al limón, camarones marinados y pinzas de jaiba para compartir.</p>
+                                <p class="menu-item-desc">Deliciosa preparación cremosa gratinada rellena con abundantes camarones seleccionados.</p>
                             </div>
                             <div class="menu-item-card">
                                 <div class="menu-item-header">
-                                    <h3 class="menu-item-name">Machas a la Parmesana</h3>
+                                    <h3 class="menu-item-name">Chupe de Jaiba 🍲</h3>
+                                    <span class="menu-item-price">$12.000</span>
                                 </div>
-                                <p class="menu-item-desc">Lenguas de macha fresca horneadas en su concha con mantequilla, vino blanco, pimienta y generoso queso parmesano gratinado.</p>
+                                <p class="menu-item-desc">Guiso de carne de jaiba seleccionado y horneado en una cremosa mezcla con queso parmesano.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Chupe de Loco 🍲</h3>
+                                    <span class="menu-item-price">$12.000</span>
+                                </div>
+                                <p class="menu-item-desc">Guiso premium con trozos de locos tiernos cocinados de manera artesanal y gratinados con queso.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Chupe Especial 👑</h3>
+                                    <span class="menu-item-price">$15.000</span>
+                                    <span class="menu-item-tag">Imperial</span>
+                                </div>
+                                <p class="menu-item-desc">La combinación suprema: guiso horneado con locos tiernos, carne de jaiba y camarones seleccionados.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Consomé de Mariscos 🥣</h3>
+                                    <span class="menu-item-price">$3.000</span>
+                                </div>
+                                <p class="menu-item-desc">Caldo concentrado de mariscos preparado con vino blanco, cebolla, pimentón, ajo y un toque de merkén.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Almejas en Salsa Verde 🐚</h3>
+                                    <span class="menu-item-price">$8.000</span>
+                                </div>
+                                <p class="menu-item-desc">Almejas frescas y seleccionadas servidas con nuestra clásica salsa verde de la casa y limón sutil.</p>
+                            </div>
+                            <div class="menu-item-card">
+                                <div class="menu-item-header">
+                                    <h3 class="menu-item-name">Pulpo al Olivo 🐙</h3>
+                                    <span class="menu-item-price">$10.000</span>
+                                </div>
+                                <p class="menu-item-desc">Tentáculos de pulpo tiernos aliñados, acompañados con una salsa cremosa de aceitunas de Azapa.</p>
                             </div>
                         </div>
                     </div>
@@ -403,10 +545,15 @@
                             <i class="fa-brands fa-whatsapp info-icon text-whatsapp"></i>
                             <div class="info-text">
                                 <h3>Pedidos y Reservas</h3>
-                                <p>Escríbenos directamente para despachos o asegurar tu mesa.</p>
-                                <a href="https://wa.me/56912345678" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-card">
-                                    Enviar WhatsApp <i class="fa-brands fa-whatsapp"></i>
-                                </a>
+                                <p>Escríbenos directamente para despachos o asegurar tu mesa:</p>
+                                <div class="whatsapp-buttons-container">
+                                    <a href="https://wa.me/56922347212" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-card">
+                                        +56 9 2234 7212 <i class="fa-brands fa-whatsapp"></i>
+                                    </a>
+                                    <a href="https://wa.me/56961710247" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-card">
+                                        +56 9 6171 0247 <i class="fa-brands fa-whatsapp"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -440,10 +587,10 @@
                 </div>
                 <p class="footer-desc">El sabor indiscutible del océano en la calidez de tu barrio favorito.</p>
                 <div class="footer-socials">
-                    <a href="https://www.instagram.com/bigfishchile" target="_blank" rel="noopener noreferrer" aria-label="Siguenos en Instagram">
+                    <a href="https://www.instagram.com/lapica.bigfish?igsh=MXVlMXFqY2p1b21wYw==" target="_blank" rel="noopener noreferrer" aria-label="Siguenos en Instagram">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
-                    <a href="https://wa.me/56912345678" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos al WhatsApp">
+                    <a href="https://wa.me/56922347212" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos al WhatsApp">
                         <i class="fa-brands fa-whatsapp"></i>
                     </a>
                 </div>
@@ -454,7 +601,7 @@
                 <ul>
                     <li><a href="#hero">Inicio</a></li>
                     <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#menu">Nuestro Menú</a></li>
+                    <li><a href="menu.html">Nuestro Menú</a></li>
                     <li><a href="#especialidad">Especialidades</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
@@ -465,11 +612,24 @@
         </div>
     </footer>
 
+    <!-- Floating Instagram Button -->
+    <a href="https://www.instagram.com/lapica.bigfish?igsh=MXVlMXFqY2p1b21wYw==" class="instagram-float-btn" target="_blank" rel="noopener noreferrer" aria-label="Síguenos en Instagram">
+        <i class="fa-brands fa-instagram"></i>
+        <span class="instagram-tooltip">¡Síguenos en Instagram!</span>
+    </a>
+
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/56912345678" class="whatsapp-float-btn" target="_blank" rel="noopener noreferrer" aria-label="Chatear por WhatsApp">
+    <a href="https://wa.me/56922347212" class="whatsapp-float-btn" target="_blank" rel="noopener noreferrer" aria-label="Chatear por WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
         <span class="whatsapp-tooltip">¡Pide tu Ceviche aquí!</span>
     </a>
+
+    <!-- Lightbox Modal for Menu Pages -->
+    <div id="menu-lightbox" class="menu-lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" alt="Carta Completa">
+        <div id="lightbox-caption"></div>
+    </div>
 
     <!-- Custom JS -->
     <script src="js/underwater.js"></script>

@@ -1,0 +1,21 @@
+{
+    "name": "La Picá Big Fish",
+    "short_name": "Big Fish",
+    "description": "Sabores del Mar en Barrio República, Santiago",
+    "start_url": "/La-Pic-Big-Fish/",
+    "display": "standalone",
+    "background_color": "#0a0f1d",
+    "theme_color": "#00c9b1",
+    "icons": [
+        {
+            "src": "assets/instagram_profile.jpg",
+            "sizes": "192x192",
+            "type": "image/jpeg"
+        },
+        {
+            "src": "assets/instagram_profile.jpg",
+            "sizes": "512x512",
+            "type": "image/jpeg"
+        }
+    ]
+}

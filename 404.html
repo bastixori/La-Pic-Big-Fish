@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Este pez se escapó! | La Picá Big Fish</title>
+    <link rel="shortcut icon" href="assets/instagram_profile.jpg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css?v=5">
+    <style>
+        body {
+            background-color: #0a0f1d;
+            color: #f0ede8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .error-container {
+            position: relative;
+            z-index: 2;
+            padding: 40px;
+            max-width: 600px;
+        }
+
+        .error-icon {
+            font-size: 8rem;
+            margin-bottom: 20px;
+            animation: fishSwim 3s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes fishSwim {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(20px) rotate(5deg); }
+            75% { transform: translateX(-20px) rotate(-5deg); }
+        }
+
+        .error-code {
+            font-family: 'Alfa Slab One', serif;
+            font-size: 8rem;
+            color: #00c9b1;
+            line-height: 1;
+            margin-bottom: 10px;
+            -webkit-text-stroke: 2px rgba(0, 201, 177, 0.3);
+            text-shadow:
+                4px 4px 0 rgba(0, 0, 0, 0.7),
+                -1px -1px 0 rgba(0, 201, 177, 0.2),
+                0 0 30px rgba(0, 201, 177, 0.15);
+        }
+
+        .error-title {
+            font-family: 'Alfa Slab One', serif;
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            -webkit-text-stroke: 1px rgba(0, 201, 177, 0.3);
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
+        }
+
+        .error-desc {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: #a69d92;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .error-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 35px;
+            background: #00c9b1;
+            color: #0a0f1d;
+            font-family: 'Alfa Slab One', serif;
+            font-size: 1rem;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 201, 177, 0.3);
+        }
+
+        .error-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 201, 177, 0.5);
+        }
+
+        .bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -20px;
+            background: rgba(0, 201, 177, 0.06);
+            border-radius: 50%;
+            animation: rise linear infinite;
+        }
+
+        @keyframes rise {
+            0% { transform: translateY(0) scale(1); opacity: 0.4; }
+            100% { transform: translateY(-110vh) scale(0.3); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bubbles">
+        <div class="bubble" style="width:40px;height:40px;left:10%;animation-duration:8s;animation-delay:0s;"></div>
+        <div class="bubble" style="width:25px;height:25px;left:30%;animation-duration:10s;animation-delay:2s;"></div>
+        <div class="bubble" style="width:55px;height:55px;left:50%;animation-duration:7s;animation-delay:1s;"></div>
+        <div class="bubble" style="width:20px;height:20px;left:70%;animation-duration:12s;animation-delay:3s;"></div>
+        <div class="bubble" style="width:35px;height:35px;left:85%;animation-duration:9s;animation-delay:0.5s;"></div>
+    </div>
+
+    <div class="error-container">
+        <div class="error-icon">🐟</div>
+        <div class="error-code">404</div>
+        <h1 class="error-title">¡Este pez se escapó!</h1>
+        <p class="error-desc">La página que buscas no existe o fue arrastrada por la corriente. Pero tranquilo, nuestros ceviches siguen frescos en la carta.</p>
+        <a href="index.html" class="error-btn">
+            <i class="fa-solid fa-house"></i> Volver al Inicio
+        </a>
+    </div>
+
+</body>
+</html>

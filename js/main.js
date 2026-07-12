@@ -182,3 +182,38 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// ==========================================================================
+// IMPROVEMENT: Dynamic Open/Closed Status Indicator
+// ==========================================================================
+function updateOpenStatus() {
+    const now = new Date();
+    const day = now.getDay(); // 0=Sun, 1=Mon
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const currentTime = hours * 60 + minutes;
+    const openTime = 12 * 60 + 30; // 12:30
+    const closeTime = 19 * 60; // 19:00
+    
+    const isOpen = day !== 1 && currentTime >= openTime && currentTime < closeTime;
+    
+    const indicators = document.querySelectorAll('.status-indicator');
+    indicators.forEach(el => {
+        if (isOpen) {
+            el.className = 'status-indicator open';
+            el.innerHTML = '<span class="status-dot"></span> Abierto Ahora';
+        } else {
+            el.className = 'status-indicator closed';
+            if (day === 1) {
+                el.innerHTML = '<span class="status-dot"></span> Cerrado (Lunes)';
+            } else {
+                el.innerHTML = '<span class="status-dot"></span> Cerrado';
+            }
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    updateOpenStatus();
+    setInterval(updateOpenStatus, 60000);
+});

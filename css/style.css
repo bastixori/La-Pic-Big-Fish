@@ -1610,3 +1610,78 @@ img {
     transform: translateY(-2px);
 }
 
+/* ==========================================================================
+   PASSE-PARTOUT FRAME (VINTAGE FRAME EFFECT)
+   ========================================================================== */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 15px solid var(--bg-dark);
+    pointer-events: none;
+    z-index: 9999;
+    box-sizing: border-box;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border: 1px solid rgba(0, 201, 177, 0.25);
+    pointer-events: none;
+    z-index: 10000;
+    box-sizing: border-box;
+}
+
+/* Float fixed/sticky elements inside the frame */
+.navbar {
+    top: 15px !important;
+    left: 15px !important;
+    right: 15px !important;
+    width: calc(100% - 30px) !important;
+}
+
+.menu-page-header {
+    top: 15px !important;
+}
+
+.category-nav-bar {
+    top: 90px !important;
+}
+
+/* Adjust scroll margin for anchors so headings don't hide behind sticky bars */
+html {
+    scroll-padding-top: 160px;
+}
+
+@media (max-width: 768px) {
+    body::before {
+        border-width: 8px;
+    }
+    body::after {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+    }
+    .navbar {
+        top: 8px !important;
+        left: 8px !important;
+        right: 8px !important;
+        width: calc(100% - 16px) !important;
+    }
+    .menu-page-header {
+        top: 8px !important;
+    }
+    .category-nav-bar {
+        top: 78px !important;
+    }
+}
+
+

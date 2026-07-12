@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparador de Tipografías Vintage | La Picá Big Fish</title>
+    
+    <!-- Google Fonts Load (All vintage candidates) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alfa+Slab+One&family=Anton&family=Bebas+Neue&family=Cinzel+Decorative:wght@700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Special+Elite&family=Ultra&family=Young+Serif&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: #12100e;
+            color: #f4ede2;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'Young Serif', serif;
+            font-size: 2.5rem;
+            color: #c5a059;
+            margin-bottom: 10px;
+        }
+
+        p.subtitle {
+            font-size: 1.1rem;
+            color: #a69d92;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Split view */
+        .comparison-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .comparison-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Image Display Column */
+        .image-panel {
+            background: #181613;
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        .image-panel h2 {
+            font-size: 1.2rem;
+            color: #c5a059;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .sample-img {
+            max-width: 100%;
+            max-height: 500px;
+            border-radius: 6px;
+            border: 2px solid #282420;
+            object-fit: contain;
+        }
+
+        /* Font options list */
+        .fonts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .font-card {
+            background: #1c1916;
+            border: 1.5px solid #2d2722;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .font-card:hover {
+            border-color: #c5a059;
+            background: #231f1b;
+        }
+
+        .font-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .font-name {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #c5a059;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .font-number {
+            background: #b02f2c;
+            color: #ffffff;
+            font-size: 0.8rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+
+        /* Live previews */
+        .preview-quote {
+            font-size: 1.6rem;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+
+        .preview-menu {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #f6f4f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dotted rgba(255,255,255,0.15);
+            padding-bottom: 5px;
+        }
+
+        .preview-desc {
+            font-size: 0.95rem;
+            color: #a69d92;
+            margin-top: 8px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Comparador de Tipografías Vintage</h1>
+        <p class="subtitle">Compara la foto de tu cartel de ejemplo a la izquierda con los textos reales de la carta a la derecha para ver cuál tipografía calza exactamente.</p>
+    </header>
+
+    <div class="comparison-layout">
+        
+        <!-- Left: Image panel -->
+        <div class="image-panel">
+            <h2>Tu Imagen de Ejemplo (ejemplo.jpg)</h2>
+            <img src="assets/ejemplo.jpg" alt="Tu ejemplo de tipografía" class="sample-img" onerror="this.src='ejemplo.jpg';">
+        </div>
+
+        <!-- Right: Font Previews -->
+        <div class="fonts-list">
+
+            <!-- 1. Young Serif -->
+            <div class="font-card">
+                <div class="font-header">
+                    <span class="font-name">1. Young Serif (Actual para Títulos)</span>
+                    <span class="font-number">Opción A</span>
+                </div>
+                <div class="preview-quote" style="font-family: 'Young Serif', serif;">
+                    UNA PATADA EN EL CULO ES UN PASO ADELANTE
+                </div>
+                <div class="preview-menu" style="font-family: 'Young Serif', serif;">
+                    <span>Ceviche de Reineta</span>
+                    <span>$6.000</span>
+                </div>
+                <div class="preview-desc" style="font-family: 'Young Serif', serif;">
+                    Reineta marinada al instante con limón de Pica, cebolla morada y cilantro.
+                </div>
+            </div>
+
+            <!-- 2. Abril Fatface -->
+            <div class="font-card">
+                <div class="font-header">
+                    <span class="font-name">2. Abril Fatface (Elegante &amp; Gruesa)</span>
+                    <span class="font-number">Opción B</span>
+                </div>
+                <div class="preview-quote" style="font-family: 'Abril Fatface', serif;">
+                    UNA PATADA EN EL CULO ES UN PASO ADELANTE
+                </div>
+                <div class="preview-menu" style="font-family: 'Abril Fatface', serif;">
+                    <span>Ceviche de Reineta</span>
+                    <span>$6.000</span>
+                </div>
+                <div class="preview-desc" style="font-family: 'Abril Fatface', serif;">
+                    Reineta marinada al instante con limón de Pica, cebolla morada y cilantro.
+                </div>
+            </div>
+
+            <!-- 3. Alfa Slab One -->
+            <div class="font-card">
+                <div class="font-header">
+                    <span class="font-name">3. Alfa Slab One (Bloque Tipo Madera muy Grueso)</span>
+                    <span class="font-number">Opción C</span>
+                </div>
+                <div class="preview-quote" style="font-family: 'Alfa Slab One', serif;">
+                    UNA PATADA EN EL CULO ES UN PASO ADELANTE
+                </div>
+                <div class="preview-menu" style="font-family: 'Alfa Slab One', serif;">
+                    <span>Ceviche de Reineta</span>
+                    <span>$6.000</span>
+                </div>
+                <div class="preview-desc" style="font-family: 'Alfa Slab One', serif;">
+                    Reineta marinada al instante con limón de Pica, cebolla morada y cilantro.
+                </div>
+            </div>
+
+            <!-- 4. Ultra -->
+            <div class="font-card">
+                <div class="font-header">
+                    <span class="font-name">4. Ultra (Estilo Cartel del Lejano Oeste)</span>
+                    <span class="font-number">Opción D</span>
+                </div>
+                <div class="preview-quote" style="font-family: 'Ultra', serif;">
+                    UNA PATADA EN EL CULO ES UN PASO ADELANTE
+                </div>
+                <div class="preview-menu" style="font-family: 'Ultra', serif;">
+                    <span>Ceviche de Reineta</span>
+                    <span>$6.000</span>
+                </div>
+                <div class="preview-desc" style="font-family: 'Ultra', serif;">
+                    Reineta marinada al instante con limón de Pica, cebolla morada y cilantro.
+                </div>
+            </div>
+
+            <!-- 5. Fraunces -->
+            <div class="font-card">
+                <div class="font-header">
+                    <span class="font-name">5. Fraunces (Actual para Textos)</span>
+                    <span class="font-number">Opción E</span>
+                </div>
+                <div class="preview-quote" style="font-family: 'Fraunces', serif;">
+                    UNA PATADA EN EL CULO ES UN PASO ADELANTE
+                </div>
+                <div class="preview-menu" style="font-family: 'Fraunces', serif;">
+                    <span>Ceviche de Reineta</span>
+                    <span>$6.000</span>
+                </div>
+                <div class="preview-desc" style="font-family: 'Fraunces', serif; font-style: italic;">
+                    Reineta marinada al instante con limón de Pica, cebolla morada y cilantro.
+                </div>
+            </div>
+
+            <!-- 6. Special Elite -->
+            <div class="font-card">
+                <div class="font-header">
+                    <span class="font-name">6. Special Elite (Estilo Máquina de Escribir)</span>
+                    <span class="font-number">Opción F</span>
+                </div>
+                <div class="preview-quote" style="font-family: 'Special Elite', serif;">
+                    UNA PATADA EN EL CULO ES UN PASO ADELANTE
+                </div>
+                <div class="preview-menu" style="font-family: 'Special Elite', serif;">
+                    <span>Ceviche de Reineta</span>
+                    <span>$6.000</span>
+                </div>
+                <div class="preview-desc" style="font-family: 'Special Elite', serif;">
+                    Reineta marinada al instante con limón de Pica, cebolla morada y cilantro.
+                </div>
+            </div>
+
+            <!-- 7. Libre Baskerville -->
+            <div class="font-card">
+                <div class="font-header">
+                    <span class="font-name">7. Libre Baskerville (Clásica de Diario Antiguo)</span>
+                    <span class="font-number">Opción G</span>
+                </div>
+                <div class="preview-quote" style="font-family: 'Libre Baskerville', serif;">
+                    UNA PATADA EN EL CULO ES UN PASO ADELANTE
+                </div>
+                <div class="preview-menu" style="font-family: 'Libre Baskerville', serif;">
+                    <span>Ceviche de Reineta</span>
+                    <span>$6.000</span>
+                </div>
+                <div class="preview-desc" style="font-family: 'Libre Baskerville', serif;">
+                    Reineta marinada al instante con limón de Pica, cebolla morada y cilantro.
+                </div>
+            </div>
+
+            <!-- 8. Anton -->
+            <div class="font-card">
+                <div class="font-header">
+                    <span class="font-name">8. Anton (Sans-Serif de Cartel Grueso)</span>
+                    <span class="font-number">Opción H</span>
+                </div>
+                <div class="preview-quote" style="font-family: 'Anton', sans-serif;">
+                    UNA PATADA EN EL CULO ES UN PASO ADELANTE
+                </div>
+                <div class="preview-menu" style="font-family: 'Anton', sans-serif;">
+                    <span>Ceviche de Reineta</span>
+                    <span>$6.000</span>
+                </div>
+                <div class="preview-desc" style="font-family: 'Anton', sans-serif;">
+                    Reineta marinada al instante con limón de Pica, cebolla morada y cilantro.
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

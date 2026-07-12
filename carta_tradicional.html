@@ -16,7 +16,7 @@
 
     <style>
         /* ==========================================================================
-           TRADITIONAL PAPER MENU STYLES ("A LA ANTIGUA")
+           DARK MODE MENU STYLES — La Picá Big Fish Palette
            ========================================================================== */
         * {
             box-sizing: border-box;
@@ -24,13 +24,27 @@
             padding: 0;
         }
 
+        :root {
+            --primary:      #00c9b1;
+            --primary-glow: rgba(0, 201, 177, 0.25);
+            --blue-accent:  #00a2ff;
+            --bg-dark:      #060913;
+            --bg-card:      rgba(10, 18, 40, 0.88);
+            --bg-card2:     rgba(0, 201, 177, 0.05);
+            --border:       rgba(0, 201, 177, 0.18);
+            --border-dim:   rgba(0, 201, 177, 0.08);
+            --text-white:   #f0f4ff;
+            --text-muted:   rgba(200, 215, 240, 0.65);
+            --text-dim:     rgba(200, 215, 240, 0.4);
+        }
+
         body {
-            background-color: #060913;
+            background-color: var(--bg-dark);
             background-image:
                 radial-gradient(circle at 10% 20%, rgba(0, 201, 177, 0.07) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(0, 162, 255, 0.05) 0%, transparent 40%),
                 radial-gradient(circle at 50% 0%, rgba(23, 36, 60, 0.5) 0%, rgba(6, 9, 19, 0) 70%);
-            color: #2b221a;
+            color: var(--text-white);
             font-family: 'Libre Baskerville', Georgia, serif;
             line-height: 1.5;
             min-height: 100vh;
@@ -48,44 +62,45 @@
         /* Underwater animated canvas */
         #underwater-canvas {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.6;
+            opacity: 0.65;
         }
 
-        /* Printable / Standing Menu Container */
+        /* Dark Glassmorphism Card */
         .paper-menu {
-            background-color: #fcf9f2;
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             width: 100%;
             max-width: 780px;
-            border: 1px solid #c2b5a3;
-            border-radius: 4px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
             padding: 40px 32px;
-            box-shadow: 
-                0 15px 35px rgba(43, 34, 26, 0.35),
-                0 0 0 8px #fcf9f2,
-                0 0 0 10px #c2b5a3;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.6),
+                0 0 0 1px var(--border-dim),
+                inset 0 1px 0 rgba(0, 201, 177, 0.1);
             position: relative;
             z-index: 1;
         }
 
-        /* Vintage Decorative Border Corners */
+        /* Corner accents */
         .menu-corner {
             position: absolute;
-            width: 30px;
-            height: 30px;
-            border: 2px solid #8c7355;
+            width: 28px;
+            height: 28px;
+            border: 1.5px solid var(--primary);
             pointer-events: none;
+            opacity: 0.5;
         }
 
-        .corner-tl { top: 15px; left: 15px; border-right: none; border-bottom: none; }
-        .corner-tr { top: 15px; right: 15px; border-left: none; border-bottom: none; }
-        .corner-bl { bottom: 15px; left: 15px; border-right: none; border-top: none; }
-        .corner-br { bottom: 15px; right: 15px; border-left: none; border-top: none; }
+        .corner-tl { top: 14px; left: 14px; border-right: none; border-bottom: none; }
+        .corner-tr { top: 14px; right: 14px; border-left: none; border-bottom: none; }
+        .corner-bl { bottom: 14px; left: 14px; border-right: none; border-top: none; }
+        .corner-br { bottom: 14px; right: 14px; border-left: none; border-top: none; }
 
         /* Back button */
         .btn-back-vintage {
@@ -93,38 +108,40 @@
             align-items: center;
             gap: 8px;
             font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 600;
-            color: #8c7355;
+            color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 1px;
             text-decoration: none;
-            border: 1px solid #dcd3c4;
-            padding: 8px 16px;
+            border: 1px solid var(--border);
+            padding: 7px 16px;
             border-radius: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 36px;
             transition: all 0.3s ease;
+            background: transparent;
         }
 
         .btn-back-vintage:hover {
-            color: #2b221a;
-            border-color: #8c7355;
-            background-color: #f7f3ea;
+            background: var(--primary-glow);
+            border-color: var(--primary);
+            color: #fff;
         }
 
-        /* Menu Header styling */
+        /* Header */
         .menu-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 44px;
             position: relative;
         }
 
         .menu-logo-circle {
-            width: 80px;
-            height: 80px;
+            width: 78px;
+            height: 78px;
             border-radius: 50%;
-            border: 2px solid #8c7355;
-            margin: 0 auto 15px auto;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 18px var(--primary-glow);
+            margin: 0 auto 14px auto;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -132,15 +149,13 @@
         }
 
         .menu-logo-circle img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 100%; height: 100%; object-fit: cover;
         }
 
         .menu-title {
             font-family: 'Abril Fatface', serif;
-            font-size: 3.5rem;
-            color: #2b221a;
+            font-size: 3.2rem;
+            color: var(--text-white);
             letter-spacing: 1px;
             line-height: 1.1;
             margin-bottom: 5px;
@@ -148,9 +163,9 @@
 
         .menu-subtitle {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-style: italic;
-            color: #8c7355;
+            color: var(--primary);
             font-weight: 600;
             letter-spacing: 1px;
             margin-bottom: 10px;
@@ -160,10 +175,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            color: #8c7355;
-            margin: 15px 0;
-            font-size: 0.8rem;
+            gap: 14px;
+            color: var(--primary);
+            margin: 14px 0;
+            font-size: 0.9rem;
         }
 
         .menu-divider-ornament::before,
@@ -171,29 +186,26 @@
             content: '';
             width: 80px;
             height: 1px;
-            background-color: #c2b5a3;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
         }
 
-        /* Two-column menu grid layout for desktop */
+        /* Two-column grid */
         .menu-content-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            column-gap: 50px;
-            row-gap: 40px;
+            column-gap: 45px;
+            row-gap: 38px;
         }
 
-        /* Menu Category Block */
-        .category-section {
-            break-inside: avoid;
-        }
+        .category-section { break-inside: avoid; }
 
         .category-title {
             font-family: 'Abril Fatface', serif;
-            font-size: 1.7rem;
-            color: #2b221a;
-            border-bottom: 2px double #c2b5a3;
-            padding-bottom: 5px;
-            margin-bottom: 20px;
+            font-size: 1.55rem;
+            color: var(--text-white);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+            margin-bottom: 18px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             display: flex;
@@ -202,13 +214,13 @@
         }
 
         .category-title i {
-            font-size: 1.1rem;
-            color: #8c7355;
+            font-size: 1rem;
+            color: var(--primary);
         }
 
-        /* Dot Leader Item Layout */
+        /* Dot leader items */
         .menu-item {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             page-break-inside: avoid;
         }
 
@@ -221,14 +233,14 @@
 
         .menu-item-name {
             font-weight: 700;
-            font-size: 1.05rem;
-            color: #2b221a;
+            font-size: 1rem;
+            color: var(--text-white);
             white-space: nowrap;
         }
 
         .menu-item-dots {
             flex-grow: 1;
-            border-bottom: 1.5px dotted #a39685;
+            border-bottom: 1px dotted rgba(0, 201, 177, 0.25);
             margin: 0 10px;
             position: relative;
             top: -4px;
@@ -236,85 +248,87 @@
 
         .menu-item-price {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.25rem;
-            color: #8c7355;
+            font-size: 1.2rem;
+            color: var(--primary);
             font-weight: 700;
             white-space: nowrap;
             letter-spacing: 0.5px;
+            text-shadow: 0 0 10px var(--primary-glow);
         }
 
         .menu-item-desc {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             font-style: italic;
-            color: #5c4e43;
-            line-height: 1.4;
+            color: var(--text-muted);
+            line-height: 1.45;
         }
 
         .menu-item-tags {
-            margin-top: 3px;
+            margin-top: 4px;
             display: flex;
             gap: 5px;
         }
 
         .tag-vintage {
             font-family: 'Inter', sans-serif;
-            font-size: 0.62rem;
+            font-size: 0.6rem;
             font-weight: 700;
             text-transform: uppercase;
-            border: 1px solid #c2b5a3;
-            color: #8c7355;
-            padding: 1px 6px;
-            border-radius: 2px;
+            border: 1px solid var(--border);
+            color: var(--primary);
+            background: var(--bg-card2);
+            padding: 1px 7px;
+            border-radius: 3px;
             letter-spacing: 0.5px;
         }
 
-        /* sub-categories within categories */
+        /* Sub-category headers */
         .subcategory-header {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             font-style: italic;
-            color: #8c7355;
-            margin: 15px 0 10px 0;
-            border-left: 2px solid #8c7355;
+            color: var(--primary);
+            margin: 14px 0 10px 0;
+            border-left: 2px solid var(--primary);
             padding-left: 10px;
         }
 
-        /* Accompaniments box styling */
+        /* Accompaniments box */
         .acomp-box {
             grid-column: 1 / -1;
-            background-color: #f7f4ea;
-            border: 1px solid #dcd3c4;
-            border-radius: 4px;
-            padding: 25px;
+            background: var(--bg-card2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 22px;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 16px;
         }
 
         .acomp-title {
             font-family: 'Abril Fatface', serif;
-            font-size: 1.4rem;
-            color: #2b221a;
+            font-size: 1.3rem;
+            color: var(--text-white);
             margin-bottom: 5px;
         }
 
         .acomp-desc {
             font-family: 'Playfair Display', Georgia, serif;
             font-style: italic;
-            font-size: 0.95rem;
-            color: #5c4e43;
-            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 14px;
         }
 
         .acomp-items-list {
             font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 600;
-            color: #8c7355;
+            color: var(--primary);
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 14px;
             justify-content: center;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -327,23 +341,23 @@
         }
 
         .acomp-item i {
-            font-size: 0.75rem;
-            color: #2b221a;
+            font-size: 0.7rem;
+            color: var(--primary);
         }
 
-        /* Footer Notes */
+        /* Footer */
         .menu-footer {
             text-align: center;
-            border-top: 1px solid #c2b5a3;
-            padding-top: 30px;
-            margin-top: 50px;
+            border-top: 1px solid var(--border-dim);
+            padding-top: 26px;
+            margin-top: 44px;
             font-family: 'Playfair Display', Georgia, serif;
             font-style: italic;
-            font-size: 0.92rem;
-            color: #8c7355;
+            font-size: 0.88rem;
+            color: var(--text-dim);
         }
 
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 850px) {
             .page-wrapper {
                 padding: 20px 15px;
@@ -351,31 +365,23 @@
             }
             .menu-content-grid {
                 grid-template-columns: 1fr;
-                row-gap: 30px;
+                row-gap: 28px;
             }
             .paper-menu {
-                padding: 28px 18px;
+                padding: 26px 18px;
                 max-width: 100%;
             }
-            .menu-title {
-                font-size: 2.4rem;
-            }
+            .menu-title { font-size: 2.3rem; }
         }
 
-        /* Print Optimization */
+        /* Print */
         @media print {
-            body {
-                background: #ffffff;
-                padding: 0;
-            }
+            body { background: #fff; }
+            #underwater-canvas { display: none; }
             .paper-menu {
+                background: #fff;
+                color: #000;
                 box-shadow: none;
-                border: none;
-                padding: 0;
-                max-width: 100%;
-            }
-            .btn-back-vintage {
-                display: none;
             }
             .menu-corner {
                 display: none;

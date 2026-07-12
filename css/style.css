@@ -14,9 +14,9 @@
     --whatsapp-green: #25d366;
     
     /* Fonts */
-    --font-heading: 'Young Serif', 'Abril Fatface', serif;
-    --font-serif: 'Fraunces', 'Playfair Display', Georgia, serif;
-    --font-body: 'Fraunces', 'Libre Baskerville', Georgia, serif;
+    --font-heading: 'Alfa Slab One', 'Abril Fatface', serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-body: 'Playfair Display', Georgia, serif;
     --font-accent: 'Bebas Neue', sans-serif;
 
     /* Transitions */
@@ -93,7 +93,12 @@ img {
     font-weight: 700;
     color: var(--white);
     margin-bottom: 15px;
-    letter-spacing: -0.5px;
+    letter-spacing: 1px;
+    -webkit-text-stroke: 1px rgba(197, 160, 89, 0.4);
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.6),
+        -1px -1px 0 rgba(197, 160, 89, 0.15),
+        0 0 12px rgba(197, 160, 89, 0.1);
 }
 
 .section-subtitle {
@@ -396,6 +401,11 @@ img {
     font-weight: 700;
     margin-bottom: 25px;
     color: var(--white);
+    -webkit-text-stroke: 1.5px rgba(197, 160, 89, 0.35);
+    text-shadow:
+        3px 3px 0 rgba(0, 0, 0, 0.7),
+        -1px -1px 0 rgba(197, 160, 89, 0.2),
+        0 0 20px rgba(197, 160, 89, 0.15);
 }
 
 .hero-description {

@@ -117,7 +117,7 @@ class FishSchool {
             this.ctx.rotate(angle);
             
             // Color turquesa brillante (de la imagen del usuario, con excelente opacidad)
-            this.ctx.fillStyle = 'rgba(0, 201, 177, 0.45)';
+            this.ctx.fillStyle = 'rgba(197, 160, 89, 0.45)';
             
             // Cuerpo del pez (Elipse)
             this.ctx.beginPath();

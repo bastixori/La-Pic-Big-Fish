@@ -29,10 +29,15 @@
             color: #2b221a;
             font-family: 'Libre Baskerville', Georgia, serif;
             line-height: 1.5;
-            padding: 30px 15px;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Wrapper to position carta left-aligned */
+        .page-wrapper {
             display: flex;
             justify-content: flex-start;
-            padding-left: 40px;
+            padding: 30px 15px 30px 40px;
             min-height: 100vh;
         }
 
@@ -336,8 +341,8 @@
 
         /* Responsive Design */
         @media (max-width: 850px) {
-            body {
-                padding-left: 15px;
+            .page-wrapper {
+                padding: 20px 15px;
                 justify-content: center;
             }
             .menu-content-grid {
@@ -379,6 +384,7 @@
     <!-- Underwater animated background (fish + octopus) -->
     <canvas id="underwater-canvas" aria-hidden="true"></canvas>
 
+    <div class="page-wrapper">
     <div class="paper-menu">
         <!-- Corners -->
         <div class="menu-corner corner-tl"></div>
@@ -738,6 +744,8 @@
             <p>La Picá Big Fish — Sabores del Mar en el Barrio República, Santiago</p>
         </footer>
     </div>
+
+    </div><!-- end page-wrapper -->
 
     <!-- Animated underwater background -->
     <script src="js/underwater.js"></script>

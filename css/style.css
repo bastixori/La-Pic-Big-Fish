@@ -14,7 +14,8 @@
     --whatsapp-green: #25d366;
     
     /* Fonts */
-    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-heading: 'Abril Fatface', serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
     --font-body: 'Inter', system-ui, -apple-system, sans-serif;
     --font-accent: 'Bebas Neue', sans-serif;
 

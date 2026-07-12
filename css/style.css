@@ -297,10 +297,11 @@ img {
 }
 
 .logo-text {
-    font-family: var(--font-accent);
-    font-size: 1.8rem;
-    letter-spacing: 2px;
+    font-family: var(--font-heading);
+    font-size: 1.9rem;
+    letter-spacing: 0.5px;
     color: var(--white);
+    text-transform: uppercase;
 }
 
 .nav-menu ul {

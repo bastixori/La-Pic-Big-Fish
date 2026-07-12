@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta Tradicional | La Picá Big Fish</title>
+    <meta name="description" content="Nuestra carta al estilo tradicional. Un diseño clásico en papel pergamino con todos nuestros ceviches, empanadas, platos de fondo y chupes para leer a la antigua.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           TRADITIONAL PAPER MENU STYLES ("A LA ANTIGUA")
+           ========================================================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #e5dcd0;
+            /* Subtle paper texture using CSS gradients */
+            background-image: 
+                radial-gradient(rgba(0,0,0,0.02) 20%, transparent 20%),
+                radial-gradient(rgba(0,0,0,0.02) 40%, transparent 40%),
+                linear-gradient(135deg, #f3ede2 0%, #e5dcd0 100%);
+            background-size: 8px 8px, 8px 8px, 100% 100%;
+            color: #2b221a;
+            font-family: 'Libre Baskerville', Georgia, serif;
+            line-height: 1.5;
+            padding: 30px 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Printable / Standing Menu Container */
+        .paper-menu {
+            background-color: #fcf9f2;
+            width: 100%;
+            max-width: 1000px;
+            border: 1px solid #c2b5a3;
+            border-radius: 4px;
+            padding: 50px 40px;
+            box-shadow: 
+                0 15px 35px rgba(43, 34, 26, 0.15),
+                0 0 0 10px #fcf9f2,
+                0 0 0 12px #c2b5a3;
+            position: relative;
+        }
+
+        /* Vintage Decorative Border Corners */
+        .menu-corner {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #8c7355;
+            pointer-events: none;
+        }
+
+        .corner-tl { top: 15px; left: 15px; border-right: none; border-bottom: none; }
+        .corner-tr { top: 15px; right: 15px; border-left: none; border-bottom: none; }
+        .corner-bl { bottom: 15px; left: 15px; border-right: none; border-top: none; }
+        .corner-br { bottom: 15px; right: 15px; border-left: none; border-top: none; }
+
+        /* Back button */
+        .btn-back-vintage {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #8c7355;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            border: 1px solid #dcd3c4;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back-vintage:hover {
+            color: #2b221a;
+            border-color: #8c7355;
+            background-color: #f7f3ea;
+        }
+
+        /* Menu Header styling */
+        .menu-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .menu-logo-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid #8c7355;
+            margin: 0 auto 15px auto;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-logo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .menu-title {
+            font-family: 'Abril Fatface', serif;
+            font-size: 3.5rem;
+            color: #2b221a;
+            letter-spacing: 1px;
+            line-height: 1.1;
+            margin-bottom: 5px;
+        }
+
+        .menu-subtitle {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #8c7355;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .menu-divider-ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            color: #8c7355;
+            margin: 15px 0;
+            font-size: 0.8rem;
+        }
+
+        .menu-divider-ornament::before,
+        .menu-divider-ornament::after {
+            content: '';
+            width: 80px;
+            height: 1px;
+            background-color: #c2b5a3;
+        }
+
+        /* Two-column menu grid layout for desktop */
+        .menu-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 50px;
+            row-gap: 40px;
+        }
+
+        /* Menu Category Block */
+        .category-section {
+            break-inside: avoid;
+        }
+
+        .category-title {
+            font-family: 'Abril Fatface', serif;
+            font-size: 1.7rem;
+            color: #2b221a;
+            border-bottom: 2px double #c2b5a3;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-title i {
+            font-size: 1.1rem;
+            color: #8c7355;
+        }
+
+        /* Dot Leader Item Layout */
+        .menu-item {
+            margin-bottom: 20px;
+            page-break-inside: avoid;
+        }
+
+        .menu-item-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .menu-item-name {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #2b221a;
+            white-space: nowrap;
+        }
+
+        .menu-item-dots {
+            flex-grow: 1;
+            border-bottom: 1.5px dotted #a39685;
+            margin: 0 10px;
+            position: relative;
+            top: -4px;
+        }
+
+        .menu-item-price {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.25rem;
+            color: #8c7355;
+            font-weight: 700;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+        }
+
+        .menu-item-desc {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 0.88rem;
+            font-style: italic;
+            color: #5c4e43;
+            line-height: 1.4;
+        }
+
+        .menu-item-tags {
+            margin-top: 3px;
+            display: flex;
+            gap: 5px;
+        }
+
+        .tag-vintage {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 1px solid #c2b5a3;
+            color: #8c7355;
+            padding: 1px 6px;
+            border-radius: 2px;
+            letter-spacing: 0.5px;
+        }
+
+        /* sub-categories within categories */
+        .subcategory-header {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-style: italic;
+            color: #8c7355;
+            margin: 15px 0 10px 0;
+            border-left: 2px solid #8c7355;
+            padding-left: 10px;
+        }
+
+        /* Accompaniments box styling */
+        .acomp-box {
+            grid-column: 1 / -1;
+            background-color: #f7f4ea;
+            border: 1px solid #dcd3c4;
+            border-radius: 4px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .acomp-title {
+            font-family: 'Abril Fatface', serif;
+            font-size: 1.4rem;
+            color: #2b221a;
+            margin-bottom: 5px;
+        }
+
+        .acomp-desc {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #5c4e43;
+            margin-bottom: 15px;
+        }
+
+        .acomp-items-list {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #8c7355;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .acomp-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .acomp-item i {
+            font-size: 0.75rem;
+            color: #2b221a;
+        }
+
+        /* Footer Notes */
+        .menu-footer {
+            text-align: center;
+            border-top: 1px solid #c2b5a3;
+            padding-top: 30px;
+            margin-top: 50px;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-size: 0.92rem;
+            color: #8c7355;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 850px) {
+            .menu-content-grid {
+                grid-template-columns: 1fr;
+                row-gap: 30px;
+            }
+            .paper-menu {
+                padding: 35px 20px;
+            }
+            .menu-title {
+                font-size: 2.8rem;
+            }
+        }
+
+        /* Print Optimization */
+        @media print {
+            body {
+                background: #ffffff;
+                padding: 0;
+            }
+            .paper-menu {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                max-width: 100%;
+            }
+            .btn-back-vintage {
+                display: none;
+            }
+            .menu-corner {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="paper-menu">
+        <!-- Corners -->
+        <div class="menu-corner corner-tl"></div>
+        <div class="menu-corner corner-tr"></div>
+        <div class="menu-corner corner-bl"></div>
+        <div class="menu-corner corner-br"></div>
+
+        <!-- Back Button -->
+        <a href="index.html" class="btn-back-vintage">
+            <i class="fa-solid fa-arrow-left"></i> Volver al Inicio
+        </a>
+
+        <!-- Header -->
+        <header class="menu-header">
+            <div class="menu-logo-circle">
+                <img src="assets/instagram_profile.jpg" alt="Logo Big Fish">
+            </div>
+            <h1 class="menu-title">La Picá Big Fish</h1>
+            <p class="menu-subtitle">Nuestra Carta</p>
+            <div class="menu-divider-ornament">
+                <i class="fa-solid fa-fish"></i>
+            </div>
+        </header>
+
+        <!-- Two column grid menu -->
+        <div class="menu-content-grid">
+
+            <!-- COLUMN 1 -->
+            <div class="menu-column">
+
+                <!-- 1. CEVICHES -->
+                <section class="category-section">
+                    <h2 class="category-title"><i class="fa-solid fa-lemon"></i> Ceviches</h2>
+                    
+                    <!-- Ceviche Reineta -->
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Ceviche de Reineta</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$6.000</span>
+                        </div>
+                        <p class="menu-item-desc">Reineta marinada al instante con limón sutil de Pica, cebolla morada, pimentón y cilantro.</p>
+                        <div class="menu-item-tags">
+                            <span class="tag-vintage">Fresco</span>
+                            <span class="tag-vintage">Favorito</span>
+                        </div>
+                    </div>
+
+                    <!-- Ceviche Cochayuyo -->
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Ceviche Cochayuyo y Palta</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$4.000</span>
+                        </div>
+                        <p class="menu-item-desc">Combinación nutritiva de cochayuyo seleccionado y palta fresca, aliñada con cebolla morada y cilantro.</p>
+                    </div>
+                </section>
+
+                <!-- 2. EMPANADAS FRITAS -->
+                <section class="category-section" style="margin-top: 35px;">
+                    <h2 class="category-title"><i class="fa-solid fa-cookie"></i> Empanadas Fritas</h2>
+                    
+                    <!-- Quesos -->
+                    <h3 class="subcategory-header">Con Queso Derretido</h3>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Queso Camarón 🌟</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$3.000</span>
+                        </div>
+                        <p class="menu-item-desc">Rellena de abundante queso mantecoso fundido y camarones seleccionados.</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Queso Jaiba</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$3.800</span>
+                        </div>
+                        <p class="menu-item-desc">Carne suave de jaiba desmenuzada combinada con queso fundido.</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Queso Macha</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$3.800</span>
+                        </div>
+                        <p class="item-desc">Láminas de machas seleccionadas preparadas con queso derretido.</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Queso Ostión</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$3.500</span>
+                        </div>
+                        <p class="menu-item-desc">Ostiones seleccionados y queso fundido en masa crujiente.</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Queso Loco 👑</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$7.000</span>
+                        </div>
+                        <p class="menu-item-desc">Trozos de loco tierno combinados con queso mantecoso fundido.</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Queso Champiñón</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$2.800</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Queso Choclo</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$2.800</span>
+                        </div>
+                    </div>
+
+                    <!-- Pinos -->
+                    <h3 class="subcategory-header">Pinos Tradicionales</h3>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Pino Marisco</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$3.000</span>
+                        </div>
+                        <p class="menu-item-desc">Mariscos surtidos guisados con cebolla caramelizada, pimentón y condimentos.</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Pino Jaiba</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$3.800</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Pino Jurel</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$3.000</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Pino Jivia</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$3.500</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Pino Locos 👑</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$8.000</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Pino Especial</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$7.000</span>
+                        </div>
+                    </div>
+
+                </section>
+
+            </div>
+
+            <!-- COLUMN 2 -->
+            <div class="menu-column">
+
+                <!-- 3. PLATOS DE FONDO -->
+                <section class="category-section">
+                    <h2 class="category-title"><i class="fa-solid fa-fish"></i> Platos de Fondo</h2>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Merluza Frita o a la Plancha</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$6.000</span>
+                        </div>
+                        <p class="menu-item-desc">Filete fresco rebozado en batido tradicional o a la plancha. Incluye dos acompañamientos.</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Jurel Frito o a la Plancha</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$7.000</span>
+                        </div>
+                        <p class="menu-item-desc">Sabroso filete preparado a tu elección. Incluye dos acompañamientos.</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Albacora Frita o a la Plancha</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$11.900</span>
+                        </div>
+                        <p class="menu-item-desc">Filete de albacora premium. Incluye dos acompañamientos.</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Reineta Frita o a la Plancha 🌟</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$10.900</span>
+                        </div>
+                        <p class="menu-item-desc">Filete de reineta preparado en su punto. Incluye dos acompañamientos.</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Merluza Austral Frita/Plancha</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$10.900</span>
+                        </div>
+                        <p class="menu-item-desc">Filete de merluza austral de textura suave. Incluye dos acompañamientos.</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Congrio Frito o a la Plancha</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$13.900</span>
+                        </div>
+                        <p class="menu-item-desc">Congrio fresco preparado frito o a la plancha. Incluye dos acompañamientos.</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Salmón Frito o a la Plancha</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$13.900</span>
+                        </div>
+                        <p class="menu-item-desc">Filete de salmón rosado preparado en su punto. Incluye dos acompañamientos.</p>
+                    </div>
+                </section>
+
+                <!-- 4. CHUPES Y CALDOS -->
+                <section class="category-section" style="margin-top: 35px;">
+                    <h2 class="category-title"><i class="fa-solid fa-hot-tub-person"></i> Chupes y Caldos</h2>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Chupe de Mariscos 🍲</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$8.900</span>
+                        </div>
+                        <p class="menu-item-desc">Guiso cremoso de mariscos surtidos, horneado y gratinado con queso parmesano.</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Chupe de Camarón 🍲</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$12.000</span>
+                        </div>
+                        <p class="menu-item-desc">Deliciosa preparación cremosa gratinada rellena con camarones seleccionados.</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Chupe de Jaiba 🍲</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$12.000</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Chupe de Loco 🍲</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$12.000</span>
+                        </div>
+                        <p class="menu-item-desc">Guiso premium con trozos de locos tiernos y gratinados con queso.</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Chupe Especial 👑</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$15.000</span>
+                        </div>
+                        <p class="menu-item-desc">La combinación suprema de la casa: loco, jaiba y camarón en una sola preparación.</p>
+                    </div>
+                </section>
+
+                <!-- 5. ESPECIALIDADES -->
+                <section class="category-section" style="margin-top: 35px;">
+                    <h2 class="category-title"><i class="fa-solid fa-star"></i> Especialidades</h2>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Consomé de Mariscos 🥣</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$3.000</span>
+                        </div>
+                        <p class="menu-item-desc">Caldo concentrado con vino blanco, ajo, pimentón y condimentos.</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Churrasco Marino 🐟</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$5.000</span>
+                        </div>
+                        <p class="menu-item-desc">Marraqueta crujiente con filete de merluza frita, cebolla caramelizada y mayonesa.</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-row">
+                            <span class="menu-item-name">Paella para Dos 🥘</span>
+                            <span class="menu-item-dots"></span>
+                            <span class="menu-item-price">$9.900</span>
+                        </div>
+                        <p class="menu-item-desc">Preparación tradicional con mariscos seleccionados frescos y sazón de la casa.</p>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- ACCOMPANIMENTS BOX (Full width at bottom of grid) -->
+            <div class="acomp-box">
+                <h3 class="acomp-title"><i class="fa-solid fa-plate-wheat"></i> Acompañamientos Incluidos</h3>
+                <p class="acomp-desc">Todos los pescados y platos de fondo incluyen dos opciones de acompañamiento a su elección:</p>
+                <div class="acomp-items-list">
+                    <span class="acomp-item"><i class="fa-solid fa-check"></i> Arroz</span>
+                    <span class="acomp-item"><i class="fa-solid fa-check"></i> Papas Mayo</span>
+                    <span class="acomp-item"><i class="fa-solid fa-check"></i> Ensalada Chilena</span>
+                    <span class="acomp-item"><i class="fa-solid fa-check"></i> Lechuga</span>
+                    <span class="acomp-item"><i class="fa-solid fa-check"></i> Betarraga</span>
+                    <span class="acomp-item"><i class="fa-solid fa-check"></i> Brócoli</span>
+                    <span class="acomp-item"><i class="fa-solid fa-check"></i> Pepino</span>
+                    <span class="acomp-item"><i class="fa-solid fa-check"></i> Zanahoria</span>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="menu-footer">
+            <p>La Picá Big Fish — Sabores del Mar en el Barrio República, Santiago</p>
+        </footer>
+    </div>
+
+</body>
+</html>

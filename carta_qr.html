@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imprimible QR Mesa | La Picá Big Fish</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Print-friendly Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc;
+            color: #1a202c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        /* Card Container (Optimized for A4 print size or standing acrylic holder) */
+        .qr-card {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 480px;
+            border: 3px solid #00c9b1;
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Elegant design accents */
+        .qr-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(90deg, #00c9b1, #e8a020);
+        }
+
+        .header-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #00c9b1;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+            color: #0a0f1d;
+            line-height: 1;
+        }
+
+        .tagline {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.15rem;
+            color: #e8a020;
+            font-style: italic;
+            font-weight: 700;
+            margin-top: -5px;
+            margin-bottom: 30px;
+        }
+
+        /* QR Frame Box */
+        .qr-frame {
+            border: 2px dashed #00c9b1;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 0 auto 30px auto;
+            width: 280px;
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fafbfc;
+            position: relative;
+        }
+
+        .qr-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .instruction-box {
+            margin-bottom: 30px;
+        }
+
+        .instruction-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #0a0f1d;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .instruction-title i {
+            color: #00c9b1;
+        }
+
+        .instruction-desc {
+            font-size: 0.95rem;
+            color: #4a5568;
+            line-height: 1.5;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        /* WiFi placeholder box */
+        .wifi-info {
+            background-color: #f0fdfa;
+            border: 1.5px solid rgba(0, 201, 177, 0.15);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            font-size: 0.88rem;
+            color: #0f766e;
+            font-weight: 600;
+            max-width: 340px;
+            margin: 0 auto 10px auto;
+        }
+
+        .wifi-info i {
+            font-size: 1.2rem;
+            color: #00c9b1;
+        }
+
+        .wifi-inputs {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .wifi-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #55b2a6;
+        }
+
+        .wifi-value {
+            color: #0f766e;
+            border-bottom: 1px dashed #00c9b1;
+            padding-right: 20px;
+            min-width: 120px;
+            display: inline-block;
+        }
+
+        .footer-info {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+            margin-top: 30px;
+            font-size: 0.78rem;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* Print Button (hidden during print) */
+        .print-btn-container {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+        }
+
+        .btn-print {
+            background-color: #00c9b1;
+            color: #0a0f1d;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 201, 177, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-print:hover {
+            background-color: #00b09b;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 201, 177, 0.6);
+        }
+
+        @media print {
+            body {
+                background-color: #ffffff;
+                padding: 0;
+            }
+            .qr-card {
+                box-shadow: none;
+                border: 3px solid #00c9b1;
+                margin: auto;
+            }
+            .print-btn-container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="qr-card">
+        <div class="header-logo">
+            <img src="assets/instagram_profile.jpg" alt="Logo Big Fish" class="logo-img">
+            <h1 class="logo-text">La Picá Big Fish</h1>
+        </div>
+        <p class="tagline">Sabores del Mar</p>
+
+        <!-- QR Frame -->
+        <div class="qr-frame">
+            <img src="assets/qr_code.png" alt="Código QR de la Carta" class="qr-img">
+        </div>
+
+        <div class="instruction-box">
+            <h2 class="instruction-title">
+                <i class="fa-solid fa-mobile-screen-button"></i> ESCANEA EL CÓDIGO QR
+            </h2>
+            <p class="instruction-desc">Usa la cámara de tu celular para ver nuestra <strong>Carta Digital</strong> en segundos.</p>
+        </div>
+
+        <!-- WiFi Info Box -->
+        <div class="wifi-info">
+            <i class="fa-solid fa-wifi"></i>
+            <div class="wifi-inputs">
+                <span class="wifi-label">Red Wi-Fi:</span>
+                <span class="wifi-value">Big Fish Clientes</span>
+            </div>
+            <div class="wifi-inputs">
+                <span class="wifi-label">Contraseña:</span>
+                <span class="wifi-value">Escribe aquí</span>
+            </div>
+        </div>
+
+        <div class="footer-info">
+            <span>Ceviches</span>
+            <span>Empanadas</span>
+            <span>Platos</span>
+            <span>Chupes</span>
+        </div>
+    </div>
+
+    <!-- Floating Print Button -->
+    <div class="print-btn-container">
+        <button class="btn-print" onclick="window.print()">
+            <i class="fa-solid fa-print"></i> Imprimir QR de Mesa
+        </button>
+    </div>
+
+</body>
+</html>

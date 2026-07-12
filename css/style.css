@@ -14,9 +14,9 @@
     --whatsapp-green: #25d366;
     
     /* Fonts */
-    --font-heading: 'Abril Fatface', serif;
-    --font-serif: 'Playfair Display', Georgia, serif;
-    --font-body: 'Libre Baskerville', Georgia, serif;
+    --font-heading: 'Young Serif', 'Abril Fatface', serif;
+    --font-serif: 'Fraunces', 'Playfair Display', Georgia, serif;
+    --font-body: 'Fraunces', 'Libre Baskerville', Georgia, serif;
     --font-accent: 'Bebas Neue', sans-serif;
 
     /* Transitions */

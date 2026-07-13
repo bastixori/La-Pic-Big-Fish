@@ -359,6 +359,7 @@ img {
     display: flex;
     align-items: center;
     padding-top: 100px;
+    padding-bottom: 110px; /* Margen para evitar que la ola corte los botones de abajo */
     background-image: radial-gradient(circle at 80% 30%, rgba(23, 36, 60, 0.25) 0%, rgba(10, 15, 29, 0.35) 60%);
     z-index: 1;
 }

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bigfish-v7';
+const CACHE_NAME = 'bigfish-v8';
 const URLS_TO_CACHE = [
     '/La-Pic-Big-Fish/',
     '/La-Pic-Big-Fish/index.html',

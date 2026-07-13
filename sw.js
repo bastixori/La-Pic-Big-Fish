@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bigfish-v10';
+const CACHE_NAME = 'bigfish-v11';
 const URLS_TO_CACHE = [
     '/La-Pic-Big-Fish/',
     '/La-Pic-Big-Fish/index.html',
@@ -14,7 +14,6 @@ self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(cache => {
-                // Try to cache everything, but catch individual errors so it doesn't fail the whole install
                 return Promise.allSettled(
                     URLS_TO_CACHE.map(url => {
                         return cache.add(url).catch(() => {});
@@ -52,14 +51,16 @@ self.addEventListener('fetch', event => {
                     const responseClone = networkResponse.clone();
                     caches.open(CACHE_NAME).then(cache => {
                         if (event.request.url.startsWith('http')) {
-                            cache.put(event.request, responseClone).catch(() => {});
+                            // Strip query parameters before storing to keep cache clean
+                            const cleanUrl = event.request.url.split('?')[0];
+                            cache.put(cleanUrl, responseClone).catch(() => {});
                         }
                     });
                 }
                 return networkResponse;
             })
             .catch(() => {
-                return caches.match(event.request);
+                return caches.match(event.request, { ignoreSearch: true });
             })
     );
 });

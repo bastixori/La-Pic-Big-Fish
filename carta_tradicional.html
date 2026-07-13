@@ -51,11 +51,11 @@
             overflow-x: hidden;
         }
 
-        /* Wrapper to position carta left-aligned */
+        /* Wrapper — centered on desktop, left-padded on mobile */
         .page-wrapper {
             display: flex;
-            justify-content: flex-start;
-            padding: 30px 15px 30px 40px;
+            justify-content: center;
+            padding: 30px 24px;
             min-height: 100vh;
         }
 
@@ -69,20 +69,17 @@
             opacity: 0.65;
         }
 
-        /* Dark Glassmorphism Card */
+        /* Dark solid card — same palette as the site */
         .paper-menu {
-            background: var(--bg-card);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            width: 100%;
-            max-width: 780px;
-            border: 1px solid var(--border);
+            background: #0b1225;
+            border: 1px solid rgba(0, 201, 177, 0.2);
             border-radius: 12px;
-            padding: 40px 32px;
+            width: 100%;
+            max-width: 820px;
+            padding: 44px 36px;
             box-shadow:
-                0 20px 60px rgba(0, 0, 0, 0.6),
-                0 0 0 1px var(--border-dim),
-                inset 0 1px 0 rgba(0, 201, 177, 0.1);
+                0 24px 70px rgba(0, 0, 0, 0.7),
+                inset 0 1px 0 rgba(0, 201, 177, 0.12);
             position: relative;
             z-index: 1;
         }
@@ -358,20 +355,22 @@
         }
 
         /* Responsive */
-        @media (max-width: 850px) {
+        @media (max-width: 768px) {
             .page-wrapper {
-                padding: 20px 15px;
-                justify-content: center;
+                padding: 20px 16px;
+                justify-content: flex-start;
             }
             .menu-content-grid {
                 grid-template-columns: 1fr;
-                row-gap: 28px;
+                row-gap: 26px;
             }
             .paper-menu {
-                padding: 26px 18px;
+                padding: 28px 20px;
                 max-width: 100%;
+                border-radius: 10px;
             }
-            .menu-title { font-size: 2.3rem; }
+            .menu-title { font-size: 2.2rem; }
+            .category-title { font-size: 1.35rem; }
         }
 
         /* Print */

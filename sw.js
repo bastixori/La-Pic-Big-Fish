@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bigfish-v6';
+const CACHE_NAME = 'bigfish-v7';
 const URLS_TO_CACHE = [
     '/La-Pic-Big-Fish/',
     '/La-Pic-Big-Fish/index.html',
@@ -10,24 +10,27 @@ const URLS_TO_CACHE = [
     '/La-Pic-Big-Fish/js/underwater.js'
 ];
 
-// Install Event
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then(cache => cache.addAll(URLS_TO_CACHE))
+            .then(cache => {
+                // Try to cache everything, but catch individual errors so it doesn't fail the whole install
+                return Promise.allSettled(
+                    URLS_TO_CACHE.map(url => {
+                        return cache.add(url).catch(() => {});
+                    })
+                );
+            })
             .then(() => self.skipWaiting())
-            .catch(() => {})
     );
 });
 
-// Activate Event (Cleanup old caches)
 self.addEventListener('activate', event => {
-    const cacheWhitelist = [CACHE_NAME];
     event.waitUntil(
         caches.keys().then(cacheNames => {
             return Promise.all(
                 cacheNames.map(cacheName => {
-                    if (cacheWhitelist.indexOf(cacheName) === -1) {
+                    if (cacheName !== CACHE_NAME) {
                         return caches.delete(cacheName);
                     }
                 })
@@ -36,9 +39,11 @@ self.addEventListener('activate', event => {
     );
 });
 
-// Fetch Event (Network First Strategy to ensure fresh updates with offline fallback)
 self.addEventListener('fetch', event => {
-    if (event.request.method !== 'GET') return;
+    // Only intercept HTTP/HTTPS GET requests
+    if (event.request.method !== 'GET' || !event.request.url.startsWith('http')) {
+        return;
+    }
 
     event.respondWith(
         fetch(event.request)
@@ -46,7 +51,9 @@ self.addEventListener('fetch', event => {
                 if (networkResponse && networkResponse.status === 200) {
                     const responseClone = networkResponse.clone();
                     caches.open(CACHE_NAME).then(cache => {
-                        cache.put(event.request, responseClone);
+                        if (event.request.url.startsWith('http')) {
+                            cache.put(event.request, responseClone).catch(() => {});
+                        }
                     });
                 }
                 return networkResponse;

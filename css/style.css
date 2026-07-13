@@ -513,6 +513,7 @@ img {
     overflow: hidden;
     line-height: 0;
     transform: rotate(180deg);
+    pointer-events: none; /* Evita bloquear clics en botones cercanos */
 }
 
 .wave-divider svg {
@@ -648,6 +649,7 @@ img {
     width: 100%;
     overflow: hidden;
     line-height: 0;
+    pointer-events: none; /* Evita bloquear clics en elementos cercanos */
 }
 
 .wave-divider-inv svg {
@@ -668,6 +670,10 @@ img {
     background-color: rgba(13, 20, 37, 0.40);
     backdrop-filter: blur(4px);
     position: relative;
+}
+
+#menu .section-container {
+    padding-bottom: 160px; /* Evita que la ola tape la parte inferior del pizarrón de la carta digital */
 }
 
 .menu-tabs-wrapper {

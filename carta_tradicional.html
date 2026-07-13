@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta Tradicional | La Picá Big Fish</title>
+    <title>Carta Tradicional | La Picá Big Fish v3</title>
     <meta name="description" content="Nuestra carta al estilo tradicional. Un diseño clásico en papel pergamino con todos nuestros ceviches, empanadas, platos de fondo y chupes para leer a la antigua.">
     
     <!-- Google Fonts -->
@@ -71,17 +71,23 @@
 
         /* Dark solid card — same palette as the site */
         .paper-menu {
-            background: #0b1225;
-            border: 1px solid rgba(0, 201, 177, 0.2);
+            background: #0b1225 !important;
+            background-color: #0b1225 !important;
+            border: 1px solid rgba(0, 201, 177, 0.22) !important;
             border-radius: 12px;
             width: 100%;
             max-width: 820px;
             padding: 44px 36px;
             box-shadow:
-                0 24px 70px rgba(0, 0, 0, 0.7),
+                0 24px 70px rgba(0, 0, 0, 0.75),
                 inset 0 1px 0 rgba(0, 201, 177, 0.12);
             position: relative;
             z-index: 1;
+        }
+
+        /* All text inside the card must be light */
+        .paper-menu * {
+            color: inherit;
         }
 
         /* Corner accents */

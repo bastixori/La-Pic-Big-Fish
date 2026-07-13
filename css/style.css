@@ -1486,6 +1486,7 @@ img {
 }
 
 .menu-card-img-wrapper {
+    display: block;
     position: relative;
     border-radius: 16px;
     overflow: hidden;

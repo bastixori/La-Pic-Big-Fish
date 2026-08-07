@@ -1351,17 +1351,41 @@ img {
     }
     
     .nav-logo-img {
-        width: 65px;
-        height: 65px;
+        width: 52px;
+        height: 52px;
     }
     
     .navbar.scrolled .nav-logo-img {
-        width: 50px;
-        height: 50px;
+        width: 44px;
+        height: 44px;
+    }
+    
+    .logo-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex: 1;
+        min-width: 0;
     }
     
     .logo-text {
-        font-size: 1.4rem;
+        font-size: 1.15rem;
+        white-space: nowrap;
+    }
+
+    .status-indicator {
+        font-size: 0.65rem;
+        padding: 4px 10px;
+        gap: 5px;
+        margin-left: auto;
+        margin-right: 14px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .status-dot {
+        width: 6px;
+        height: 6px;
     }
 }
 
@@ -1440,6 +1464,18 @@ img {
 }
 
 @media (max-width: 480px) {
+    .nav-container {
+        padding: 0 10px;
+    }
+    .logo-text {
+        font-size: 1.05rem;
+    }
+    .status-indicator {
+        font-size: 0.6rem;
+        padding: 3px 8px;
+        gap: 4px;
+        margin-right: 10px;
+    }
     .empanadas-photo-section {
         padding: 30px 15px;
         margin-top: 40px;

@@ -192,8 +192,8 @@ function updateOpenStatus() {
     const hours = now.getHours();
     const minutes = now.getMinutes();
     const currentTime = hours * 60 + minutes;
-    const openTime = 12 * 60 + 30; // 12:30
-    const closeTime = 19 * 60; // 19:00
+    const openTime = 10 * 60; // 10:00 AM
+    const closeTime = 17 * 60; // 17:00 PM (5:00 PM)
     
     const isOpen = day !== 1 && currentTime >= openTime && currentTime < closeTime;
     
@@ -209,6 +209,17 @@ function updateOpenStatus() {
             } else {
                 el.innerHTML = '<span class="status-dot"></span> Cerrado';
             }
+        }
+    });
+
+    const logos = document.querySelectorAll('.nav-logo-img');
+    logos.forEach(logo => {
+        if (isOpen) {
+            logo.classList.add('is-open');
+            logo.classList.remove('is-closed');
+        } else {
+            logo.classList.remove('is-open');
+            logo.classList.add('is-closed');
         }
     });
 }

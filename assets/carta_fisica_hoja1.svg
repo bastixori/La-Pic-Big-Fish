@@ -125,8 +125,8 @@
         </g>
 
         <g transform="translate(0, 705)">
-            <text x="0" y="0" class="dish-name">Queso Champiñón Choclo</text>
-            <line x1="480" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="0" y="0" class="dish-name">Champiñón Choclo Queso 🌟</text>
+            <line x1="580" y1="-8" x2="1080" y2="-8" class="dots"/>
             <text x="1270" y="0" class="dish-price">$3.800</text>
         </g>
 

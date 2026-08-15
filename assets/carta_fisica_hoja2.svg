@@ -1,0 +1,208 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1450 3000" width="1450" height="3000">
+    <defs>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&amp;family=Inter:wght@400;600;700;800&amp;family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap');
+            
+            .bg { fill: #060913; }
+            .card-bg { fill: #0a0f1d; stroke: rgba(0, 201, 177, 0.35); stroke-width: 3; }
+            .cat-title { font-family: 'Abril Fatface', Georgia, serif; font-size: 46px; fill: #f0f4ff; letter-spacing: 1px; }
+            .dish-name { font-family: 'Libre Baskerville', Georgia, serif; font-size: 35px; font-weight: bold; fill: #f0f4ff; }
+            .dish-price { font-family: 'Inter', sans-serif; font-size: 38px; font-weight: 800; fill: #00c9b1; text-anchor: end; }
+            .dish-desc { font-family: 'Libre Baskerville', Georgia, serif; font-size: 25px; font-style: italic; fill: rgba(200, 215, 240, 0.7); }
+            .footer-text { font-family: 'Inter', sans-serif; font-size: 26px; fill: rgba(200, 215, 240, 0.7); text-anchor: middle; }
+            .dots { stroke: rgba(0, 201, 177, 0.3); stroke-width: 3; stroke-dasharray: 4,8; }
+            .line-teal { stroke: #00c9b1; stroke-width: 3; }
+            
+            /* Banner styles */
+            .banner-bg { fill: rgba(0, 201, 177, 0.08); stroke: #00c9b1; stroke-width: 2.5; rx: 12; }
+            .banner-title { font-family: 'Inter', sans-serif; font-size: 28px; font-weight: 800; fill: #00c9b1; text-transform: uppercase; }
+            .banner-desc { font-family: 'Inter', sans-serif; font-size: 23px; fill: #f0f4ff; }
+            
+            /* Acomp box styles */
+            .acomp-bg { fill: rgba(0, 201, 177, 0.05); stroke: rgba(0, 201, 177, 0.3); stroke-width: 2; rx: 12; }
+            .acomp-title { font-family: 'Inter', sans-serif; font-size: 28px; font-weight: 800; fill: #00c9b1; text-transform: uppercase; }
+            .acomp-sub { font-family: 'Inter', sans-serif; font-size: 23px; fill: rgba(200, 215, 240, 0.7); }
+            .acomp-item { font-family: 'Inter', sans-serif; font-size: 24px; font-weight: 600; fill: #f0f4ff; }
+        </style>
+        <radialGradient id="grad2" cx="50%" cy="0%" r="80%">
+            <stop offset="0%" stop-color="#00c9b1" stop-opacity="0.15"/>
+            <stop offset="100%" stop-color="#060913" stop-opacity="1"/>
+        </radialGradient>
+    </defs>
+
+    <!-- Background -->
+    <rect width="1450" height="3000" class="bg"/>
+    <rect x="30" y="30" width="1390" height="2940" rx="20" class="card-bg" fill="url(#grad2)"/>
+
+    <!-- Content Start (Bajado y Centrado Uniforme) -->
+
+    <!-- FRESH FISH STOCK BANNER -->
+    <g transform="translate(90, 180)">
+        <rect width="1270" height="150" class="banner-bg"/>
+        <text x="30" y="48" class="banner-title">✨ PESCADOS 100% FRESCOS DEL DÍA</text>
+        <text x="30" y="85" class="banner-desc">Nuestra carta está sujeta al stock diario que mantiene la pescadería,</text>
+        <text x="30" y="118" class="banner-desc">ya que trabajamos exclusivamente con <tspan fill="#00c9b1" font-weight="bold">pescados frescos y no congelados</tspan>.</text>
+    </g>
+
+    <!-- 3. PLATOS DE FONDO -->
+    <g transform="translate(90, 400)">
+        <text x="0" y="0" class="cat-title">🐟 Platos de Fondo</text>
+        <line x1="0" y1="15" x2="1270" y2="15" class="line-teal"/>
+
+        <g transform="translate(0, 75)">
+            <text x="0" y="0" class="dish-name">Merluza Frita</text>
+            <line x1="240" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$6.000</text>
+            <text x="0" y="36" class="dish-desc">Filete fresco rebozado en batido tradicional crujiente. Incluye dos acompañamientos.</text>
+        </g>
+
+        <g transform="translate(0, 165)">
+            <text x="0" y="0" class="dish-name">Jurel Frito o a la Plancha</text>
+            <line x1="450" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$7.000</text>
+            <text x="0" y="36" class="dish-desc">Sabroso filete preparado a tu elección. Incluye dos acompañamientos.</text>
+        </g>
+
+        <g transform="translate(0, 255)">
+            <text x="0" y="0" class="dish-name">Albacora Frita o a la Plancha</text>
+            <line x1="490" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$11.900</text>
+            <text x="0" y="36" class="dish-desc">Filete de albacora premium. Incluye dos acompañamientos.</text>
+        </g>
+
+        <g transform="translate(0, 345)">
+            <text x="0" y="0" class="dish-name">Reineta Frita o a la Plancha 🌟</text>
+            <line x1="530" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$10.900</text>
+            <text x="0" y="36" class="dish-desc">Filete de reineta preparado en su punto. Incluye dos acompañamientos.</text>
+        </g>
+
+        <g transform="translate(0, 435)">
+            <text x="0" y="0" class="dish-name">Merluza Austral Frita</text>
+            <line x1="380" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$10.900</text>
+            <text x="0" y="36" class="dish-desc">Filete de merluza austral de textura suave, rebozado frito. Incluye dos acompañamientos.</text>
+        </g>
+
+        <g transform="translate(0, 525)">
+            <text x="0" y="0" class="dish-name">Congrio Frito o al Pil-Pil</text>
+            <line x1="430" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$13.900</text>
+            <text x="0" y="36" class="dish-desc">Congrio fresco preparado frito o al pil-pil. Incluye dos acompañamientos.</text>
+        </g>
+
+        <g transform="translate(0, 615)">
+            <text x="0" y="0" class="dish-name">Salmón Frito o a la Plancha</text>
+            <line x1="470" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$13.900</text>
+            <text x="0" y="36" class="dish-desc">Filete de salmón rosado preparado en su punto. Incluye dos acompañamientos.</text>
+        </g>
+    </g>
+
+    <!-- 4. CHUPES Y CALDOS -->
+    <g transform="translate(90, 1150)">
+        <text x="0" y="0" class="cat-title">🍲 Chupes y Caldos</text>
+        <line x1="0" y1="15" x2="1270" y2="15" class="line-teal"/>
+
+        <g transform="translate(0, 75)">
+            <text x="0" y="0" class="dish-name">Chupe de Mariscos 🍲</text>
+            <line x1="380" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$8.900</text>
+            <text x="0" y="36" class="dish-desc">Guiso cremoso de mariscos surtidos, horneado y gratinado con queso parmesano.</text>
+        </g>
+
+        <g transform="translate(0, 165)">
+            <text x="0" y="0" class="dish-name">Chupe de Camarón 🍲</text>
+            <line x1="380" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$12.000</text>
+            <text x="0" y="36" class="dish-desc">Deliciosa preparación cremosa gratinada rellena con camarones seleccionados.</text>
+        </g>
+
+        <g transform="translate(0, 255)">
+            <text x="0" y="0" class="dish-name">Chupe de Jaiba 🍲</text>
+            <line x1="330" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$12.000</text>
+        </g>
+
+        <g transform="translate(0, 335)">
+            <text x="0" y="0" class="dish-name">Chupe de Loco 🍲</text>
+            <line x1="320" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$16.000</text>
+            <text x="0" y="36" class="dish-desc">Guiso premium con trozos de locos tiernos y gratinados con queso.</text>
+        </g>
+
+        <g transform="translate(0, 425)">
+            <text x="0" y="0" class="dish-name">Chupe Especial 👑</text>
+            <line x1="350" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$16.000</text>
+            <text x="0" y="36" class="dish-desc">La combinación suprema de la casa: loco, jaiba y camarón en una sola preparación.</text>
+        </g>
+
+        <g transform="translate(0, 515)">
+            <text x="0" y="0" class="dish-name">Caldillo de Congrio 🍲</text>
+            <line x1="390" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$13.900</text>
+            <text x="0" y="36" class="dish-desc">Tradicional caldillo de congrio preparado con finas hierbas, verduras y sabroso caldo concentrado.</text>
+        </g>
+    </g>
+
+    <!-- 5. BEBESTIBLES -->
+    <g transform="translate(90, 1860)">
+        <text x="0" y="0" class="cat-title">🥤 Bebestibles</text>
+        <line x1="0" y1="15" x2="1270" y2="15" class="line-teal"/>
+
+        <g transform="translate(0, 75)">
+            <text x="0" y="0" class="dish-name">Isotónica ⚡</text>
+            <line x1="220" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$2.500</text>
+            <text x="0" y="36" class="dish-desc">Bebida isotónica hidratante helada.</text>
+        </g>
+
+        <g transform="translate(0, 165)">
+            <text x="0" y="0" class="dish-name">Bebida en lata 350cc 🥤</text>
+            <line x1="390" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$1.500</text>
+            <text x="0" y="36" class="dish-desc">Variedad de sabores helados a elección.</text>
+        </g>
+
+        <g transform="translate(0, 255)">
+            <text x="0" y="0" class="dish-name">Agua mineral (con gas o sin gas) 💧</text>
+            <line x1="570" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$1.500</text>
+            <text x="0" y="36" class="dish-desc">Agua purificada helada.</text>
+        </g>
+    </g>
+
+    <!-- ACCOMPANIMENTS BOX -->
+    <g transform="translate(90, 2260)">
+        <rect width="1270" height="210" class="acomp-bg"/>
+        <text x="35" y="52" class="acomp-title">🥗 ACOMPAÑAMIENTOS INCLUIDOS</text>
+        <text x="35" y="90" class="acomp-sub">Todos los pescados y platos de fondo incluyen dos opciones a elección:</text>
+        
+        <!-- Row 1 -->
+        <text x="45" y="140" class="acomp-item">✓ Arroz</text>
+        <text x="440" y="140" class="acomp-item">✓ Papas Mayo</text>
+        <text x="840" y="140" class="acomp-item">✓ Ensalada Chilena</text>
+        
+        <!-- Row 2 -->
+        <text x="45" y="182" class="acomp-item">✓ Lechuga</text>
+        <text x="340" y="182" class="acomp-item">✓ Betarraga</text>
+        <text x="640" y="182" class="acomp-item">✓ Brócoli</text>
+        <text x="920" y="182" class="acomp-item">✓ Pepino / Zanahoria / Cebolla</text>
+    </g>
+
+    <!-- SUGERENCIA DEL CHEF BANNER -->
+    <g transform="translate(90, 2520)">
+        <rect width="1270" height="180" class="banner-bg"/>
+        <text x="35" y="52" class="banner-title">👨‍🍳 SUGERENCIA DEL CHEF</text>
+        <text x="35" y="98" class="banner-desc">Consulta a nuestro personal por la recomendación especial del día,</text>
+        <text x="35" y="138" class="banner-desc">preparada con la pesca más fresca y la sazón tradicional de La Picá Big Fish.</text>
+    </g>
+
+    <!-- Footer Page 2 -->
+    <g transform="translate(725, 2850)">
+        <line x1="-500" y1="-30" x2="500" y2="-30" stroke="rgba(0,201,177,0.2)" stroke-width="1"/>
+        <text x="0" y="0" class="footer-text">📱 WhatsApp: +56 9 2234 7212 / +56 9 6171 0247 | Santiago, Chile</text>
+        <text x="0" y="35" class="footer-text" font-weight="bold" fill="#00c9b1">HOJA 2 — PLATOS DE FONDO, CHUPES Y BEBIDAS</text>
+    </g>
+</svg>

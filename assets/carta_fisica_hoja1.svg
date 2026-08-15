@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1450 3000" width="1450" height="3000">
+    <defs>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&amp;family=Inter:wght@400;600;700;800&amp;family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap');
+            
+            .bg { fill: #060913; }
+            .card-bg { fill: #0a0f1d; stroke: rgba(0, 201, 177, 0.35); stroke-width: 3; }
+            .title-main { font-family: 'Abril Fatface', Georgia, serif; font-size: 72px; fill: #f0f4ff; text-anchor: middle; }
+            .title-sub { font-family: 'Libre Baskerville', Georgia, serif; font-size: 38px; font-style: italic; fill: #00c9b1; text-anchor: middle; font-weight: bold; }
+            .cat-title { font-family: 'Abril Fatface', Georgia, serif; font-size: 46px; fill: #f0f4ff; letter-spacing: 1px; }
+            .subcat-title { font-family: 'Inter', sans-serif; font-size: 30px; font-weight: 800; fill: #00a2ff; letter-spacing: 1px; }
+            .dish-name { font-family: 'Libre Baskerville', Georgia, serif; font-size: 35px; font-weight: bold; fill: #f0f4ff; }
+            .dish-price { font-family: 'Inter', sans-serif; font-size: 38px; font-weight: 800; fill: #00c9b1; text-anchor: end; }
+            .dish-desc { font-family: 'Libre Baskerville', Georgia, serif; font-size: 25px; font-style: italic; fill: rgba(200, 215, 240, 0.7); }
+            .tag-text { font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 700; fill: #00c9b1; }
+            .footer-text { font-family: 'Inter', sans-serif; font-size: 26px; fill: rgba(200, 215, 240, 0.7); text-anchor: middle; }
+            .dots { stroke: rgba(0, 201, 177, 0.3); stroke-width: 3; stroke-dasharray: 4,8; }
+            .line-teal { stroke: #00c9b1; stroke-width: 3; }
+            .line-blue { stroke: #00a2ff; stroke-width: 4; }
+        </style>
+        <radialGradient id="grad1" cx="50%" cy="0%" r="80%">
+            <stop offset="0%" stop-color="#00c9b1" stop-opacity="0.15"/>
+            <stop offset="100%" stop-color="#060913" stop-opacity="1"/>
+        </radialGradient>
+    </defs>
+
+    <!-- Background -->
+    <rect width="1450" height="3000" class="bg"/>
+    <rect x="30" y="30" width="1390" height="2940" rx="20" class="card-bg" fill="url(#grad1)"/>
+
+    <!-- Header Section (Centrado verticalmente en la parte superior) -->
+    <g transform="translate(725, 180)">
+        <circle cx="0" cy="0" r="60" fill="#000" stroke="#00c9b1" stroke-width="4"/>
+        <text x="0" y="20" font-family="sans-serif" font-size="55" fill="#00c9b1" text-anchor="middle">🐟</text>
+        
+        <text x="0" y="130" class="title-main">La Picá Big Fish</text>
+        <text x="0" y="180" class="title-sub">Nuestra Carta Tradicional</text>
+        
+        <line x1="-200" y1="215" x2="200" y2="215" class="line-teal"/>
+    </g>
+
+    <!-- 1. CEVICHES -->
+    <g transform="translate(90, 470)">
+        <text x="0" y="0" class="cat-title">🍋 Ceviches</text>
+        <line x1="0" y1="15" x2="1270" y2="15" class="line-teal"/>
+
+        <g transform="translate(0, 70)">
+            <text x="0" y="0" class="dish-name">Ceviche de Reineta</text>
+            <line x1="360" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$6.000</text>
+            <text x="0" y="36" class="dish-desc">Reineta marinada al instante con limón sutil de Pica, cebolla morada,</text>
+            <text x="0" y="68" class="dish-desc">pimentón y cilantro.</text>
+            
+            <rect x="0" y="80" width="110" height="32" rx="6" fill="rgba(0,201,177,0.12)" stroke="#00c9b1" stroke-width="1.5"/>
+            <text x="55" y="103" class="tag-text" text-anchor="middle">Fresco</text>
+            
+            <rect x="125" y="80" width="125" height="32" rx="6" fill="rgba(0,201,177,0.12)" stroke="#00c9b1" stroke-width="1.5"/>
+            <text x="187" y="103" class="tag-text" text-anchor="middle">Favorito</text>
+        </g>
+
+        <g transform="translate(0, 225)">
+            <text x="0" y="0" class="dish-name">Ceviche Cochayuyo y Palta</text>
+            <line x1="500" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$4.000</text>
+            <text x="0" y="36" class="dish-desc">Combinación nutritiva de cochayuyo seleccionado y palta fresca, aliñada</text>
+            <text x="0" y="68" class="dish-desc">con cebolla morada y cilantro.</text>
+        </g>
+    </g>
+
+    <!-- 2. EMPANADAS FRITAS -->
+    <g transform="translate(90, 890)">
+        <text x="0" y="0" class="cat-title">🥟 Empanadas Fritas</text>
+        <line x1="0" y1="15" x2="1270" y2="15" class="line-teal"/>
+
+        <g transform="translate(0, 55)">
+            <line x1="0" y1="-18" x2="0" y2="12" class="line-blue"/>
+            <text x="15" y="0" class="subcat-title">CON QUESO DERRETIDO</text>
+        </g>
+
+        <g transform="translate(0, 105)">
+            <text x="0" y="0" class="dish-name">Queso Camarón 🌟</text>
+            <line x1="350" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$3.000</text>
+            <text x="0" y="34" class="dish-desc">Rellena de abundante queso mantecoso fundido y camarones seleccionados.</text>
+        </g>
+
+        <g transform="translate(0, 195)">
+            <text x="0" y="0" class="dish-name">Queso Jaiba</text>
+            <line x1="230" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$3.800</text>
+            <text x="0" y="34" class="dish-desc">Carne suave de jaiba desmenuzada combinada con queso fundido.</text>
+        </g>
+
+        <g transform="translate(0, 285)">
+            <text x="0" y="0" class="dish-name">Queso Macha</text>
+            <line x1="240" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$3.800</text>
+            <text x="0" y="34" class="dish-desc">Láminas de machas seleccionadas preparadas con queso derretido.</text>
+        </g>
+
+        <g transform="translate(0, 375)">
+            <text x="0" y="0" class="dish-name">Queso Ostión 🌟</text>
+            <line x1="300" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$3.800</text>
+            <text x="0" y="34" class="dish-desc">Ostiones seleccionados y queso fundido en masa crujiente.</text>
+        </g>
+
+        <g transform="translate(0, 465)">
+            <text x="0" y="0" class="dish-name">Queso Loco 👑</text>
+            <line x1="270" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$7.000</text>
+            <text x="0" y="34" class="dish-desc">Trozos de loco tierno combinados con queso mantecoso fundido.</text>
+        </g>
+
+        <g transform="translate(0, 555)">
+            <text x="0" y="0" class="dish-name">Queso Champiñón</text>
+            <line x1="350" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$3.000</text>
+        </g>
+
+        <g transform="translate(0, 630)">
+            <text x="0" y="0" class="dish-name">Queso Choclo</text>
+            <line x1="260" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$3.000</text>
+        </g>
+
+        <g transform="translate(0, 705)">
+            <text x="0" y="0" class="dish-name">Queso Choclo Champiñón</text>
+            <line x1="480" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$3.500</text>
+        </g>
+
+        <g transform="translate(0, 785)">
+            <line x1="0" y1="-18" x2="0" y2="12" class="line-blue"/>
+            <text x="15" y="0" class="subcat-title">PINOS TRADICIONALES DE MAR</text>
+        </g>
+
+        <g transform="translate(0, 840)">
+            <text x="0" y="0" class="dish-name">Pino Marisco</text>
+            <line x1="240" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$3.000</text>
+            <text x="0" y="34" class="dish-desc">Mariscos surtidos guisados con cebolla caramelizada, pimentón y condimentos.</text>
+        </g>
+
+        <g transform="translate(0, 930)">
+            <text x="0" y="0" class="dish-name">Pino Jurel</text>
+            <line x1="200" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$3.000</text>
+        </g>
+
+        <g transform="translate(0, 1005)">
+            <text x="0" y="0" class="dish-name">Pino Jivia</text>
+            <line x1="190" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$3.500</text>
+        </g>
+
+        <g transform="translate(0, 1080)">
+            <text x="0" y="0" class="dish-name">Pino Locos 👑</text>
+            <line x1="260" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$8.000</text>
+        </g>
+    </g>
+
+    <!-- 3. ESPECIALIDADES -->
+    <g transform="translate(90, 2140)">
+        <text x="0" y="0" class="cat-title">🥘 Especialidades</text>
+        <line x1="0" y1="15" x2="1270" y2="15" class="line-teal"/>
+
+        <g transform="translate(0, 65)">
+            <text x="0" y="0" class="dish-name">Consomé de Mariscos 🥣</text>
+            <line x1="410" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$3.000</text>
+            <text x="0" y="34" class="dish-desc">Caldo concentrado con vino blanco, ajo, pimentón y condimentos.</text>
+        </g>
+
+        <g transform="translate(0, 155)">
+            <text x="0" y="0" class="dish-name">Churrasco Marino 🐟</text>
+            <line x1="360" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$5.000</text>
+            <text x="0" y="34" class="dish-desc">Marraqueta crujiente con filete de merluza frita, cebolla caramelizada y mayonesa.</text>
+        </g>
+
+        <g transform="translate(0, 245)">
+            <text x="0" y="0" class="dish-name">Paella para Dos 🥘</text>
+            <line x1="320" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$9.900</text>
+            <text x="0" y="34" class="dish-desc">Preparación tradicional con mariscos seleccionados frescos y sazón de la casa.</text>
+        </g>
+
+        <g transform="translate(0, 335)">
+            <text x="0" y="0" class="dish-name">Paila Marina 🍲</text>
+            <line x1="280" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="1270" y="0" class="dish-price">$10.900</text>
+            <text x="0" y="34" class="dish-desc">Abundante y tradicional caldo concentrado con surtido de mariscos frescos de la estación.</text>
+        </g>
+    </g>
+
+    <!-- Footer Page 1 -->
+    <g transform="translate(725, 2850)">
+        <line x1="-500" y1="-30" x2="500" y2="-30" stroke="rgba(0,201,177,0.2)" stroke-width="1"/>
+        <text x="0" y="0" class="footer-text">📍 Almirante Latorre 315, Barrio República | Santiago, Chile</text>
+        <text x="0" y="35" class="footer-text" font-weight="bold" fill="#00c9b1">HOJA 1 — CEVICHES, EMPANADAS Y ESPECIALIDADES</text>
+    </g>
+</svg>

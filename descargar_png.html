@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descargar Carta en PNG (30x14.5 cm) — La Picá Big Fish</title>
+    <!-- html2canvas for 300DPI PNG Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        body {
+            background-color: #060913;
+            color: #f0f4ff;
+            font-family: system-ui, -apple-system, sans-serif;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #0a0f1d;
+            border: 2px solid #00c9b1;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,201,177,0.2);
+        }
+        h1 { color: #00c9b1; margin-bottom: 10px; font-size: 2rem; }
+        p { color: rgba(200, 215, 240, 0.8); margin-bottom: 30px; font-size: 1.1rem; line-height: 1.5; }
+        .btn {
+            background: #00c9b1;
+            color: #040914;
+            font-size: 1.2rem;
+            font-weight: 800;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            display: inline-block;
+            margin: 10px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .btn:hover { background: #00e0c5; transform: scale(1.05); }
+        .btn-alt { background: #00a2ff; color: #fff; }
+        .status { margin-top: 25px; font-size: 1rem; color: #00c9b1; font-weight: 600; }
+        /* Hidden SVG Render Stage */
+        #render-stage {
+            position: absolute;
+            left: -9999px;
+            top: -9999px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📥 Descargador de Carta en PNG</h1>
+        <p>Presiona los botones para descargar automáticamente las 2 hojas de tu carta en **formato PNG de alta definición (300 DPI)** listo para imprimir o enviar:</p>
+
+        <a class="btn" href="assets/Carta_BigFish_Hoja1_30x14.5cm.png" download="Carta_BigFish_Hoja1_30x14.5cm.png">
+            📥 Descargar Hoja 1 (Izquierda) PNG (30x14.5 cm)
+        </a>
+        <br>
+        <a class="btn btn-alt" href="assets/Carta_BigFish_Hoja2_30x14.5cm.png" download="Carta_BigFish_Hoja2_30x14.5cm.png">
+            📥 Descargar Hoja 2 (Derecha) PNG (30x14.5 cm)
+        </a>
+
+        <div class="status" id="status-msg"></div>
+    </div>
+
+    <div id="render-stage"></div>
+
+    <script>
+        function downloadPNG(svgUrl, fileName) {
+            const status = document.getElementById('status-msg');
+            status.textContent = 'Generando imagen PNG de alta resolución...';
+
+            fetch(svgUrl)
+                .then(res => res.text())
+                .then(svgText => {
+                    const stage = document.getElementById('render-stage');
+                    stage.innerHTML = svgText;
+                    const svgElem = stage.querySelector('svg');
+
+                    const img = new Image();
+                    const svgBlob = new Blob([svgText], { type: 'image/svg+xml;charset=utf-8' });
+                    const url = URL.createObjectURL(svgBlob);
+
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = 1450;
+                        canvas.height = 3000;
+                        const ctx = canvas.getContext('2d');
+
+                        ctx.fillStyle = '#060913';
+                        ctx.fillRect(0, 0, 1450, 3000);
+                        ctx.drawImage(img, 0, 0, 1450, 3000);
+
+                        const a = document.createElement('a');
+                        a.download = fileName;
+                        a.href = canvas.toDataURL('image/png', 1.0);
+                        a.click();
+
+                        URL.revokeObjectURL(url);
+                        status.textContent = '✅ ¡Imagen ' + fileName + ' descargada con éxito!';
+                    };
+
+                    img.src = url;
+                })
+                .catch(err => {
+                    status.textContent = '❌ Error al generar PNG: ' + err.message;
+                });
+        }
+    </script>
+</body>
+</html>

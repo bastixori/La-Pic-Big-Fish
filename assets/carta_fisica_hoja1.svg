@@ -188,8 +188,8 @@
         </g>
 
         <g transform="translate(0, 335)">
-            <text x="0" y="0" class="dish-name">Paila Marina 🍲</text>
-            <line x1="280" y1="-8" x2="1080" y2="-8" class="dots"/>
+            <text x="0" y="0" class="dish-name">Paila Marina 🍲 <tspan font-size="24" font-family="'Inter', sans-serif" font-weight="700" fill="#00a2ff">(Plato a la Carta)</tspan></text>
+            <line x1="510" y1="-8" x2="1080" y2="-8" class="dots"/>
             <text x="1270" y="0" class="dish-price">$10.900</text>
             <text x="0" y="34" class="dish-desc">Abundante y tradicional caldo concentrado con surtido de mariscos frescos de la estación.</text>
         </g>

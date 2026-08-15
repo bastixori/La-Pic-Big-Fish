@@ -101,7 +101,7 @@
 
     <!-- 4. CHUPES Y CALDOS -->
     <g transform="translate(90, 1150)">
-        <text x="0" y="0" class="cat-title">🍲 Chupes y Caldos</text>
+        <text x="0" y="0" class="cat-title">🍲 Chupes y Caldos <tspan font-size="28" font-family="'Inter', sans-serif" font-weight="700" fill="#00a2ff">(Platos a la Carta)</tspan></text>
         <line x1="0" y1="15" x2="1270" y2="15" class="line-teal"/>
 
         <g transform="translate(0, 75)">

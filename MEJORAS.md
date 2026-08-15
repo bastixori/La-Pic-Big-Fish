@@ -16,7 +16,6 @@ Repositorio: [https://github.com/bastixori/La-Pic-Big-Fish](https://github.com/b
 | **Fase 4** | **SEO y Rendimiento (Despliegue)** | ✅ Completado | `index.html`, `menu.html`, `menu_con_carrito.html` |
 | **Actualización Carta** | **Empanada Queso Ostión ($3.800) y Caldillo de Congrio ($13.900)** | ✅ Completado | `carta_tradicional.html`, `menu.html`, `menu_con_carrito.html`, `index.html` |
 | **Actualización Carta** | **Paila Marina ($10.900)** | ✅ Completado | `carta_tradicional.html`, `menu.html`, `menu_con_carrito.html`, `index.html`, `carta_fisica.html` |
-| **Eliminación Platos** | **Empanada Pino Especial ($7.000)** | ✅ Completado | `carta_tradicional.html`, `menu.html`, `menu_con_carrito.html`, `index.html` |
 | **Fase 5** | **Formulario de Reservas** | ⏳ Pendiente | - |
 
 ---

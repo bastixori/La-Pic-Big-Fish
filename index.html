@@ -636,7 +636,17 @@
                             <div class="info-text">
                                 <h3>Ubicación</h3>
                                 <p>Almirante Latorre 315, Barrio República, Santiago, Chile</p>
-                                <span class="info-note">📍 Dirección exacta local</span>
+                                <span class="info-note" style="display: block; margin-bottom: 12px;">📍 A pasos de Metro República y Toesca</span>
+                                
+                                <!-- Botones de Navegación GPS -->
+                                <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px;">
+                                    <a href="https://www.google.com/maps/dir/?api=1&destination=Almirante+Latorre+315,+Santiago,+Chile" target="_blank" rel="noopener noreferrer" class="btn" style="background: #00c9b1; color: #0a0f1d; font-weight: 700; font-size: 0.88rem; padding: 9px 16px; border-radius: 8px; display: inline-flex; align-items: center; gap: 7px; text-decoration: none; box-shadow: 0 4px 12px rgba(0, 201, 177, 0.25); transition: transform 0.2s;">
+                                        <i class="fa-solid fa-route"></i> Abrir en Google Maps
+                                    </a>
+                                    <a href="https://waze.com/ul?q=Almirante+Latorre+315,+Santiago,+Chile&navigate=yes" target="_blank" rel="noopener noreferrer" class="btn" style="background: rgba(0, 201, 177, 0.12); color: #00c9b1; border: 1.5px solid #00c9b1; font-weight: 700; font-size: 0.88rem; padding: 9px 16px; border-radius: 8px; display: inline-flex; align-items: center; gap: 7px; text-decoration: none; transition: transform 0.2s;">
+                                        <i class="fa-brands fa-waze"></i> Waze
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
@@ -644,8 +654,8 @@
                             <i class="fa-solid fa-clock info-icon"></i>
                             <div class="info-text">
                                 <h3>Horario de Atención</h3>
-                                <p>Martes a Domingo: 10:00 AM - 5:00 PM (17:00 hrs)</p>
-                                <p>Lunes: Cerrado</p>
+                                <p><strong>Martes a Domingo:</strong> 10:00 AM - 5:00 PM (17:00 hrs)</p>
+                                <p style="color: #e8a020;"><strong>Lunes:</strong> Cerrado</p>
                             </div>
                         </div>
 
@@ -668,11 +678,16 @@
 
                     <!-- Interactive Form / Map -->
                     <div class="contacto-form-wrapper reveal delay-1">
-                        <div class="map-placeholder" style="position: relative; overflow: hidden; border-radius: 20px; height: 100%; min-height: 350px;">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.4147321591024!2d-70.6672314!3d-33.4518485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5079a405391%3A0x6b403328e1620a2e!2sAlmirante+Latorre+315%2C+Santiago%2C+Regi%C3%B3n+Metropolitana!5e0!3m2!1ses!2scl!4v1691234567890!5m2!1ses!2scl" width="100%" height="100%" style="border:0; position: absolute; top: 0; left: 0; width: 100%; height: 100%; filter: saturate(0.3) brightness(0.7) contrast(1.2);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                            <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; background: rgba(24, 22, 19, 0.9); backdrop-filter: blur(10px); padding: 18px 22px; border-radius: 12px; border: 1px solid rgba(0, 201, 177, 0.2);">
-                                <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.2rem; margin-bottom: 5px;">📍 Almirante Latorre 315</h3>
-                                <p style="font-family: var(--font-body); color: var(--text-light); font-size: 0.9rem;">Barrio República, Santiago, Chile</p>
+                        <div class="map-placeholder" style="position: relative; overflow: hidden; border-radius: 20px; height: 100%; min-height: 380px; box-shadow: 0 8px 30px rgba(0,0,0,0.5); border: 1px solid rgba(0, 201, 177, 0.25);">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.4147321591024!2d-70.6672314!3d-33.4518485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5079a405391%3A0x6b403328e1620a2e!2sAlmirante+Latorre+315%2C+Santiago%2C+Regi%C3%B3n+Metropolitana!5e0!3m2!1ses!2scl!4v1691234567890!5m2!1ses!2scl" width="100%" height="100%" style="border:0; position: absolute; top: 0; left: 0; width: 100%; height: 100%; filter: saturate(0.8) contrast(1.1);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <div style="position: absolute; bottom: 16px; left: 16px; right: 16px; background: rgba(10, 15, 29, 0.94); backdrop-filter: blur(12px); padding: 16px 20px; border-radius: 14px; border: 1px solid rgba(0, 201, 177, 0.35); display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap;">
+                                <div>
+                                    <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.15rem; margin-bottom: 3px; font-weight: 700;">📍 Almirante Latorre 315</h3>
+                                    <p style="font-family: var(--font-body); color: var(--text-light); font-size: 0.86rem; margin: 0;">Barrio República, Santiago</p>
+                                </div>
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=Almirante+Latorre+315,+Santiago,+Chile" target="_blank" rel="noopener noreferrer" style="background: #00c9b1; color: #0a0f1d; font-weight: 800; font-size: 0.85rem; padding: 10px 18px; border-radius: 8px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; white-space: nowrap; box-shadow: 0 4px 14px rgba(0, 201, 177, 0.3);">
+                                    <i class="fa-solid fa-diamond-turn-right"></i> Cómo Llegar
+                                </a>
                             </div>
                         </div>
                     </div>

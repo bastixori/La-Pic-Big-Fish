@@ -57,14 +57,14 @@ class SunRays {
 }
 
 class FishSchool {
-    constructor(ctx, count = 55) {
+    constructor(ctx, count = 25) {
         this.ctx = ctx;
         this.count = count;
         this.fishes = [];
-        this.schoolX = -300;
-        this.schoolY = 220;
-        this.targetY = 220;
-        this.speed = 2.1;
+        this.schoolX = -100;
+        this.schoolY = 200;
+        this.targetY = 200;
+        this.speed = 2.4; // Más rápido como se solicitó
         this.time = 0;
         
         this.init();
@@ -72,26 +72,12 @@ class FishSchool {
 
     init() {
         for (let i = 0; i < this.count; i++) {
-            // Peces MUY grandes y altamente asimétricos
-            const size = Math.random() * 70 + 45; // 45px a 115px — peces enormes y dominantes
-            const depth = (size - 45) / 70; // profundidad para opacidad
-            
             this.fishes.push({
-                offsetX: Math.random() * 700 - 350,
-                offsetY: Math.random() * 340 - 170,
-                size: size,
-                aspect: Math.random() * 0.30 + 0.22,         // desde muy delgado (0.22) hasta muy gordo (0.52)
-                dorsalFactor: Math.random() * 1.6 + 1.0,     // lomo EXTREMAMENTE asimétrico (1.0 a 2.6)
-                bellyFactor: Math.random() * 1.4 + 0.5,      // vientre EXTREMO (0.5 a 1.9)
-                tailUpperScale: Math.random() * 1.2 + 1.2,   // lóbulo superior enorme (1.2 a 2.4)
-                tailLowerScale: Math.random() * 0.7 + 0.3,   // lóbulo inferior minúsculo (0.3 a 1.0)
-                tailSkew: Math.random() * 0.9 - 0.45,        // sesgo brutal de la cola (-0.45 a +0.45)
-                noseSharpness: Math.random() * 0.8 + 0.55,   // desde chato hasta muy puntiagudo (0.55 a 1.35)
-                bodyHump: Math.random() * 0.65 + 0.08,       // joroba leve a extrema (0.08 a 0.73)
-                finOffset: Math.random() * 0.4 - 0.2,        // posición lateral asimétrica de aleta dorsal
-                opacity: 0.28 + depth * 0.42,
-                speedOffset: Math.random() * 0.25 + 0.88,
-                wiggleSpeed: Math.random() * 0.10 + 0.07,
+                offsetX: Math.random() * 260 - 130, // Mayor dispersión horizontal para el cardumen de 90 peces
+                offsetY: Math.random() * 160 - 80,  // Mayor dispersión vertical
+                size: Math.random() * 13 + 6,       // Mayor variedad de tamaños
+                speedOffset: Math.random() * 0.2 + 0.9,
+                wiggleSpeed: Math.random() * 0.15 + 0.1,
                 phase: Math.random() * Math.PI * 2
             });
         }
@@ -100,18 +86,18 @@ class FishSchool {
     update(width, height) {
         this.time += 0.01;
         
-        // Mover el centro del cardumen horizontalmente
+        // Mover el centro del cardumen horizontalmente de izquierda a derecha
         this.schoolX += this.speed;
         
         // Patrón de nado ondulante en Y usando seno
-        this.schoolY = this.targetY + Math.sin(this.time * 1.4) * 60;
+        this.schoolY = this.targetY + Math.sin(this.time * 1.5) * 50;
         
         // Si el cardumen sale completamente de la pantalla por la derecha
-        if (this.schoolX > width + 300) {
-            this.schoolX = -300;
-            // Nueva altura y velocidad aleatoria
+        if (this.schoolX > width + 150) {
+            this.schoolX = -150;
+            // Nueva altura y dirección aleatoria
             this.targetY = Math.random() * (height * 0.6) + height * 0.15;
-            this.speed = Math.random() * 1.0 + 1.9;
+            this.speed = Math.random() * 1.2 + 2.0; // Velocidad aleatoria más rápida
         }
     }
 
@@ -119,145 +105,39 @@ class FishSchool {
         this.ctx.save();
         
         this.fishes.forEach(fish => {
-            const x = this.schoolX + fish.offsetX + Math.sin(this.time * 2 + fish.phase) * 14;
-            const y = this.schoolY + fish.offsetY + Math.cos(this.time * 1.5 + fish.phase) * 7;
+            const x = this.schoolX + fish.offsetX + Math.sin(this.time * 2 + fish.phase) * 10;
+            const y = this.schoolY + fish.offsetY + Math.cos(this.time * 1.5 + fish.phase) * 5;
             
+            // Dibujar pez individual
             this.ctx.save();
             this.ctx.translate(x, y);
             
-            // Ángulo de nado según ondulación
-            const angle = Math.atan2(Math.cos(this.time * 1.4) * 60 * 0.025, this.speed);
+            // Determinar ángulo de nado basado en el movimiento de onda en Y
+            const angle = Math.atan2(Math.cos(this.time * 1.5) * 50 * 0.03, this.speed);
             this.ctx.rotate(angle);
             
-            const len = fish.size;
-            const h = len * fish.aspect;
-            const df = fish.dorsalFactor;
-            const bf = fish.bellyFactor;
-            const hump = fish.bodyHump;
-            const nose = fish.noseSharpness;
-            const wiggle = Math.sin(this.time * 14 * fish.wiggleSpeed + fish.phase) * (len * 0.26);
+            // Color turquesa brillante (de la imagen del usuario, con excelente opacidad)
+            this.ctx.fillStyle = 'rgba(0, 201, 177, 0.45)';
             
-            const primaryColor = `rgba(0, 201, 177, ${fish.opacity})`;
-            const softColor    = `rgba(0, 220, 195, ${fish.opacity * 0.75})`;
+            // Cuerpo del pez (Elipse)
+            this.ctx.beginPath();
+            this.ctx.ellipse(0, 0, fish.size, fish.size / 2.5, 0, 0, Math.PI * 2);
+            this.ctx.fill();
             
-            // 1. Aleta Dorsal extendida con joroba variable
-            this.ctx.fillStyle = softColor;
+            // Cola oscilante (Triángulo)
+            const wiggle = Math.sin(this.time * 15 * fish.wiggleSpeed + fish.phase) * (fish.size * 0.3);
             this.ctx.beginPath();
-            this.ctx.moveTo(len * 0.22, -h * df * 0.62);
-            this.ctx.bezierCurveTo(
-                len * 0.05, -h * df * (1.7 + hump * 2.5),
-                -len * 0.18, -h * df * (1.95 + hump * 2.2),
-                -len * 0.52, -h * df * 0.35
-            );
-            this.ctx.quadraticCurveTo(-len * 0.32, -h * df * 0.52, len * 0.22, -h * df * 0.62);
+            this.ctx.moveTo(-fish.size, 0);
+            this.ctx.lineTo(-fish.size - fish.size / 2, -fish.size / 2.5 + wiggle);
+            this.ctx.lineTo(-fish.size - fish.size / 2, fish.size / 2.5 + wiggle);
             this.ctx.closePath();
             this.ctx.fill();
-
-            // 2. Aleta Ventral / Pélvica muy asimétrica
-            this.ctx.fillStyle = softColor;
+            
+            // Ojo pequeño brillante
+            this.ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
             this.ctx.beginPath();
-            this.ctx.moveTo(-len * 0.05, h * bf * 0.68);
-            this.ctx.bezierCurveTo(
-                -len * 0.22, h * bf * 1.6,
-                -len * 0.48, h * bf * 1.7,
-                -len * 0.55, h * bf * 0.38
-            );
-            this.ctx.closePath();
+            this.ctx.arc(fish.size * 0.4, -fish.size * 0.08, 1.5, 0, Math.PI * 2);
             this.ctx.fill();
-
-            // 3. Cola enormemente asimétrica con sesgo
-            const tailBaseX  = -len * 0.82;
-            const tailBaseY  = wiggle * 0.35;
-            const upperWiggle = wiggle * 1.5;
-            const lowerWiggle = wiggle * 0.75;
-            const skewY = h * fish.tailSkew * 2.5;
-
-            this.ctx.fillStyle = primaryColor;
-            this.ctx.beginPath();
-            this.ctx.moveTo(tailBaseX, -h * 0.2 + tailBaseY);
-            this.ctx.bezierCurveTo(
-                tailBaseX - len * 0.28, -h * 0.9  + upperWiggle + skewY,
-                tailBaseX - len * 0.72, -h * 1.6  * fish.tailUpperScale + upperWiggle + skewY,
-                tailBaseX - len * 0.96, -h * 1.35 * fish.tailUpperScale + upperWiggle + skewY
-            );
-            this.ctx.bezierCurveTo(
-                tailBaseX - len * 0.7,  -h * 0.15 + tailBaseY + skewY * 0.3,
-                tailBaseX - len * 0.55,  h * 0.18 + tailBaseY,
-                tailBaseX - len * 0.82,  h * 1.05 * fish.tailLowerScale + lowerWiggle
-            );
-            this.ctx.bezierCurveTo(
-                tailBaseX - len * 0.58,  h * 1.2  * fish.tailLowerScale + lowerWiggle,
-                tailBaseX - len * 0.28,  h * 0.5  + lowerWiggle,
-                tailBaseX,               h * 0.16 + tailBaseY
-            );
-            this.ctx.closePath();
-            this.ctx.fill();
-
-            // 4. Cuerpo Principal — silueta muy asimétrica con hocico variable
-            this.ctx.fillStyle = primaryColor;
-            this.ctx.beginPath();
-            this.ctx.moveTo(len * nose, 0);
-            this.ctx.bezierCurveTo(
-                len * (nose - 0.5), -h * df * (0.85 + hump * 1.8),
-                -len * 0.1,         -h * df * (1.12 + hump * 0.8),
-                tailBaseX,          -h * 0.2 + tailBaseY
-            );
-            this.ctx.lineTo(tailBaseX, h * 0.16 + tailBaseY);
-            this.ctx.bezierCurveTo(
-                -len * 0.3,            h * bf * 0.95,
-                len * (nose - 0.65),   h * bf * (1.2 + hump * 0.5),
-                len * nose,            0
-            );
-            this.ctx.closePath();
-            this.ctx.fill();
-
-            // 5. Aleta Pectoral grande
-            const pecFlutter = Math.sin(this.time * 16 * fish.wiggleSpeed + fish.phase) * 0.22;
-            this.ctx.save();
-            this.ctx.translate(len * 0.15, h * 0.15);
-            this.ctx.rotate(0.28 + pecFlutter);
-            this.ctx.fillStyle = `rgba(0, 225, 200, ${fish.opacity * 0.85})`;
-            this.ctx.beginPath();
-            this.ctx.moveTo(0, 0);
-            this.ctx.bezierCurveTo(-len * 0.25, h * 0.5, -len * 0.5, h * 0.9, -len * 0.55, h * 0.28);
-            this.ctx.closePath();
-            this.ctx.fill();
-            this.ctx.restore();
-
-            // 6. Aleta Anal asimétrica
-            this.ctx.fillStyle = `rgba(0, 215, 190, ${fish.opacity * 0.7})`;
-            this.ctx.beginPath();
-            this.ctx.moveTo(-len * 0.55, h * bf * 0.45);
-            this.ctx.bezierCurveTo(
-                -len * 0.68, h * bf * 1.15,
-                -len * 0.78, h * bf * 1.25,
-                -len * 0.82, h * 0.16 + tailBaseY
-            );
-            this.ctx.closePath();
-            this.ctx.fill();
-
-            // 7. Ojo prominente con brillo
-            const eyeX = len * (nose - 0.42);
-            const eyeY = -h * df * 0.25;
-            const eyeRadius = Math.max(3, len * 0.10);
-
-            this.ctx.fillStyle = `rgba(255, 255, 255, ${Math.min(1, fish.opacity * 1.6)})`;
-            this.ctx.beginPath();
-            this.ctx.arc(eyeX, eyeY, eyeRadius, 0, Math.PI * 2);
-            this.ctx.fill();
-
-            // Pupila oscura interior
-            this.ctx.fillStyle = 'rgba(10, 30, 40, 0.75)';
-            this.ctx.beginPath();
-            this.ctx.arc(eyeX + eyeRadius * 0.25, eyeY, eyeRadius * 0.48, 0, Math.PI * 2);
-            this.ctx.fill();
-
-            // 7. Línea de Branquia / Opérculo
-            this.ctx.strokeStyle = `rgba(0, 240, 210, ${fish.opacity * 0.55})`;
-            this.ctx.lineWidth = Math.max(1, len * 0.035);
-            this.ctx.beginPath();
-            this.ctx.arc(len * 0.32, -h * 0.06, h * 0.46, Math.PI * 0.65, Math.PI * 1.45, false);
-            this.ctx.stroke();
             
             this.ctx.restore();
         });

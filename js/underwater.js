@@ -77,17 +77,18 @@ class FishSchool {
             const depth = (size - 45) / 70; // profundidad para opacidad
             
             this.fishes.push({
-                offsetX: Math.random() * 700 - 350,  // Dispersión muy amplia
+                offsetX: Math.random() * 700 - 350,
                 offsetY: Math.random() * 340 - 170,
                 size: size,
-                aspect: Math.random() * 0.18 + 0.32,         // grosor muy variable (delgados a gordos)
-                dorsalFactor: Math.random() * 0.85 + 1.1,    // lomo MUY asimétrico y pronunciado
-                bellyFactor: Math.random() * 0.75 + 0.75,    // vientre MUY asimétrico
-                tailUpperScale: Math.random() * 0.7 + 1.1,   // lóbulo dorsal cola mucho más largo
-                tailLowerScale: Math.random() * 0.55 + 0.6,  // lóbulo ventral cola mucho más corto
-                tailSkew: Math.random() * 0.4 - 0.2,         // sesgo lateral de la cola
-                noseSharpness: Math.random() * 0.6 + 0.7,    // hocico puntiagudo vs redondeado
-                bodyHump: Math.random() * 0.35 + 0.05,       // joroba dorsal adicional
+                aspect: Math.random() * 0.30 + 0.22,         // desde muy delgado (0.22) hasta muy gordo (0.52)
+                dorsalFactor: Math.random() * 1.6 + 1.0,     // lomo EXTREMAMENTE asimétrico (1.0 a 2.6)
+                bellyFactor: Math.random() * 1.4 + 0.5,      // vientre EXTREMO (0.5 a 1.9)
+                tailUpperScale: Math.random() * 1.2 + 1.2,   // lóbulo superior enorme (1.2 a 2.4)
+                tailLowerScale: Math.random() * 0.7 + 0.3,   // lóbulo inferior minúsculo (0.3 a 1.0)
+                tailSkew: Math.random() * 0.9 - 0.45,        // sesgo brutal de la cola (-0.45 a +0.45)
+                noseSharpness: Math.random() * 0.8 + 0.55,   // desde chato hasta muy puntiagudo (0.55 a 1.35)
+                bodyHump: Math.random() * 0.65 + 0.08,       // joroba leve a extrema (0.08 a 0.73)
+                finOffset: Math.random() * 0.4 - 0.2,        // posición lateral asimétrica de aleta dorsal
                 opacity: 0.28 + depth * 0.42,
                 speedOffset: Math.random() * 0.25 + 0.88,
                 wiggleSpeed: Math.random() * 0.10 + 0.07,

@@ -14,4 +14,4 @@ Landing page premium y responsiva para el restaurant **La Picá Big Fish** ubica
 - CSS3 (Vanilla CSS con variables y animaciones personalizadas)
 - JavaScript (Efectos de burbujas, menú dinámico e IntersectionObserver para animaciones al hacer scroll)
 - Font Awesome (Iconografía)
-- Google Fonts (Tipografías *Playfair Display*, *Inter* y *Bebas Neue*)
+- Google Fonts (Tipografías *Playfair Display*, *Inter* y *Bebas Neue*).
